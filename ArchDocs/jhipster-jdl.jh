@@ -1,0 +1,76 @@
+// User Accounts Management Module
+entity User {
+	id Integer
+	email String
+    login String
+    steamId String
+    roles Role
+    profile Json
+    gender String
+    phoneNumber String
+    address Json
+    timeZone String
+        
+    firstName String
+    lastName String
+    birthDate DateTime
+    counrty String
+    
+    created DateTime
+}
+entity Entry {
+	id Integer
+    userId Integer
+    type String
+    secret String
+}
+enum Role {
+	PROMOUTER, PLAYER
+}
+entity Team {
+	id Integer
+    ownerId Integer
+    name String
+    profile Json
+}
+entity TeamPart {
+	teamId Integer
+    userId Integer
+}
+relationship ManyToOne {
+	Entry{userId} to User
+}
+relationship OneToMany {
+	User{userId} to TeamPart
+}
+relationship OneToMany {
+	Team{teamId} to TeamPart
+}
+relationship OneToMany {
+	Team{ownerId} to User
+}
+
+
+entity Tournament {
+	id Integer
+    name String 
+    promouter Integer
+    info Json
+    featured DateTime
+    created DateTime
+    finished DateTime
+    isFinished Boolean
+}
+entity Match {
+	id Integer
+    tournamentId Integer
+    teamA Integer
+    teamB Integer
+    started DateTime
+    finished DateTime
+    isFinished Boolean
+    data Json
+}
+relationship ManyToOne {
+	Match{tournamentId} to Tournament
+}
