@@ -1,0 +1,166 @@
+swagger: '2.0'
+info:
+  title: Swarmer API
+  description: Internal Swarmer API
+  version: "1.0.0-SNAPSHOT"
+# the domain of the service
+host: internal-api.swarmer.ru
+# array of all schemes that your API supports
+schemes:
+  - https
+# will be prefixed to all paths
+basePath: /v1/accounts
+produces:
+  - application/json
+paths:
+  /users:
+    get:
+      summary: Get regsitered in system users
+      description: |
+        Get registered users by filter 
+      parameters:
+        - name: filter
+          in: query
+          description: Latitude component of location.
+          required: true
+          type: number
+          format: double
+      tags:
+        - Accounts
+      responses:
+        200:
+          description: An array of users
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+            
+definitions:
+  UserInfo:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: Id of user.
+      firstName: 
+        type: string
+        description: First name of user.
+      secondName:
+        type: string
+        description: Second name of user.
+      login:
+        type: string
+        description: Login and nickname of user.
+      
+  User:
+    type: object
+    description: Full user model.
+    allOf:
+      - $ref: '#/definitions/UserInfo'
+      - type: object
+        properties:
+          gender:
+            type: string
+            description: User's gender.
+          role:
+            type: string
+            description: Role of user.
+          availableEntries:
+            type: array
+            items: 
+              type: string
+            description: Available entry ways.
+          steamId:
+            type: integer
+            description: Id of user in Steam.
+          birthDate:
+            type: string
+            format: date
+            description: User birth date.
+          phoneNumber:
+            type: string
+            description: User's phone number.
+          address:
+            type: string
+            description: User's main address.
+          timeZone:
+            type: string
+            description: User's time zone for time correction. 
+          country:
+            type: string
+            description: User's living country.
+          created:
+            type: string
+            format: date-time
+            description: User creation time.
+          updated:
+            type: string
+            format: date-time
+            description: User info last modification time.
+          profile:
+            $ref: '#/definitions/UserProfile'
+        
+  TeamInfo:
+    type: object
+    description: Shortened info about team.
+    properties:
+      id:
+        type: integer
+        description: Id of team.
+      name:
+        type: string
+        description: Name of team.
+      
+  Team:
+    type: object
+    description: Full model of team.
+    allOf:
+      - $ref: "#/definitions/TeamInfo"
+      - type: object
+        properties:
+          owner:
+            type: integer
+            description: Id of owning user.
+          fullName:
+            type: string
+            description: Full name of team.
+          profile:
+            $ref: "#/definitions/TeamProfile"
+        
+  TeamProfile:
+    type: object
+    description: Profile of team.
+    properties:
+      icon:
+        type: string
+        description: Link to icon of team.
+      image:
+        type: string
+        description: Link to image of team.
+      numberOfWins:
+        type: integer
+        description: Number of team wins.
+      totalGames:
+        type: integer
+        description: Total number of games.
+      
+  UserProfile:
+    type: object
+    properties:
+      image:
+        type: string
+        description: Link on user image.
+      last_name:
+        type: string
+        description: Last name of the Uber user.
+        
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      fields:
+        type: string
