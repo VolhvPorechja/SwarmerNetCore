@@ -24,12 +24,12 @@ using System;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace SwarmerServer.Models
+namespace Swarmer.Contracts.Domain
 {
     /// <summary>
     /// Info about user team perticipation.
     /// </summary>
-    public partial class TeamMembershipData :  IEquatable<TeamMembershipData>
+    public partial class TeamMembershipData : IEquatable<TeamMembershipData>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="TeamMembershipData" /> class.
@@ -42,7 +42,7 @@ namespace SwarmerServer.Models
             this.Approuved = Approuved;
             this.IsActive = IsActive;
             this.StartDate = StartDate;
-            
+
         }
 
         /// <summary>
@@ -73,8 +73,8 @@ namespace SwarmerServer.Models
             var sb = new StringBuilder();
             sb.Append("class TeamMembershipData {\n");
             sb.Append("  Approuved: ").Append(Approuved).Append("\n");
-sb.Append("  IsActive: ").Append(IsActive).Append("\n");
-sb.Append("  StartDate: ").Append(StartDate).Append("\n");
+            sb.Append("  IsActive: ").Append(IsActive).Append("\n");
+            sb.Append("  StartDate: ").Append(StartDate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -112,17 +112,17 @@ sb.Append("  StartDate: ").Append(StartDate).Append("\n");
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
 
-            return 
+            return
                 (
                     this.Approuved == other.Approuved ||
                     this.Approuved != null &&
                     this.Approuved.Equals(other.Approuved)
-                ) && 
+                ) &&
                 (
                     this.IsActive == other.IsActive ||
                     this.IsActive != null &&
                     this.IsActive.Equals(other.IsActive)
-                ) && 
+                ) &&
                 (
                     this.StartDate == other.StartDate ||
                     this.StartDate != null &&
@@ -141,11 +141,11 @@ sb.Append("  StartDate: ").Append(StartDate).Append("\n");
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                    if (this.Approuved != null)
+                if (this.Approuved != null)
                     hash = hash * 59 + this.Approuved.GetHashCode();
-                    if (this.IsActive != null)
+                if (this.IsActive != null)
                     hash = hash * 59 + this.IsActive.GetHashCode();
-                    if (this.StartDate != null)
+                if (this.StartDate != null)
                     hash = hash * 59 + this.StartDate.GetHashCode();
                 return hash;
             }

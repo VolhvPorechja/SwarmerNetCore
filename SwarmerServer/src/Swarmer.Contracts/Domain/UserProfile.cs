@@ -24,44 +24,36 @@ using System;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace SwarmerServer.Models
+namespace Swarmer.Contracts.Domain
 {
     /// <summary>
-    /// Info about user team perticipation.
+    /// 
     /// </summary>
-    public partial class TeamMembershipData :  IEquatable<TeamMembershipData>
+    public partial class UserProfile :  IEquatable<UserProfile>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="TeamMembershipData" /> class.
+        /// Initializes a new instance of the <see cref="UserProfile" /> class.
         /// </summary>
-        /// <param name="Approuved">Is user participation approuved by owner.</param>
-        /// <param name="IsActive">Is user participation in team is active.</param>
-        /// <param name="StartDate">When user membership started..</param>
-        public TeamMembershipData(bool? Approuved = null, bool? IsActive = null, DateTime? StartDate = null)
+        /// <param name="Image">Link on user image..</param>
+        /// <param name="LastName">Last name of the Uber user..</param>
+        public UserProfile(string Image = null, string LastName = null)
         {
-            this.Approuved = Approuved;
-            this.IsActive = IsActive;
-            this.StartDate = StartDate;
+            this.Image = Image;
+            this.LastName = LastName;
             
         }
 
         /// <summary>
-        /// Is user participation approuved by owner
+        /// Link on user image.
         /// </summary>
-        /// <value>Is user participation approuved by owner</value>
-        public bool? Approuved { get; set; }
+        /// <value>Link on user image.</value>
+        public string Image { get; set; }
 
         /// <summary>
-        /// Is user participation in team is active
+        /// Last name of the Uber user.
         /// </summary>
-        /// <value>Is user participation in team is active</value>
-        public bool? IsActive { get; set; }
-
-        /// <summary>
-        /// When user membership started.
-        /// </summary>
-        /// <value>When user membership started.</value>
-        public DateTime? StartDate { get; set; }
+        /// <value>Last name of the Uber user.</value>
+        public string LastName { get; set; }
 
 
         /// <summary>
@@ -71,10 +63,9 @@ namespace SwarmerServer.Models
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class TeamMembershipData {\n");
-            sb.Append("  Approuved: ").Append(Approuved).Append("\n");
-sb.Append("  IsActive: ").Append(IsActive).Append("\n");
-sb.Append("  StartDate: ").Append(StartDate).Append("\n");
+            sb.Append("class UserProfile {\n");
+            sb.Append("  Image: ").Append(Image).Append("\n");
+sb.Append("  LastName: ").Append(LastName).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -98,15 +89,15 @@ sb.Append("  StartDate: ").Append(StartDate).Append("\n");
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((TeamMembershipData)obj);
+            return Equals((UserProfile)obj);
         }
 
         /// <summary>
-        /// Returns true if TeamMembershipData instances are equal
+        /// Returns true if UserProfile instances are equal
         /// </summary>
-        /// <param name="other">Instance of TeamMembershipData to be compared</param>
+        /// <param name="other">Instance of UserProfile to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(TeamMembershipData other)
+        public bool Equals(UserProfile other)
         {
 
             if (ReferenceEquals(null, other)) return false;
@@ -114,19 +105,14 @@ sb.Append("  StartDate: ").Append(StartDate).Append("\n");
 
             return 
                 (
-                    this.Approuved == other.Approuved ||
-                    this.Approuved != null &&
-                    this.Approuved.Equals(other.Approuved)
+                    this.Image == other.Image ||
+                    this.Image != null &&
+                    this.Image.Equals(other.Image)
                 ) && 
                 (
-                    this.IsActive == other.IsActive ||
-                    this.IsActive != null &&
-                    this.IsActive.Equals(other.IsActive)
-                ) && 
-                (
-                    this.StartDate == other.StartDate ||
-                    this.StartDate != null &&
-                    this.StartDate.Equals(other.StartDate)
+                    this.LastName == other.LastName ||
+                    this.LastName != null &&
+                    this.LastName.Equals(other.LastName)
                 );
         }
 
@@ -141,24 +127,22 @@ sb.Append("  StartDate: ").Append(StartDate).Append("\n");
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                    if (this.Approuved != null)
-                    hash = hash * 59 + this.Approuved.GetHashCode();
-                    if (this.IsActive != null)
-                    hash = hash * 59 + this.IsActive.GetHashCode();
-                    if (this.StartDate != null)
-                    hash = hash * 59 + this.StartDate.GetHashCode();
+                    if (this.Image != null)
+                    hash = hash * 59 + this.Image.GetHashCode();
+                    if (this.LastName != null)
+                    hash = hash * 59 + this.LastName.GetHashCode();
                 return hash;
             }
         }
 
         #region Operators
 
-        public static bool operator ==(TeamMembershipData left, TeamMembershipData right)
+        public static bool operator ==(UserProfile left, UserProfile right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(TeamMembershipData left, TeamMembershipData right)
+        public static bool operator !=(UserProfile left, UserProfile right)
         {
             return !Equals(left, right);
         }

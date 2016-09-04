@@ -24,44 +24,41 @@ using System;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace SwarmerServer.Models
+namespace Swarmer.Contracts.Domain
 {
     /// <summary>
-    /// Info about user team perticipation.
+    /// 
     /// </summary>
-    public partial class TeamMembershipData :  IEquatable<TeamMembershipData>
+    public partial class Error : IEquatable<Error>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="TeamMembershipData" /> class.
+        /// Initializes a new instance of the <see cref="Error" /> class.
         /// </summary>
-        /// <param name="Approuved">Is user participation approuved by owner.</param>
-        /// <param name="IsActive">Is user participation in team is active.</param>
-        /// <param name="StartDate">When user membership started..</param>
-        public TeamMembershipData(bool? Approuved = null, bool? IsActive = null, DateTime? StartDate = null)
+        /// <param name="Code">Code.</param>
+        /// <param name="Message">Message.</param>
+        /// <param name="Fields">Fields.</param>
+        public Error(int? Code = null, string Message = null, string Fields = null)
         {
-            this.Approuved = Approuved;
-            this.IsActive = IsActive;
-            this.StartDate = StartDate;
-            
+            this.Code = Code;
+            this.Message = Message;
+            this.Fields = Fields;
+
         }
 
         /// <summary>
-        /// Is user participation approuved by owner
+        /// Gets or Sets Code
         /// </summary>
-        /// <value>Is user participation approuved by owner</value>
-        public bool? Approuved { get; set; }
+        public int? Code { get; set; }
 
         /// <summary>
-        /// Is user participation in team is active
+        /// Gets or Sets Message
         /// </summary>
-        /// <value>Is user participation in team is active</value>
-        public bool? IsActive { get; set; }
+        public string Message { get; set; }
 
         /// <summary>
-        /// When user membership started.
+        /// Gets or Sets Fields
         /// </summary>
-        /// <value>When user membership started.</value>
-        public DateTime? StartDate { get; set; }
+        public string Fields { get; set; }
 
 
         /// <summary>
@@ -71,10 +68,10 @@ namespace SwarmerServer.Models
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class TeamMembershipData {\n");
-            sb.Append("  Approuved: ").Append(Approuved).Append("\n");
-sb.Append("  IsActive: ").Append(IsActive).Append("\n");
-sb.Append("  StartDate: ").Append(StartDate).Append("\n");
+            sb.Append("class Error {\n");
+            sb.Append("  Code: ").Append(Code).Append("\n");
+            sb.Append("  Message: ").Append(Message).Append("\n");
+            sb.Append("  Fields: ").Append(Fields).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -98,35 +95,35 @@ sb.Append("  StartDate: ").Append(StartDate).Append("\n");
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((TeamMembershipData)obj);
+            return Equals((Error)obj);
         }
 
         /// <summary>
-        /// Returns true if TeamMembershipData instances are equal
+        /// Returns true if Error instances are equal
         /// </summary>
-        /// <param name="other">Instance of TeamMembershipData to be compared</param>
+        /// <param name="other">Instance of Error to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(TeamMembershipData other)
+        public bool Equals(Error other)
         {
 
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
 
-            return 
+            return
                 (
-                    this.Approuved == other.Approuved ||
-                    this.Approuved != null &&
-                    this.Approuved.Equals(other.Approuved)
-                ) && 
+                    this.Code == other.Code ||
+                    this.Code != null &&
+                    this.Code.Equals(other.Code)
+                ) &&
                 (
-                    this.IsActive == other.IsActive ||
-                    this.IsActive != null &&
-                    this.IsActive.Equals(other.IsActive)
-                ) && 
+                    this.Message == other.Message ||
+                    this.Message != null &&
+                    this.Message.Equals(other.Message)
+                ) &&
                 (
-                    this.StartDate == other.StartDate ||
-                    this.StartDate != null &&
-                    this.StartDate.Equals(other.StartDate)
+                    this.Fields == other.Fields ||
+                    this.Fields != null &&
+                    this.Fields.Equals(other.Fields)
                 );
         }
 
@@ -141,24 +138,24 @@ sb.Append("  StartDate: ").Append(StartDate).Append("\n");
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                    if (this.Approuved != null)
-                    hash = hash * 59 + this.Approuved.GetHashCode();
-                    if (this.IsActive != null)
-                    hash = hash * 59 + this.IsActive.GetHashCode();
-                    if (this.StartDate != null)
-                    hash = hash * 59 + this.StartDate.GetHashCode();
+                if (this.Code != null)
+                    hash = hash * 59 + this.Code.GetHashCode();
+                if (this.Message != null)
+                    hash = hash * 59 + this.Message.GetHashCode();
+                if (this.Fields != null)
+                    hash = hash * 59 + this.Fields.GetHashCode();
                 return hash;
             }
         }
 
         #region Operators
 
-        public static bool operator ==(TeamMembershipData left, TeamMembershipData right)
+        public static bool operator ==(Error left, Error right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(TeamMembershipData left, TeamMembershipData right)
+        public static bool operator !=(Error left, Error right)
         {
             return !Equals(left, right);
         }

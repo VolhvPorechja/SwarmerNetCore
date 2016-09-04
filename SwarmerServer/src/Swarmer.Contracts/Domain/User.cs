@@ -26,12 +26,12 @@ using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace SwarmerServer.Models
+namespace Swarmer.Contracts.Domain
 {
     /// <summary>
     /// Full user model.
     /// </summary>
-    public partial class User : UserInfo,  IEquatable<User>
+    public partial class User : UserInfo, IEquatable<User>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="User" /> class.
@@ -70,7 +70,7 @@ namespace SwarmerServer.Models
             this.TimeZone = TimeZone;
             this.Country = Country;
             this.Profile = Profile;
-            
+
         }
 
         /// <summary>
@@ -178,21 +178,21 @@ namespace SwarmerServer.Models
             var sb = new StringBuilder();
             sb.Append("class User {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-sb.Append("  Created: ").Append(Created).Append("\n");
-sb.Append("  Updated: ").Append(Updated).Append("\n");
-sb.Append("  FirstName: ").Append(FirstName).Append("\n");
-sb.Append("  SecondName: ").Append(SecondName).Append("\n");
-sb.Append("  Login: ").Append(Login).Append("\n");
-sb.Append("  Gender: ").Append(Gender).Append("\n");
-sb.Append("  Role: ").Append(Role).Append("\n");
-sb.Append("  AvailableEntries: ").Append(AvailableEntries).Append("\n");
-sb.Append("  SteamId: ").Append(SteamId).Append("\n");
-sb.Append("  BirthDate: ").Append(BirthDate).Append("\n");
-sb.Append("  PhoneNumber: ").Append(PhoneNumber).Append("\n");
-sb.Append("  Address: ").Append(Address).Append("\n");
-sb.Append("  TimeZone: ").Append(TimeZone).Append("\n");
-sb.Append("  Country: ").Append(Country).Append("\n");
-sb.Append("  Profile: ").Append(Profile).Append("\n");
+            sb.Append("  Created: ").Append(Created).Append("\n");
+            sb.Append("  Updated: ").Append(Updated).Append("\n");
+            sb.Append("  FirstName: ").Append(FirstName).Append("\n");
+            sb.Append("  SecondName: ").Append(SecondName).Append("\n");
+            sb.Append("  Login: ").Append(Login).Append("\n");
+            sb.Append("  Gender: ").Append(Gender).Append("\n");
+            sb.Append("  Role: ").Append(Role).Append("\n");
+            sb.Append("  AvailableEntries: ").Append(AvailableEntries).Append("\n");
+            sb.Append("  SteamId: ").Append(SteamId).Append("\n");
+            sb.Append("  BirthDate: ").Append(BirthDate).Append("\n");
+            sb.Append("  PhoneNumber: ").Append(PhoneNumber).Append("\n");
+            sb.Append("  Address: ").Append(Address).Append("\n");
+            sb.Append("  TimeZone: ").Append(TimeZone).Append("\n");
+            sb.Append("  Country: ").Append(Country).Append("\n");
+            sb.Append("  Profile: ").Append(Profile).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -201,7 +201,7 @@ sb.Append("  Profile: ").Append(Profile).Append("\n");
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public  new string ToJson()
+        public new string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -230,82 +230,82 @@ sb.Append("  Profile: ").Append(Profile).Append("\n");
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
 
-            return 
+            return
                 (
                     this.Id == other.Id ||
                     this.Id != null &&
                     this.Id.Equals(other.Id)
-                ) && 
+                ) &&
                 (
                     this.Created == other.Created ||
                     this.Created != null &&
                     this.Created.Equals(other.Created)
-                ) && 
+                ) &&
                 (
                     this.Updated == other.Updated ||
                     this.Updated != null &&
                     this.Updated.Equals(other.Updated)
-                ) && 
+                ) &&
                 (
                     this.FirstName == other.FirstName ||
                     this.FirstName != null &&
                     this.FirstName.Equals(other.FirstName)
-                ) && 
+                ) &&
                 (
                     this.SecondName == other.SecondName ||
                     this.SecondName != null &&
                     this.SecondName.Equals(other.SecondName)
-                ) && 
+                ) &&
                 (
                     this.Login == other.Login ||
                     this.Login != null &&
                     this.Login.Equals(other.Login)
-                ) && 
+                ) &&
                 (
                     this.Gender == other.Gender ||
                     this.Gender != null &&
                     this.Gender.Equals(other.Gender)
-                ) && 
+                ) &&
                 (
                     this.Role == other.Role ||
                     this.Role != null &&
                     this.Role.Equals(other.Role)
-                ) && 
+                ) &&
                 (
                     this.AvailableEntries == other.AvailableEntries ||
                     this.AvailableEntries != null &&
                     this.AvailableEntries.SequenceEqual(other.AvailableEntries)
-                ) && 
+                ) &&
                 (
                     this.SteamId == other.SteamId ||
                     this.SteamId != null &&
                     this.SteamId.Equals(other.SteamId)
-                ) && 
+                ) &&
                 (
                     this.BirthDate == other.BirthDate ||
                     this.BirthDate != null &&
                     this.BirthDate.Equals(other.BirthDate)
-                ) && 
+                ) &&
                 (
                     this.PhoneNumber == other.PhoneNumber ||
                     this.PhoneNumber != null &&
                     this.PhoneNumber.Equals(other.PhoneNumber)
-                ) && 
+                ) &&
                 (
                     this.Address == other.Address ||
                     this.Address != null &&
                     this.Address.Equals(other.Address)
-                ) && 
+                ) &&
                 (
                     this.TimeZone == other.TimeZone ||
                     this.TimeZone != null &&
                     this.TimeZone.Equals(other.TimeZone)
-                ) && 
+                ) &&
                 (
                     this.Country == other.Country ||
                     this.Country != null &&
                     this.Country.Equals(other.Country)
-                ) && 
+                ) &&
                 (
                     this.Profile == other.Profile ||
                     this.Profile != null &&
@@ -324,37 +324,37 @@ sb.Append("  Profile: ").Append(Profile).Append("\n");
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                    if (this.Id != null)
+                if (this.Id != null)
                     hash = hash * 59 + this.Id.GetHashCode();
-                    if (this.Created != null)
+                if (this.Created != null)
                     hash = hash * 59 + this.Created.GetHashCode();
-                    if (this.Updated != null)
+                if (this.Updated != null)
                     hash = hash * 59 + this.Updated.GetHashCode();
-                    if (this.FirstName != null)
+                if (this.FirstName != null)
                     hash = hash * 59 + this.FirstName.GetHashCode();
-                    if (this.SecondName != null)
+                if (this.SecondName != null)
                     hash = hash * 59 + this.SecondName.GetHashCode();
-                    if (this.Login != null)
+                if (this.Login != null)
                     hash = hash * 59 + this.Login.GetHashCode();
-                    if (this.Gender != null)
+                if (this.Gender != null)
                     hash = hash * 59 + this.Gender.GetHashCode();
-                    if (this.Role != null)
+                if (this.Role != null)
                     hash = hash * 59 + this.Role.GetHashCode();
-                    if (this.AvailableEntries != null)
+                if (this.AvailableEntries != null)
                     hash = hash * 59 + this.AvailableEntries.GetHashCode();
-                    if (this.SteamId != null)
+                if (this.SteamId != null)
                     hash = hash * 59 + this.SteamId.GetHashCode();
-                    if (this.BirthDate != null)
+                if (this.BirthDate != null)
                     hash = hash * 59 + this.BirthDate.GetHashCode();
-                    if (this.PhoneNumber != null)
+                if (this.PhoneNumber != null)
                     hash = hash * 59 + this.PhoneNumber.GetHashCode();
-                    if (this.Address != null)
+                if (this.Address != null)
                     hash = hash * 59 + this.Address.GetHashCode();
-                    if (this.TimeZone != null)
+                if (this.TimeZone != null)
                     hash = hash * 59 + this.TimeZone.GetHashCode();
-                    if (this.Country != null)
+                if (this.Country != null)
                     hash = hash * 59 + this.Country.GetHashCode();
-                    if (this.Profile != null)
+                if (this.Profile != null)
                     hash = hash * 59 + this.Profile.GetHashCode();
                 return hash;
             }

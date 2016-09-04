@@ -24,12 +24,12 @@ using System;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace SwarmerServer.Models
+namespace Swarmer.Contracts.Domain
 {
     /// <summary>
     /// Profile of team.
     /// </summary>
-    public partial class TeamProfile :  IEquatable<TeamProfile>
+    public partial class TeamProfile : IEquatable<TeamProfile>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="TeamProfile" /> class.
@@ -44,7 +44,7 @@ namespace SwarmerServer.Models
             this.Image = Image;
             this.NumberOfWins = NumberOfWins;
             this.TotalGames = TotalGames;
-            
+
         }
 
         /// <summary>
@@ -81,9 +81,9 @@ namespace SwarmerServer.Models
             var sb = new StringBuilder();
             sb.Append("class TeamProfile {\n");
             sb.Append("  Icon: ").Append(Icon).Append("\n");
-sb.Append("  Image: ").Append(Image).Append("\n");
-sb.Append("  NumberOfWins: ").Append(NumberOfWins).Append("\n");
-sb.Append("  TotalGames: ").Append(TotalGames).Append("\n");
+            sb.Append("  Image: ").Append(Image).Append("\n");
+            sb.Append("  NumberOfWins: ").Append(NumberOfWins).Append("\n");
+            sb.Append("  TotalGames: ").Append(TotalGames).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -121,22 +121,22 @@ sb.Append("  TotalGames: ").Append(TotalGames).Append("\n");
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
 
-            return 
+            return
                 (
                     this.Icon == other.Icon ||
                     this.Icon != null &&
                     this.Icon.Equals(other.Icon)
-                ) && 
+                ) &&
                 (
                     this.Image == other.Image ||
                     this.Image != null &&
                     this.Image.Equals(other.Image)
-                ) && 
+                ) &&
                 (
                     this.NumberOfWins == other.NumberOfWins ||
                     this.NumberOfWins != null &&
                     this.NumberOfWins.Equals(other.NumberOfWins)
-                ) && 
+                ) &&
                 (
                     this.TotalGames == other.TotalGames ||
                     this.TotalGames != null &&
@@ -155,13 +155,13 @@ sb.Append("  TotalGames: ").Append(TotalGames).Append("\n");
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                    if (this.Icon != null)
+                if (this.Icon != null)
                     hash = hash * 59 + this.Icon.GetHashCode();
-                    if (this.Image != null)
+                if (this.Image != null)
                     hash = hash * 59 + this.Image.GetHashCode();
-                    if (this.NumberOfWins != null)
+                if (this.NumberOfWins != null)
                     hash = hash * 59 + this.NumberOfWins.GetHashCode();
-                    if (this.TotalGames != null)
+                if (this.TotalGames != null)
                     hash = hash * 59 + this.TotalGames.GetHashCode();
                 return hash;
             }

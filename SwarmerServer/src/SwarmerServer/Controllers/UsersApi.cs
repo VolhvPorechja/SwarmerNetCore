@@ -22,24 +22,25 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using SwarmerServer.Models;
+using SwarmerServer.Repositories;
 using Swashbuckle.SwaggerGen.Annotations;
-using IO.Swagger.Models;
 
-namespace IO.Swagger.Controllers
-{ 
+namespace SwarmerServer.Controllers
+{
     /// <summary>
     /// 
     /// </summary>
     public class UsersApiController : Controller
-    { 
+    {
+        private UsersRepository mRepository;
+
+        public UsersApiController(UsersRepository repository)
+        {
+            mRepository = repository;
+        }
 
         /// <summary>
         /// Get registered user by id
@@ -95,8 +96,8 @@ namespace IO.Swagger.Controllers
         /// <response code="0">Unexpected error</response>
         [HttpPost]
         [Route("/users/{userId}/teams/{teamId}")]
-        [SwaggerOperation("GiveUserTeamMembershup")]
-        public virtual void GiveUserTeamMembershup([FromRoute]int? userId, [FromRoute]int? teamId)
+        [SwaggerOperation("GiveUserTeamMembership")]
+        public virtual void GiveUserTeamMembership([FromRoute]int? userId, [FromRoute]int? teamId)
         { 
             throw new NotImplementedException();
         }
@@ -117,12 +118,7 @@ namespace IO.Swagger.Controllers
         [SwaggerResponse(200, type: typeof(List<UserInfo>))]
         public virtual IActionResult ListUsers([FromQuery]string filter, [FromQuery]int? page, [FromQuery]int? pageSize)
         { 
-            string exampleJson = null;
-            
-            var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<List<UserInfo>>(exampleJson)
-            : default(List<UserInfo>);
-            return new ObjectResult(example);
+            return new ObjectResult(mRepository.GetAll());
         }
 
 
@@ -164,23 +160,6 @@ namespace IO.Swagger.Controllers
             ? JsonConvert.DeserializeObject<UserInfo>(exampleJson)
             : default(UserInfo);
             return new ObjectResult(example);
-        }
-
-
-        /// <summary>
-        /// Update or give user participation in team
-        /// </summary>
-        
-        /// <param name="teamId">Id of team.</param>
-        /// <param name="userId">Id of user.</param>
-        /// <response code="200">Emtpy if data successfully updated.</response>
-        /// <response code="0">Unexpected error</response>
-        [HttpPut]
-        [Route("/teams/{teamId}/user/{userId}")]
-        [SwaggerOperation("UpdateOrGiveTeamMembership")]
-        public virtual void UpdateOrGiveTeamMembership([FromRoute]int? teamId, [FromRoute]int? userId)
-        { 
-            throw new NotImplementedException();
         }
     }
 }

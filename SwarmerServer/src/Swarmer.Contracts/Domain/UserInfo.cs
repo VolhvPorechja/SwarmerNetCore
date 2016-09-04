@@ -24,12 +24,12 @@ using System;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace SwarmerServer.Models
+namespace Swarmer.Contracts.Domain
 {
     /// <summary>
     /// Shotened user data.
     /// </summary>
-    public partial class UserInfo : SysObject,  IEquatable<UserInfo>
+    public partial class UserInfo : SysObject, IEquatable<UserInfo>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="UserInfo" /> class.
@@ -48,7 +48,7 @@ namespace SwarmerServer.Models
             this.FirstName = FirstName;
             this.SecondName = SecondName;
             this.Login = Login;
-            
+
         }
 
         /// <summary>
@@ -97,11 +97,11 @@ namespace SwarmerServer.Models
             var sb = new StringBuilder();
             sb.Append("class UserInfo {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-sb.Append("  Created: ").Append(Created).Append("\n");
-sb.Append("  Updated: ").Append(Updated).Append("\n");
-sb.Append("  FirstName: ").Append(FirstName).Append("\n");
-sb.Append("  SecondName: ").Append(SecondName).Append("\n");
-sb.Append("  Login: ").Append(Login).Append("\n");
+            sb.Append("  Created: ").Append(Created).Append("\n");
+            sb.Append("  Updated: ").Append(Updated).Append("\n");
+            sb.Append("  FirstName: ").Append(FirstName).Append("\n");
+            sb.Append("  SecondName: ").Append(SecondName).Append("\n");
+            sb.Append("  Login: ").Append(Login).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -110,7 +110,7 @@ sb.Append("  Login: ").Append(Login).Append("\n");
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public  new string ToJson()
+        public new string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -139,32 +139,32 @@ sb.Append("  Login: ").Append(Login).Append("\n");
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
 
-            return 
+            return
                 (
                     this.Id == other.Id ||
                     this.Id != null &&
                     this.Id.Equals(other.Id)
-                ) && 
+                ) &&
                 (
                     this.Created == other.Created ||
                     this.Created != null &&
                     this.Created.Equals(other.Created)
-                ) && 
+                ) &&
                 (
                     this.Updated == other.Updated ||
                     this.Updated != null &&
                     this.Updated.Equals(other.Updated)
-                ) && 
+                ) &&
                 (
                     this.FirstName == other.FirstName ||
                     this.FirstName != null &&
                     this.FirstName.Equals(other.FirstName)
-                ) && 
+                ) &&
                 (
                     this.SecondName == other.SecondName ||
                     this.SecondName != null &&
                     this.SecondName.Equals(other.SecondName)
-                ) && 
+                ) &&
                 (
                     this.Login == other.Login ||
                     this.Login != null &&
@@ -183,17 +183,17 @@ sb.Append("  Login: ").Append(Login).Append("\n");
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                    if (this.Id != null)
+                if (this.Id != null)
                     hash = hash * 59 + this.Id.GetHashCode();
-                    if (this.Created != null)
+                if (this.Created != null)
                     hash = hash * 59 + this.Created.GetHashCode();
-                    if (this.Updated != null)
+                if (this.Updated != null)
                     hash = hash * 59 + this.Updated.GetHashCode();
-                    if (this.FirstName != null)
+                if (this.FirstName != null)
                     hash = hash * 59 + this.FirstName.GetHashCode();
-                    if (this.SecondName != null)
+                if (this.SecondName != null)
                     hash = hash * 59 + this.SecondName.GetHashCode();
-                    if (this.Login != null)
+                if (this.Login != null)
                     hash = hash * 59 + this.Login.GetHashCode();
                 return hash;
             }

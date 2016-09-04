@@ -22,18 +22,12 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using SwarmerServer.Models;
 using Swashbuckle.SwaggerGen.Annotations;
-using IO.Swagger.Models;
 
-namespace IO.Swagger.Controllers
+namespace SwarmerServer.Controllers
 { 
     /// <summary>
     /// 
@@ -64,45 +58,6 @@ namespace IO.Swagger.Controllers
 
 
         /// <summary>
-        /// Get user teams
-        /// </summary>
-        
-        /// <param name="userId">Id of user</param>
-        /// <response code="200">Teams in which user has parts</response>
-        /// <response code="0">Unexpected error</response>
-        [HttpGet]
-        [Route("/users/{userId}/teams")]
-        [SwaggerOperation("GetUserTeamsMembership")]
-        [SwaggerResponse(200, type: typeof(List<TeamMembership>))]
-        public virtual IActionResult GetUserTeamsMembership([FromRoute]int? userId)
-        { 
-            string exampleJson = null;
-            
-            var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<List<TeamMembership>>(exampleJson)
-            : default(List<TeamMembership>);
-            return new ObjectResult(example);
-        }
-
-
-        /// <summary>
-        /// Add user participation in team
-        /// </summary>
-        
-        /// <param name="userId">Id of user</param>
-        /// <param name="teamId">Id of team</param>
-        /// <response code="201">User participation in team created</response>
-        /// <response code="0">Unexpected error</response>
-        [HttpPost]
-        [Route("/users/{userId}/teams/{teamId}")]
-        [SwaggerOperation("GiveUserTeamMembershup")]
-        public virtual void GiveUserTeamMembershup([FromRoute]int? userId, [FromRoute]int? teamId)
-        { 
-            throw new NotImplementedException();
-        }
-
-
-        /// <summary>
         /// Get all available teams
         /// </summary>
         
@@ -124,24 +79,6 @@ namespace IO.Swagger.Controllers
             : default(List<TeamInfo>);
             return new ObjectResult(example);
         }
-
-
-        /// <summary>
-        /// Remove user participation in team
-        /// </summary>
-        
-        /// <param name="userId">Id of user</param>
-        /// <param name="teamId">Id of team</param>
-        /// <response code="200">User participation in team removed</response>
-        /// <response code="0">Unexpected error</response>
-        [HttpDelete]
-        [Route("/users/{userId}/teams/{teamId}")]
-        [SwaggerOperation("RemoveUserTeamMembership")]
-        public virtual void RemoveUserTeamMembership([FromRoute]int? userId, [FromRoute]int? teamId)
-        { 
-            throw new NotImplementedException();
-        }
-
 
         /// <summary>
         /// Update or give user participation in team

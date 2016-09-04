@@ -21,34 +21,40 @@
  */
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace SwarmerServer.Models
+namespace Swarmer.Contracts.Domain
 {
     /// <summary>
-    /// Shotened user data.
+    /// Full model of team.
     /// </summary>
-    public partial class UserInfo : SysObject,  IEquatable<UserInfo>
+    public partial class Team : TeamInfo, IEquatable<Team>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="UserInfo" /> class.
+        /// Initializes a new instance of the <see cref="Team" /> class.
         /// </summary>
         /// <param name="Id">Id of object..</param>
         /// <param name="Created">Creationg date time.</param>
         /// <param name="Updated">Updating date time..</param>
-        /// <param name="FirstName">First name of user..</param>
-        /// <param name="SecondName">Second name of user..</param>
-        /// <param name="Login">Login and nickname of user..</param>
-        public UserInfo(int? Id = null, DateTime? Created = null, DateTime? Updated = null, string FirstName = null, string SecondName = null, string Login = null)
+        /// <param name="Name">Name of team..</param>
+        /// <param name="Owner">Id of owning user..</param>
+        /// <param name="FullName">Full name of team..</param>
+        /// <param name="Profile">Profile.</param>
+        /// <param name="Members">Members.</param>
+        public Team(int? Id = null, DateTime? Created = null, DateTime? Updated = null, string Name = null, int? Owner = null, string FullName = null, TeamProfile Profile = null, List<TeamMembership> Members = null)
         {
             this.Id = Id;
             this.Created = Created;
             this.Updated = Updated;
-            this.FirstName = FirstName;
-            this.SecondName = SecondName;
-            this.Login = Login;
-            
+            this.Name = Name;
+            this.Owner = Owner;
+            this.FullName = FullName;
+            this.Profile = Profile;
+            this.Members = Members;
+
         }
 
         /// <summary>
@@ -70,22 +76,32 @@ namespace SwarmerServer.Models
         public DateTime? Updated { get; set; }
 
         /// <summary>
-        /// First name of user.
+        /// Name of team.
         /// </summary>
-        /// <value>First name of user.</value>
-        public string FirstName { get; set; }
+        /// <value>Name of team.</value>
+        public string Name { get; set; }
 
         /// <summary>
-        /// Second name of user.
+        /// Id of owning user.
         /// </summary>
-        /// <value>Second name of user.</value>
-        public string SecondName { get; set; }
+        /// <value>Id of owning user.</value>
+        public int? Owner { get; set; }
 
         /// <summary>
-        /// Login and nickname of user.
+        /// Full name of team.
         /// </summary>
-        /// <value>Login and nickname of user.</value>
-        public string Login { get; set; }
+        /// <value>Full name of team.</value>
+        public string FullName { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Profile
+        /// </summary>
+        public TeamProfile Profile { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Members
+        /// </summary>
+        public List<TeamMembership> Members { get; set; }
 
 
         /// <summary>
@@ -95,13 +111,15 @@ namespace SwarmerServer.Models
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class UserInfo {\n");
+            sb.Append("class Team {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-sb.Append("  Created: ").Append(Created).Append("\n");
-sb.Append("  Updated: ").Append(Updated).Append("\n");
-sb.Append("  FirstName: ").Append(FirstName).Append("\n");
-sb.Append("  SecondName: ").Append(SecondName).Append("\n");
-sb.Append("  Login: ").Append(Login).Append("\n");
+            sb.Append("  Created: ").Append(Created).Append("\n");
+            sb.Append("  Updated: ").Append(Updated).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Owner: ").Append(Owner).Append("\n");
+            sb.Append("  FullName: ").Append(FullName).Append("\n");
+            sb.Append("  Profile: ").Append(Profile).Append("\n");
+            sb.Append("  Members: ").Append(Members).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -110,7 +128,7 @@ sb.Append("  Login: ").Append(Login).Append("\n");
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public  new string ToJson()
+        public new string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -125,50 +143,60 @@ sb.Append("  Login: ").Append(Login).Append("\n");
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((UserInfo)obj);
+            return Equals((Team)obj);
         }
 
         /// <summary>
-        /// Returns true if UserInfo instances are equal
+        /// Returns true if Team instances are equal
         /// </summary>
-        /// <param name="other">Instance of UserInfo to be compared</param>
+        /// <param name="other">Instance of Team to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(UserInfo other)
+        public bool Equals(Team other)
         {
 
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
 
-            return 
+            return
                 (
                     this.Id == other.Id ||
                     this.Id != null &&
                     this.Id.Equals(other.Id)
-                ) && 
+                ) &&
                 (
                     this.Created == other.Created ||
                     this.Created != null &&
                     this.Created.Equals(other.Created)
-                ) && 
+                ) &&
                 (
                     this.Updated == other.Updated ||
                     this.Updated != null &&
                     this.Updated.Equals(other.Updated)
-                ) && 
+                ) &&
                 (
-                    this.FirstName == other.FirstName ||
-                    this.FirstName != null &&
-                    this.FirstName.Equals(other.FirstName)
-                ) && 
+                    this.Name == other.Name ||
+                    this.Name != null &&
+                    this.Name.Equals(other.Name)
+                ) &&
                 (
-                    this.SecondName == other.SecondName ||
-                    this.SecondName != null &&
-                    this.SecondName.Equals(other.SecondName)
-                ) && 
+                    this.Owner == other.Owner ||
+                    this.Owner != null &&
+                    this.Owner.Equals(other.Owner)
+                ) &&
                 (
-                    this.Login == other.Login ||
-                    this.Login != null &&
-                    this.Login.Equals(other.Login)
+                    this.FullName == other.FullName ||
+                    this.FullName != null &&
+                    this.FullName.Equals(other.FullName)
+                ) &&
+                (
+                    this.Profile == other.Profile ||
+                    this.Profile != null &&
+                    this.Profile.Equals(other.Profile)
+                ) &&
+                (
+                    this.Members == other.Members ||
+                    this.Members != null &&
+                    this.Members.SequenceEqual(other.Members)
                 );
         }
 
@@ -183,30 +211,34 @@ sb.Append("  Login: ").Append(Login).Append("\n");
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                    if (this.Id != null)
+                if (this.Id != null)
                     hash = hash * 59 + this.Id.GetHashCode();
-                    if (this.Created != null)
+                if (this.Created != null)
                     hash = hash * 59 + this.Created.GetHashCode();
-                    if (this.Updated != null)
+                if (this.Updated != null)
                     hash = hash * 59 + this.Updated.GetHashCode();
-                    if (this.FirstName != null)
-                    hash = hash * 59 + this.FirstName.GetHashCode();
-                    if (this.SecondName != null)
-                    hash = hash * 59 + this.SecondName.GetHashCode();
-                    if (this.Login != null)
-                    hash = hash * 59 + this.Login.GetHashCode();
+                if (this.Name != null)
+                    hash = hash * 59 + this.Name.GetHashCode();
+                if (this.Owner != null)
+                    hash = hash * 59 + this.Owner.GetHashCode();
+                if (this.FullName != null)
+                    hash = hash * 59 + this.FullName.GetHashCode();
+                if (this.Profile != null)
+                    hash = hash * 59 + this.Profile.GetHashCode();
+                if (this.Members != null)
+                    hash = hash * 59 + this.Members.GetHashCode();
                 return hash;
             }
         }
 
         #region Operators
 
-        public static bool operator ==(UserInfo left, UserInfo right)
+        public static bool operator ==(Team left, Team right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(UserInfo left, UserInfo right)
+        public static bool operator !=(Team left, Team right)
         {
             return !Equals(left, right);
         }

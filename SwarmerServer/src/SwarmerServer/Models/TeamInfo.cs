@@ -21,16 +21,10 @@
  */
 
 using System;
-using System.Linq;
-using System.IO;
 using System.Text;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
-namespace IO.Swagger.Models
+namespace SwarmerServer.Models
 {
     /// <summary>
     /// Shortened info about team.

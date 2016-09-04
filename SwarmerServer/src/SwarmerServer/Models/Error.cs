@@ -21,21 +21,15 @@
  */
 
 using System;
-using System.Linq;
-using System.IO;
 using System.Text;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
-namespace IO.Swagger.Models
+namespace SwarmerServer.Models
 {
     /// <summary>
     /// 
     /// </summary>
-    public partial class Error :  IEquatable<Error>
+    public partial class Error : IEquatable<Error>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Error" /> class.
@@ -48,7 +42,7 @@ namespace IO.Swagger.Models
             this.Code = Code;
             this.Message = Message;
             this.Fields = Fields;
-            
+
         }
 
         /// <summary>
@@ -76,8 +70,8 @@ namespace IO.Swagger.Models
             var sb = new StringBuilder();
             sb.Append("class Error {\n");
             sb.Append("  Code: ").Append(Code).Append("\n");
-sb.Append("  Message: ").Append(Message).Append("\n");
-sb.Append("  Fields: ").Append(Fields).Append("\n");
+            sb.Append("  Message: ").Append(Message).Append("\n");
+            sb.Append("  Fields: ").Append(Fields).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -115,17 +109,17 @@ sb.Append("  Fields: ").Append(Fields).Append("\n");
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
 
-            return 
+            return
                 (
                     this.Code == other.Code ||
                     this.Code != null &&
                     this.Code.Equals(other.Code)
-                ) && 
+                ) &&
                 (
                     this.Message == other.Message ||
                     this.Message != null &&
                     this.Message.Equals(other.Message)
-                ) && 
+                ) &&
                 (
                     this.Fields == other.Fields ||
                     this.Fields != null &&
@@ -144,11 +138,11 @@ sb.Append("  Fields: ").Append(Fields).Append("\n");
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                    if (this.Code != null)
+                if (this.Code != null)
                     hash = hash * 59 + this.Code.GetHashCode();
-                    if (this.Message != null)
+                if (this.Message != null)
                     hash = hash * 59 + this.Message.GetHashCode();
-                    if (this.Fields != null)
+                if (this.Fields != null)
                     hash = hash * 59 + this.Fields.GetHashCode();
                 return hash;
             }

@@ -24,30 +24,24 @@ using System;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace SwarmerServer.Models
+namespace Swarmer.Contracts.Domain
 {
     /// <summary>
-    /// Shotened user data.
+    /// System information about object
     /// </summary>
-    public partial class UserInfo : SysObject,  IEquatable<UserInfo>
+    public partial class SysObject :  IEquatable<SysObject>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="UserInfo" /> class.
+        /// Initializes a new instance of the <see cref="SysObject" /> class.
         /// </summary>
         /// <param name="Id">Id of object..</param>
         /// <param name="Created">Creationg date time.</param>
         /// <param name="Updated">Updating date time..</param>
-        /// <param name="FirstName">First name of user..</param>
-        /// <param name="SecondName">Second name of user..</param>
-        /// <param name="Login">Login and nickname of user..</param>
-        public UserInfo(int? Id = null, DateTime? Created = null, DateTime? Updated = null, string FirstName = null, string SecondName = null, string Login = null)
+        public SysObject(int? Id = null, DateTime? Created = null, DateTime? Updated = null)
         {
             this.Id = Id;
             this.Created = Created;
             this.Updated = Updated;
-            this.FirstName = FirstName;
-            this.SecondName = SecondName;
-            this.Login = Login;
             
         }
 
@@ -69,24 +63,6 @@ namespace SwarmerServer.Models
         /// <value>Updating date time.</value>
         public DateTime? Updated { get; set; }
 
-        /// <summary>
-        /// First name of user.
-        /// </summary>
-        /// <value>First name of user.</value>
-        public string FirstName { get; set; }
-
-        /// <summary>
-        /// Second name of user.
-        /// </summary>
-        /// <value>Second name of user.</value>
-        public string SecondName { get; set; }
-
-        /// <summary>
-        /// Login and nickname of user.
-        /// </summary>
-        /// <value>Login and nickname of user.</value>
-        public string Login { get; set; }
-
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -95,13 +71,10 @@ namespace SwarmerServer.Models
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class UserInfo {\n");
+            sb.Append("class SysObject {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
 sb.Append("  Created: ").Append(Created).Append("\n");
 sb.Append("  Updated: ").Append(Updated).Append("\n");
-sb.Append("  FirstName: ").Append(FirstName).Append("\n");
-sb.Append("  SecondName: ").Append(SecondName).Append("\n");
-sb.Append("  Login: ").Append(Login).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -110,7 +83,7 @@ sb.Append("  Login: ").Append(Login).Append("\n");
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public  new string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -125,15 +98,15 @@ sb.Append("  Login: ").Append(Login).Append("\n");
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((UserInfo)obj);
+            return Equals((SysObject)obj);
         }
 
         /// <summary>
-        /// Returns true if UserInfo instances are equal
+        /// Returns true if SysObject instances are equal
         /// </summary>
-        /// <param name="other">Instance of UserInfo to be compared</param>
+        /// <param name="other">Instance of SysObject to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(UserInfo other)
+        public bool Equals(SysObject other)
         {
 
             if (ReferenceEquals(null, other)) return false;
@@ -154,21 +127,6 @@ sb.Append("  Login: ").Append(Login).Append("\n");
                     this.Updated == other.Updated ||
                     this.Updated != null &&
                     this.Updated.Equals(other.Updated)
-                ) && 
-                (
-                    this.FirstName == other.FirstName ||
-                    this.FirstName != null &&
-                    this.FirstName.Equals(other.FirstName)
-                ) && 
-                (
-                    this.SecondName == other.SecondName ||
-                    this.SecondName != null &&
-                    this.SecondName.Equals(other.SecondName)
-                ) && 
-                (
-                    this.Login == other.Login ||
-                    this.Login != null &&
-                    this.Login.Equals(other.Login)
                 );
         }
 
@@ -189,24 +147,18 @@ sb.Append("  Login: ").Append(Login).Append("\n");
                     hash = hash * 59 + this.Created.GetHashCode();
                     if (this.Updated != null)
                     hash = hash * 59 + this.Updated.GetHashCode();
-                    if (this.FirstName != null)
-                    hash = hash * 59 + this.FirstName.GetHashCode();
-                    if (this.SecondName != null)
-                    hash = hash * 59 + this.SecondName.GetHashCode();
-                    if (this.Login != null)
-                    hash = hash * 59 + this.Login.GetHashCode();
                 return hash;
             }
         }
 
         #region Operators
 
-        public static bool operator ==(UserInfo left, UserInfo right)
+        public static bool operator ==(SysObject left, SysObject right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(UserInfo left, UserInfo right)
+        public static bool operator !=(SysObject left, SysObject right)
         {
             return !Equals(left, right);
         }
