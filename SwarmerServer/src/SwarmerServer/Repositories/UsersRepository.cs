@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using SwarmerServer.Models;
+
+using Swarmer.Contracts.Domain;
 
 namespace SwarmerServer.Repositories
 {
