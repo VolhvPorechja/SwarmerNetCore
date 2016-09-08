@@ -1,5 +1,6 @@
 {
     "dependencies": {
+        "NLog.Extensions.Logging": "1.0.0-*",
         "Microsoft.AspNetCore.Mvc": "1.0.0",
         "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
         "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
@@ -11,7 +12,8 @@
         "Microsoft.Extensions.Logging.Debug": "1.0.0",
         "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
         "Swashbuckle.SwaggerGen": "6.0.0-beta901",
-        "Swashbuckle.SwaggerUi": "6.0.0-beta901"
+        "Swashbuckle.SwaggerUi": "6.0.0-beta901",
+        "Npgsql": "3.1.7"
     },
 
     "tools": {
@@ -26,6 +28,9 @@
                     "type": "platform"
                 },
                 "Swarmer.Contracts": {
+                    "target": "project"
+                },
+                "Swarmer.Common": {
                     "target": "project"
                 }
             },

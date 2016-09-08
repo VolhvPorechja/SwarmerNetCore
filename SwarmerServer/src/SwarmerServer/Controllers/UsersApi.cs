@@ -24,6 +24,9 @@ using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using NLog;
+using Swarmer.Common;
 using SwarmerServer.Repositories;
 using Swashbuckle.SwaggerGen.Annotations;
 using Swarmer.Contracts.Domain;
@@ -35,6 +38,8 @@ namespace SwarmerServer.Controllers
     /// </summary>
     public class UsersApiController : Controller
     {
+        private static Logger Logger = LogManager.GetCurrentClassLogger();
+
         private UsersRepository mRepository;
 
         public UsersApiController(UsersRepository repository)
@@ -76,6 +81,16 @@ namespace SwarmerServer.Controllers
         [SwaggerResponse(200, type: typeof(UserInfo))]
         public virtual IActionResult CreateUser([FromBody]User creatingUser)
         {
+            Logger.Info(new LogMessage
+            {
+                Initiator = "SomeUser",
+                Data = JObject.FromObject(creatingUser),
+                Message = "User Created",
+                Code = "AM/U00001",
+                ReferenceId = Guid.NewGuid().ToString(),
+                System = "AM"
+            }.ToJString());
+
             string exampleJson = null;
 
             var example = exampleJson != null
@@ -88,7 +103,6 @@ namespace SwarmerServer.Controllers
         /// <summary>
         /// Get user teams
         /// </summary>
-
         /// <param name="userId">Id of user</param>
         /// <response code="200">Teams in which user has parts</response>
         /// <response code="0">Unexpected error</response>
