@@ -24,7 +24,7 @@ using System;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace Swarmer.Contracts.Domain
+namespace Swarmer.AM.Contracts.Domain
 {
     /// <summary>
     /// System information about object

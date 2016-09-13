@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Swarmer.Contracts.Domain;
+using Swarmer.AM.Contracts.Domain;
 
-namespace Swarmer.Contracts.Repositories
+namespace Swarmer.AM.Contracts.Repositories
 {
     /// <summary>
     /// Contract for teams repository.
@@ -45,9 +45,9 @@ namespace Swarmer.Contracts.Repositories
         /// <summary>
         /// Block team.
         /// </summary>
-        /// <param name="teamName">Team name.</param>
+        /// <param name="teamId"></param>
         /// <param name="reason">Blocking reason.</param>
-        void BlockTeam(string teamName, string reason);
+        void BlockTeam(int teamId, string reason);
 
         /// <summary>
         /// Get team members.
@@ -58,15 +58,15 @@ namespace Swarmer.Contracts.Repositories
         /// <summary>
         /// Get user membership.
         /// </summary>
-        /// <param name="teamName">Team name.</param>
-        /// <param name="userLogin">Login of user to which membership will be given.</param>
-        void GiveUserMembership(string teamName, string userLogin);
+        /// <param name="teamId"></param>
+        /// <param name="userId"></param>
+        void GiveUserMembership(int teamId, int userId);
 
         /// <summary>
         /// Stop user membership.
         /// </summary>
-        /// <param name="teamName"></param>
-        /// <param name="userLogin"></param>
-        void StopUserMembership(string teamName, string userLogin);
+        /// <param name="teamId"></param>
+        /// <param name="userId"></param>
+        void StopUserMembership(int teamId, int userId);
     }
 }

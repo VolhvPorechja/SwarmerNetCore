@@ -26,10 +26,10 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using NLog;
+using Swarmer.AM.Contracts.Domain;
+using Swarmer.AM.Core;
 using Swarmer.Common;
-using SwarmerServer.Repositories;
 using Swashbuckle.SwaggerGen.Annotations;
-using Swarmer.Contracts.Domain;
 
 namespace SwarmerServer.Controllers
 {
@@ -39,12 +39,15 @@ namespace SwarmerServer.Controllers
     public class UsersApiController : Controller
     {
         private static Logger Logger = LogManager.GetCurrentClassLogger();
+        private readonly AccountsManagementCore mCore;
 
-        private UsersRepository mRepository;
-
-        public UsersApiController(UsersRepository repository)
+        /// <summary>
+        /// ?TOR
+        /// </summary>
+        /// <param name="core"></param>
+        public UsersApiController(AccountsManagementCore core)
         {
-            mRepository = repository;
+            mCore = core;
         }
 
         /// <summary>
@@ -153,7 +156,7 @@ namespace SwarmerServer.Controllers
         [SwaggerResponse(200, type: typeof(List<UserInfo>))]
         public virtual IActionResult ListUsers([FromQuery]string filter, [FromQuery]int? page, [FromQuery]int? pageSize)
         { 
-            return new ObjectResult(mRepository.GetAll());
+            throw new NotImplementedException();
         }
 
 

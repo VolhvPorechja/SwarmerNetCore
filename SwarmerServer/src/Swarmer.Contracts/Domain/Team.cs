@@ -26,7 +26,7 @@ using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace Swarmer.Contracts.Domain
+namespace Swarmer.AM.Contracts.Domain
 {
     /// <summary>
     /// Full model of team.

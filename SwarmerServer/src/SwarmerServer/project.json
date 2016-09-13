@@ -27,10 +27,17 @@
                     "version": "1.0.0",
                     "type": "platform"
                 },
+
                 "Swarmer.Contracts": {
                     "target": "project"
                 },
                 "Swarmer.Common": {
+                    "target": "project"
+                },
+                "Swarmer.AM.DAL": {
+                    "target": "project"
+                },
+                "Swarmer.AM.Core": {
                     "target": "project"
                 }
             },

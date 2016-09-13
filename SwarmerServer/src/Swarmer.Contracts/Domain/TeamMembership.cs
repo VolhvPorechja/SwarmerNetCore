@@ -24,7 +24,7 @@ using System;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace Swarmer.Contracts.Domain
+namespace Swarmer.AM.Contracts.Domain
 {
     /// <summary>
     /// User team membership
@@ -40,7 +40,12 @@ namespace Swarmer.Contracts.Domain
         /// <param name="UserId">Id of user that participate in team.</param>
         /// <param name="TeamId">Id of team in which user participate.</param>
         /// <param name="Data">Data.</param>
-        public TeamMembership(int? Id = null, DateTime? Created = null, DateTime? Updated = null, int? UserId = null, int? TeamId = null, TeamMembershipData Data = null)
+        public TeamMembership(int? Id = null, 
+            DateTime? Created = null, 
+            DateTime? Updated = null, 
+            int? UserId = null, 
+            int? TeamId = null, 
+            TeamMembershipData Data = null)
         {
             this.Id = Id;
             this.Created = Created;
@@ -48,7 +53,6 @@ namespace Swarmer.Contracts.Domain
             this.UserId = UserId;
             this.TeamId = TeamId;
             this.Data = Data;
-
         }
 
         /// <summary>

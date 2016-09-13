@@ -4,6 +4,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NLog.Extensions.Logging;
+using Swarmer.AM.Contracts.Repositories;
+using Swarmer.AM.Core;
+using Swarmer.AM.DAL;
 using SwarmerServer.Repositories;
 using Swashbuckle.Swagger.Model;
 
@@ -30,7 +33,11 @@ namespace SwarmerServer
 
             // Add framework services.
             services.AddMvc();
-            services.AddSingleton<UsersRepository>();
+
+            services.AddSingleton<RepositoriesManagerContract, RepositoriesManager>();
+            services.AddSingleton<AccountsManagementCore>();
+
+            // Configure swagger
             services.AddSwaggerGen();
             services.ConfigureSwaggerGen(opts =>
             {

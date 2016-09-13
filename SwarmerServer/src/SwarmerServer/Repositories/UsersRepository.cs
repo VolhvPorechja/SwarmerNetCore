@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
-using Swarmer.Contracts.Domain;
+using Swarmer.AM.Contracts.Domain;
 
 namespace SwarmerServer.Repositories
 {
@@ -22,7 +21,7 @@ namespace SwarmerServer.Repositories
                     Role = "ADMIN",
                     AvailableEntries = new List<string> { "LP", "FB", "VK" },
                     Created = new DateTime(2016,9,1,12,0,0),
-                    TimeZone = "GMT+03"
+                    TimeZone = 3
                 }
         };
 

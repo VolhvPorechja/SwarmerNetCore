@@ -26,7 +26,7 @@ using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace Swarmer.Contracts.Domain
+namespace Swarmer.AM.Contracts.Domain
 {
     /// <summary>
     /// Full user model.
@@ -52,7 +52,22 @@ namespace Swarmer.Contracts.Domain
         /// <param name="TimeZone">User&#39;s time zone for time correction..</param>
         /// <param name="Country">User&#39;s living country..</param>
         /// <param name="Profile">Profile.</param>
-        public User(int? Id = null, DateTime? Created = null, DateTime? Updated = null, string FirstName = null, string SecondName = null, string Login = null, string Gender = null, string Role = null, List<string> AvailableEntries = null, int? SteamId = null, DateTime? BirthDate = null, string PhoneNumber = null, string Address = null, string TimeZone = null, string Country = null, UserProfile Profile = null)
+        public User(int? Id = null, 
+            DateTime? Created = null, 
+            DateTime? Updated = null, 
+            string FirstName = null, 
+            string SecondName = null, 
+            string Login = null, 
+            string Gender = null, 
+            string Role = null, 
+            List<string> AvailableEntries = null, 
+            string SteamId = null, 
+            DateTime? BirthDate = null, 
+            string PhoneNumber = null, 
+            string Address = null, 
+            int? TimeZone = null, 
+            string Country = null, 
+            UserProfile Profile = null)
         {
             this.Id = Id;
             this.Created = Created;
@@ -131,7 +146,7 @@ namespace Swarmer.Contracts.Domain
         /// Id of user in Steam.
         /// </summary>
         /// <value>Id of user in Steam.</value>
-        public int? SteamId { get; set; }
+        public string SteamId { get; set; }
 
         /// <summary>
         /// User birth date.
@@ -155,7 +170,7 @@ namespace Swarmer.Contracts.Domain
         /// User's time zone for time correction.
         /// </summary>
         /// <value>User's time zone for time correction.</value>
-        public string TimeZone { get; set; }
+        public int? TimeZone { get; set; }
 
         /// <summary>
         /// User's living country.

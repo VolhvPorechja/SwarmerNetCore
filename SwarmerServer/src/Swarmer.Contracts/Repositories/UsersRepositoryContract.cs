@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Swarmer.Contracts.Domain;
+using Swarmer.AM.Contracts.Domain;
 
-namespace Swarmer.Contracts.Repositories
+namespace Swarmer.AM.Contracts.Repositories
 {
     /// <summary>
     /// Contract for repository of users.
@@ -57,15 +57,15 @@ namespace Swarmer.Contracts.Repositories
         /// <summary>
         /// Create user membership (not approuved).
         /// </summary>
-        /// <param name="userLogin"></param>
-        /// <param name="teamName"></param>
-        void CreateMembership(string userLogin, string teamName);
+        /// <param name="userId"></param>
+        /// <param name="teamId"></param>
+        void RequestMembership(int userId, int teamId);
 
         /// <summary>
         /// Remove user team membership.
         /// </summary>
-        /// <param name="userLogin"></param>
-        /// <param name="teamName"></param>
-        void LeaveTeam(string userLogin, string teamName);
+        /// <param name="userId"></param>
+        /// <param name="teamId"></param>
+        void LeaveTeam(int userId, int teamId);
     }
 }

@@ -24,8 +24,8 @@ using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Swarmer.AM.Contracts.Domain;
 using Swashbuckle.SwaggerGen.Annotations;
-using Swarmer.Contracts.Domain;
 
 namespace SwarmerServer.Controllers
 { 

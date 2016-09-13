@@ -4,14 +4,16 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
+
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>3c75f218-bee4-46af-92ca-66f4e11e024b</ProjectGuid>
-    <RootNamespace>Swarmer.AM.Contracts</RootNamespace>
+    <ProjectGuid>382e37a4-bb18-4a5e-90f6-2d12ea3521f9</ProjectGuid>
+    <RootNamespace>Swarmer.AM.Core</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">.\obj</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)'=='' ">.\bin\</OutputPath>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
   </PropertyGroup>
+
   <PropertyGroup>
     <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>

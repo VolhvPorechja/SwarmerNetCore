@@ -3,6 +3,62 @@
   "version": 2,
   "targets": {
     ".NETCoreApp,Version=v1.0": {
+      "Dapper/1.50.2": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Collections.Concurrent": "4.0.12",
+          "System.Collections.NonGeneric": "4.0.1",
+          "System.Data.SqlClient": "4.1.0",
+          "System.Dynamic.Runtime": "4.0.11",
+          "System.Linq": "4.1.0",
+          "System.Reflection": "4.1.0",
+          "System.Reflection.Emit": "4.0.1",
+          "System.Reflection.Emit.Lightweight": "4.0.1",
+          "System.Reflection.Extensions": "4.0.1",
+          "System.Reflection.TypeExtensions": "4.1.0",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.InteropServices": "4.1.0",
+          "System.Text.RegularExpressions": "4.1.0",
+          "System.Threading": "4.0.11",
+          "System.Xml.XDocument": "4.0.11",
+          "System.Xml.XmlDocument": "4.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.3/Dapper.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Dapper.dll": {}
+        }
+      },
+      "Dapper.FluentMap/1.5.1": {
+        "type": "package",
+        "dependencies": {
+          "Dapper": "1.50.0",
+          "NETStandard.Library": "1.6.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/Dapper.FluentMap.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Dapper.FluentMap.dll": {}
+        }
+      },
+      "Dommel/1.7.0": {
+        "type": "package",
+        "dependencies": {
+          "Dapper": "1.50.2",
+          "NETStandard.Library": "1.6.0",
+          "System.ComponentModel.Annotations": "4.1.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/Dommel.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Dommel.dll": {}
+        }
+      },
       "Libuv/1.9.0": {
         "type": "package",
         "dependencies": {
@@ -1627,6 +1683,13 @@
           "lib/netstandard1.0/_._": {}
         }
       },
+      "runtime.native.System.Data.SqlClient.sni/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "runtime.win7-x64.runtime.native.System.Data.SqlClient.sni": "4.0.1",
+          "runtime.win7-x86.runtime.native.System.Data.SqlClient.sni": "4.0.1"
+        }
+      },
       "runtime.native.System.IO.Compression/4.1.0": {
         "type": "package",
         "dependencies": {
@@ -1677,6 +1740,24 @@
         },
         "runtime": {
           "lib/netstandard1.0/_._": {}
+        }
+      },
+      "runtime.win7-x64.runtime.native.System.Data.SqlClient.sni/4.0.1": {
+        "type": "package",
+        "runtimeTargets": {
+          "runtimes/win7-x64/native/sni.dll": {
+            "assetType": "native",
+            "rid": "win7-x64"
+          }
+        }
+      },
+      "runtime.win7-x86.runtime.native.System.Data.SqlClient.sni/4.0.1": {
+        "type": "package",
+        "runtimeTargets": {
+          "runtimes/win7-x86/native/sni.dll": {
+            "assetType": "native",
+            "rid": "win7-x86"
+          }
         }
       },
       "Swashbuckle.Swagger/6.0.0-beta901": {
@@ -1941,6 +2022,61 @@
         },
         "runtime": {
           "lib/netstandard1.2/System.Data.Common.dll": {}
+        }
+      },
+      "System.Data.SqlClient/4.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "Microsoft.Win32.Primitives": "4.0.1",
+          "System.Collections": "4.0.11",
+          "System.Collections.Concurrent": "4.0.12",
+          "System.Data.Common": "4.1.0",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.DiagnosticSource": "4.0.0",
+          "System.Globalization": "4.0.11",
+          "System.IO": "4.1.0",
+          "System.IO.Pipes": "4.0.0",
+          "System.Linq": "4.1.0",
+          "System.Net.NameResolution": "4.0.0",
+          "System.Net.Primitives": "4.0.11",
+          "System.Net.Security": "4.0.0",
+          "System.Net.Sockets": "4.1.0",
+          "System.Reflection": "4.1.0",
+          "System.Reflection.TypeExtensions": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.Handles": "4.0.1",
+          "System.Runtime.InteropServices": "4.1.0",
+          "System.Runtime.InteropServices.RuntimeInformation": "4.0.0",
+          "System.Security.Cryptography.X509Certificates": "4.1.0",
+          "System.Security.Principal": "4.0.1",
+          "System.Security.Principal.Windows": "4.0.0",
+          "System.Text.Encoding": "4.0.11",
+          "System.Text.Encoding.CodePages": "4.0.1",
+          "System.Text.Encoding.Extensions": "4.0.11",
+          "System.Text.RegularExpressions": "4.1.0",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11",
+          "System.Threading.Thread": "4.0.0",
+          "System.Threading.ThreadPool": "4.0.10",
+          "System.Threading.Timer": "4.0.1",
+          "System.Xml.ReaderWriter": "4.0.11",
+          "runtime.native.System.Data.SqlClient.sni": "4.0.0"
+        },
+        "compile": {
+          "ref/netstandard1.3/System.Data.SqlClient.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netstandard1.3/System.Data.SqlClient.dll": {
+            "assetType": "runtime",
+            "rid": "unix"
+          },
+          "runtimes/win/lib/netstandard1.3/System.Data.SqlClient.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
         }
       },
       "System.Diagnostics.Contracts/4.0.1": {
@@ -2336,6 +2472,42 @@
         },
         "runtimeTargets": {
           "runtimes/win/lib/netstandard1.3/_._": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
+      "System.IO.Pipes/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.IO": "4.1.0",
+          "System.IO.FileSystem.Primitives": "4.0.1",
+          "System.Net.Primitives": "4.0.11",
+          "System.Net.Sockets": "4.1.0",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.Handles": "4.0.1",
+          "System.Runtime.InteropServices": "4.1.0",
+          "System.Security.Principal": "4.0.1",
+          "System.Text.Encoding": "4.0.11",
+          "System.Threading": "4.0.11",
+          "System.Threading.Overlapped": "4.0.1",
+          "System.Threading.Tasks": "4.0.11",
+          "runtime.native.System": "4.0.0"
+        },
+        "compile": {
+          "ref/netstandard1.3/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netstandard1.3/System.IO.Pipes.dll": {
+            "assetType": "runtime",
+            "rid": "unix"
+          },
+          "runtimes/win/lib/netstandard1.3/System.IO.Pipes.dll": {
             "assetType": "runtime",
             "rid": "win"
           }
@@ -2772,7 +2944,7 @@
           "System.Runtime": "4.1.0"
         },
         "compile": {
-          "ref/netstandard1.1/_._": {}
+          "ref/netstandard1.1/System.Reflection.Emit.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Reflection.Emit.dll": {}
@@ -2786,7 +2958,7 @@
           "System.Runtime": "4.1.0"
         },
         "compile": {
-          "ref/netstandard1.0/_._": {}
+          "ref/netstandard1.0/System.Reflection.Emit.ILGeneration.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Reflection.Emit.ILGeneration.dll": {}
@@ -2801,7 +2973,7 @@
           "System.Runtime": "4.1.0"
         },
         "compile": {
-          "ref/netstandard1.0/_._": {}
+          "ref/netstandard1.0/System.Reflection.Emit.Lightweight.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Reflection.Emit.Lightweight.dll": {}
@@ -3620,10 +3792,44 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
+      "Swarmer.AM.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v1.6",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "Swarmer.Common": "(, )",
+          "Swarmer.Contracts": "(, )"
+        },
+        "compile": {
+          "netstandard1.6/Swarmer.AM.Core.dll": {}
+        },
+        "runtime": {
+          "netstandard1.6/Swarmer.AM.Core.dll": {}
+        }
+      },
+      "Swarmer.AM.DAL/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v1.6",
+        "dependencies": {
+          "Dapper": "1.50.2",
+          "Dapper.FluentMap": "1.5.1",
+          "Dommel": "1.7.0",
+          "NETStandard.Library": "1.6.0",
+          "Npgsql": "3.1.7",
+          "Swarmer.Contracts": "(, )"
+        },
+        "compile": {
+          "netstandard1.6/Swarmer.AM.DAL.dll": {}
+        },
+        "runtime": {
+          "netstandard1.6/Swarmer.AM.DAL.dll": {}
+        }
+      },
       "Swarmer.Common/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.6",
         "dependencies": {
+          "Dommel": "1.7.0",
           "NETStandard.Library": "1.6.0",
           "Newtonsoft.Json": "9.0.1"
         },
@@ -3640,17 +3846,58 @@
         "dependencies": {
           "NETStandard.Library": "1.6.0",
           "Newtonsoft.Json": "9.0.1"
-        },
-        "compile": {
-          "netstandard1.6/Swarmer.Contracts.dll": {}
-        },
-        "runtime": {
-          "netstandard1.6/Swarmer.Contracts.dll": {}
         }
       }
     }
   },
   "libraries": {
+    "Dapper/1.50.2": {
+      "sha512": "PhxIV8TI/5aYdLT4epuIZB+Evf0sv9gcQDpFGa04fSKDfNQIChRq0sKUgQbfpFWbuDW/UDDuiL3Grkhp/cvYrA==",
+      "type": "package",
+      "path": "Dapper/1.50.2",
+      "files": [
+        "Dapper.1.50.2.nupkg.sha512",
+        "Dapper.nuspec",
+        "lib/net40/Dapper.dll",
+        "lib/net40/Dapper.xml",
+        "lib/net45/Dapper.dll",
+        "lib/net45/Dapper.xml",
+        "lib/net451/Dapper.dll",
+        "lib/net451/Dapper.xml",
+        "lib/netstandard1.3/Dapper.dll",
+        "lib/netstandard1.3/Dapper.xml"
+      ]
+    },
+    "Dapper.FluentMap/1.5.1": {
+      "sha512": "poRa/O82CK0t20kP//P0MFgv2si2hja2Nw0GV0Js8Nip4ZipmSl1XUzqi6AsZkyxFXsYll0Ks4SkQnf8U4i9MA==",
+      "type": "package",
+      "path": "Dapper.FluentMap/1.5.1",
+      "files": [
+        "Dapper.FluentMap.1.5.1.nupkg.sha512",
+        "Dapper.FluentMap.nuspec",
+        "lib/net40/Dapper.FluentMap.dll",
+        "lib/net40/Dapper.FluentMap.xml",
+        "lib/net451/Dapper.FluentMap.dll",
+        "lib/net451/Dapper.FluentMap.xml",
+        "lib/netstandard1.3/Dapper.FluentMap.dll",
+        "lib/netstandard1.3/Dapper.FluentMap.xml"
+      ]
+    },
+    "Dommel/1.7.0": {
+      "sha512": "b5iVsKIejr6HtO0ErS9LWIWtpA617WEAY7OhlnXmqyH6AvIJ6N+VZ8SoW3GBrK6qlSruE8u+rEPrBj3VeY8OJA==",
+      "type": "package",
+      "path": "Dommel/1.7.0",
+      "files": [
+        "Dommel.1.7.0.nupkg.sha512",
+        "Dommel.nuspec",
+        "lib/net45/Dommel.dll",
+        "lib/net45/Dommel.xml",
+        "lib/net451/Dommel.dll",
+        "lib/net451/Dommel.xml",
+        "lib/netstandard1.3/Dommel.dll",
+        "lib/netstandard1.3/Dommel.xml"
+      ]
+    },
     "Libuv/1.9.0": {
       "sha512": "9Q7AaqtQhS8JDSIvRBt6ODSLWDBI4c8YxNxyCQemWebBFUtBbc6M5Vi5Gz1ZyIUlTW3rZK9bIr5gnVyv0z7a2Q==",
       "type": "package",
@@ -4947,6 +5194,17 @@
         "runtime.native.System.nuspec"
       ]
     },
+    "runtime.native.System.Data.SqlClient.sni/4.0.0": {
+      "sha512": "DcMVtYwugo1LOc9MVchInxlLNoFe/+21MsEQU9yIZX561chzxDlFDWowWF+Kc262PyD3eLkDab1JyJrs73Qtkg==",
+      "type": "package",
+      "path": "runtime.native.System.Data.SqlClient.sni/4.0.0",
+      "files": [
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "runtime.native.System.Data.SqlClient.sni.4.0.0.nupkg.sha512",
+        "runtime.native.System.Data.SqlClient.sni.nuspec"
+      ]
+    },
     "runtime.native.System.IO.Compression/4.1.0": {
       "sha512": "Ob7nvnJBox1aaB222zSVZSkf4WrebPG4qFscfK7vmD7P7NxoSxACQLtO7ytWpqXDn2wcd/+45+EAZ7xjaPip8A==",
       "type": "package",
@@ -4993,6 +5251,30 @@
         "lib/netstandard1.0/_._",
         "runtime.native.System.Security.Cryptography.4.0.0.nupkg.sha512",
         "runtime.native.System.Security.Cryptography.nuspec"
+      ]
+    },
+    "runtime.win7-x64.runtime.native.System.Data.SqlClient.sni/4.0.1": {
+      "sha512": "My20HZqJbDS4rWmdOcJ3TPf9iX6M/sTF2nBSUHBvfWp1iNip3eMS+K65oQgsLRxX6h21ic3YED06c2ye2sL7FQ==",
+      "type": "package",
+      "path": "runtime.win7-x64.runtime.native.System.Data.SqlClient.sni/4.0.1",
+      "files": [
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "runtime.win7-x64.runtime.native.System.Data.SqlClient.sni.4.0.1.nupkg.sha512",
+        "runtime.win7-x64.runtime.native.System.Data.SqlClient.sni.nuspec",
+        "runtimes/win7-x64/native/sni.dll"
+      ]
+    },
+    "runtime.win7-x86.runtime.native.System.Data.SqlClient.sni/4.0.1": {
+      "sha512": "ykiYCf/0hIc0xm+g6bVX8nw9St5Ool+r4US+B+56Lv/GFnDG5G9BK4n7WkrwEpuWV3XjMn38oHgHOnNMzBVNKA==",
+      "type": "package",
+      "path": "runtime.win7-x86.runtime.native.System.Data.SqlClient.sni/4.0.1",
+      "files": [
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "runtime.win7-x86.runtime.native.System.Data.SqlClient.sni.4.0.1.nupkg.sha512",
+        "runtime.win7-x86.runtime.native.System.Data.SqlClient.sni.nuspec",
+        "runtimes/win7-x86/native/sni.dll"
       ]
     },
     "Swashbuckle.Swagger/6.0.0-beta901": {
@@ -5620,6 +5902,59 @@
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._"
+      ]
+    },
+    "System.Data.SqlClient/4.1.0": {
+      "sha512": "yqMZgzzKHdG84QmA/PPZUORaoisfvztvFqyPs7dPafJhNxlS7STf9OMCFrP/tITQCqImkm1+X4d2oiWOT2oTKg==",
+      "type": "package",
+      "path": "System.Data.SqlClient/4.1.0",
+      "files": [
+        "System.Data.SqlClient.4.1.0.nupkg.sha512",
+        "System.Data.SqlClient.nuspec",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net451/System.Data.SqlClient.dll",
+        "lib/net46/System.Data.SqlClient.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net451/System.Data.SqlClient.dll",
+        "ref/net46/System.Data.SqlClient.dll",
+        "ref/netstandard1.2/System.Data.SqlClient.dll",
+        "ref/netstandard1.2/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/de/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/es/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/fr/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/it/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/ja/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/ko/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/ru/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/zh-hans/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/zh-hant/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/System.Data.SqlClient.dll",
+        "ref/netstandard1.3/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/de/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/es/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/fr/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/it/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/ja/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/ko/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/ru/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/zh-hans/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/zh-hant/System.Data.SqlClient.xml",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "runtimes/unix/lib/netstandard1.3/System.Data.SqlClient.dll",
+        "runtimes/win/lib/net451/System.Data.SqlClient.dll",
+        "runtimes/win/lib/net46/System.Data.SqlClient.dll",
+        "runtimes/win/lib/netstandard1.3/System.Data.SqlClient.dll"
       ]
     },
     "System.Diagnostics.Contracts/4.0.1": {
@@ -6627,6 +6962,34 @@
         "runtimes/win/lib/net46/System.IO.MemoryMappedFiles.dll",
         "runtimes/win/lib/netcore50/System.IO.MemoryMappedFiles.dll",
         "runtimes/win/lib/netstandard1.3/System.IO.MemoryMappedFiles.dll"
+      ]
+    },
+    "System.IO.Pipes/4.0.0": {
+      "sha512": "L9QVhk8hIEix5KNA0kW58Ha+Y1dNGqqqIhAaJkhcGCWeQzUmN0njzI7SG/XAazpMecboOdFFlH3pH/qbwXLJAg==",
+      "type": "package",
+      "path": "System.IO.Pipes/4.0.0",
+      "files": [
+        "System.IO.Pipes.4.0.0.nupkg.sha512",
+        "System.IO.Pipes.nuspec",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/net46/System.IO.Pipes.dll",
+        "ref/net46/System.IO.Pipes.dll",
+        "ref/netstandard1.3/System.IO.Pipes.dll",
+        "ref/netstandard1.3/System.IO.Pipes.xml",
+        "ref/netstandard1.3/de/System.IO.Pipes.xml",
+        "ref/netstandard1.3/es/System.IO.Pipes.xml",
+        "ref/netstandard1.3/fr/System.IO.Pipes.xml",
+        "ref/netstandard1.3/it/System.IO.Pipes.xml",
+        "ref/netstandard1.3/ja/System.IO.Pipes.xml",
+        "ref/netstandard1.3/ko/System.IO.Pipes.xml",
+        "ref/netstandard1.3/ru/System.IO.Pipes.xml",
+        "ref/netstandard1.3/zh-hans/System.IO.Pipes.xml",
+        "ref/netstandard1.3/zh-hant/System.IO.Pipes.xml",
+        "runtimes/unix/lib/netstandard1.3/System.IO.Pipes.dll",
+        "runtimes/win/lib/net46/System.IO.Pipes.dll",
+        "runtimes/win/lib/netstandard1.3/System.IO.Pipes.dll",
+        "runtimes/win7/lib/netcore50/_._"
       ]
     },
     "System.IO.UnmanagedMemoryStream/4.0.1": {
@@ -9694,6 +10057,16 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
+    "Swarmer.AM.Core/1.0.0": {
+      "type": "project",
+      "path": "../Swarmer.AM.Core/project.json",
+      "msbuildProject": "../Swarmer.AM.Core/Swarmer.AM.Core.xproj"
+    },
+    "Swarmer.AM.DAL/1.0.0": {
+      "type": "project",
+      "path": "../Swarmer.AM.DAL/project.json",
+      "msbuildProject": "../Swarmer.AM.DAL/Swarmer.AM.DAL.xproj"
+    },
     "Swarmer.Common/1.0.0": {
       "type": "project",
       "path": "../Swarmer.Common/project.json",
@@ -9701,8 +10074,7 @@
     },
     "Swarmer.Contracts/1.0.0": {
       "type": "project",
-      "path": "../Swarmer.Contracts/project.json",
-      "msbuildProject": "../Swarmer.Contracts/Swarmer.Contracts.xproj"
+      "path": "../Swarmer.Contracts/project.json"
     }
   },
   "projectFileDependencyGroups": {
@@ -9724,6 +10096,8 @@
     ],
     ".NETCoreApp,Version=v1.0": [
       "Microsoft.NETCore.App >= 1.0.0",
+      "Swarmer.AM.Core",
+      "Swarmer.AM.DAL",
       "Swarmer.Common",
       "Swarmer.Contracts"
     ]
