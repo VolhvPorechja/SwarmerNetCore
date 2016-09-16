@@ -32,7 +32,15 @@ namespace Swarmer.AM.Contracts.Domain
     /// Full model of team.
     /// </summary>
     public partial class Team : TeamInfo, IEquatable<Team>
-    {
+	{
+		/// <summary>
+		/// Initializes a new instance of the <see cref="Team" /> class.
+		/// </summary>
+		public Team()
+	    {
+		    
+	    }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Team" /> class.
         /// </summary>
@@ -44,7 +52,7 @@ namespace Swarmer.AM.Contracts.Domain
         /// <param name="FullName">Full name of team..</param>
         /// <param name="Profile">Profile.</param>
         /// <param name="Members">Members.</param>
-        public Team(int? Id = null, DateTime? Created = null, DateTime? Updated = null, string Name = null, int? Owner = null, string FullName = null, TeamProfile Profile = null, List<TeamMembership> Members = null)
+        public Team(Guid? Id = null, DateTime? Created = null, DateTime? Updated = null, string Name = null, Guid? Owner = null, string FullName = null, TeamProfile Profile = null, List<TeamMembership> Members = null)
         {
             this.Id = Id;
             this.Created = Created;
@@ -58,34 +66,10 @@ namespace Swarmer.AM.Contracts.Domain
         }
 
         /// <summary>
-        /// Id of object.
-        /// </summary>
-        /// <value>Id of object.</value>
-        public int? Id { get; set; }
-
-        /// <summary>
-        /// Creationg date time
-        /// </summary>
-        /// <value>Creationg date time</value>
-        public DateTime? Created { get; set; }
-
-        /// <summary>
-        /// Updating date time.
-        /// </summary>
-        /// <value>Updating date time.</value>
-        public DateTime? Updated { get; set; }
-
-        /// <summary>
-        /// Name of team.
-        /// </summary>
-        /// <value>Name of team.</value>
-        public string Name { get; set; }
-
-        /// <summary>
         /// Id of owning user.
         /// </summary>
         /// <value>Id of owning user.</value>
-        public int? Owner { get; set; }
+        public Guid? Owner { get; set; }
 
         /// <summary>
         /// Full name of team.

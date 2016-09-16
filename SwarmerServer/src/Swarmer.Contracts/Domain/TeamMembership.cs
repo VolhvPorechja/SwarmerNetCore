@@ -30,7 +30,15 @@ namespace Swarmer.AM.Contracts.Domain
     /// User team membership
     /// </summary>
     public partial class TeamMembership : SysObject, IEquatable<TeamMembership>
-    {
+	{
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TeamMembership" /> class.
+        /// </summary>
+        public TeamMembership()
+	    {
+		    
+	    }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="TeamMembership" /> class.
         /// </summary>
@@ -40,11 +48,11 @@ namespace Swarmer.AM.Contracts.Domain
         /// <param name="UserId">Id of user that participate in team.</param>
         /// <param name="TeamId">Id of team in which user participate.</param>
         /// <param name="Data">Data.</param>
-        public TeamMembership(int? Id = null, 
+        public TeamMembership(Guid? Id = null, 
             DateTime? Created = null, 
             DateTime? Updated = null, 
-            int? UserId = null, 
-            int? TeamId = null, 
+            Guid? UserId = null, 
+            Guid? TeamId = null, 
             TeamMembershipData Data = null)
         {
             this.Id = Id;
@@ -56,34 +64,16 @@ namespace Swarmer.AM.Contracts.Domain
         }
 
         /// <summary>
-        /// Id of object.
-        /// </summary>
-        /// <value>Id of object.</value>
-        public int? Id { get; set; }
-
-        /// <summary>
-        /// Creationg date time
-        /// </summary>
-        /// <value>Creationg date time</value>
-        public DateTime? Created { get; set; }
-
-        /// <summary>
-        /// Updating date time.
-        /// </summary>
-        /// <value>Updating date time.</value>
-        public DateTime? Updated { get; set; }
-
-        /// <summary>
         /// Id of user that participate in team
         /// </summary>
         /// <value>Id of user that participate in team</value>
-        public int? UserId { get; set; }
+        public Guid? UserId { get; set; }
 
         /// <summary>
         /// Id of team in which user participate
         /// </summary>
         /// <value>Id of team in which user participate</value>
-        public int? TeamId { get; set; }
+        public Guid? TeamId { get; set; }
 
         /// <summary>
         /// Gets or Sets Data

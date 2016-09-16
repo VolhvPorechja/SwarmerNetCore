@@ -29,7 +29,7 @@ namespace Swarmer.AM.Contracts.Domain
     /// <summary>
     /// 
     /// </summary>
-    public partial class UserProfile :  IEquatable<UserProfile>
+    public partial class UserProfile : IEquatable<UserProfile>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="UserProfile" /> class.

@@ -1,6 +1,7 @@
 ﻿using System.Data;
 using Dapper;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Swarmer.AM.DAL.TypesHandlers
 {
@@ -8,8 +9,7 @@ namespace Swarmer.AM.DAL.TypesHandlers
     {
         public override void SetValue(IDbDataParameter parameter, TType value)
         {
-            parameter.Value = JsonConvert.SerializeObject(value);
-            parameter.DbType = DbType.String;
+            parameter.Value = JObject.FromObject(value);
         }
 
         public override TType Parse(object value)

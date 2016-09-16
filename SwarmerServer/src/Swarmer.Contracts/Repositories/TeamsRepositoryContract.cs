@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Swarmer.AM.Contracts.Domain;
 
 namespace Swarmer.AM.Contracts.Repositories
@@ -16,12 +17,26 @@ namespace Swarmer.AM.Contracts.Repositories
         /// <returns></returns>
         List<TeamInfo> GetAll(int pageSize, int pageNumber);
 
+		/// <summary>
+		/// Check is team with id exists.
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+	    bool IsTeamExists(Guid id);
+
         /// <summary>
         /// Get team by team id.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Team GetTeamById(int id);
+        Team GetTeamById(Guid id);
+
+		/// <summary>
+		/// Check is team with given name already exists.
+		/// </summary>
+		/// <param name="name"></param>
+		/// <returns></returns>
+	    bool IsTeamWithNameExists(string name);
 
         /// <summary>
         /// Get team by team name.
@@ -47,26 +62,27 @@ namespace Swarmer.AM.Contracts.Repositories
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="reason">Blocking reason.</param>
-        void BlockTeam(int teamId, string reason);
+        void BlockTeam(Guid teamId, string reason);
 
-        /// <summary>
-        /// Get team members.
-        /// </summary>
-        /// <returns></returns>
-        List<TeamMembership> GetTeamMembers();
+	    /// <summary>
+	    /// Get team members.
+	    /// </summary>
+	    /// <returns></returns>
+	    List<TeamMembership> GetTeamMembers(Guid teamId);
 
-        /// <summary>
-        /// Get user membership.
-        /// </summary>
-        /// <param name="teamId"></param>
-        /// <param name="userId"></param>
-        void GiveUserMembership(int teamId, int userId);
+	    /// <summary>
+	    /// Get user membership.
+	    /// </summary>
+	    /// <param name="teamId"></param>
+	    /// <param name="userId"></param>
+	    /// <param name="isOwner"></param>
+	    void GiveUserMembership(Guid teamId, Guid userId, bool? isOwner = false);
 
         /// <summary>
         /// Stop user membership.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="userId"></param>
-        void StopUserMembership(int teamId, int userId);
+        void StopUserMembership(Guid teamId, Guid userId);
     }
 }

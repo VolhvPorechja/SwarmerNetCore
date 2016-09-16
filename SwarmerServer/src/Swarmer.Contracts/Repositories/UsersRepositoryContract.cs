@@ -1,71 +1,115 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Swarmer.AM.Contracts.Domain;
 
 namespace Swarmer.AM.Contracts.Repositories
 {
-    /// <summary>
-    /// Contract for repository of users.
-    /// </summary>
-    public interface UsersRepositoryContract
-    {
-        /// <summary>
-        /// Get all users with pagination.
-        /// </summary>
-        /// <returns></returns>
-        List<UserInfo> GetAll(int pageSize, int pageNumber);
+	/// <summary>
+	/// Contract for repository of users.
+	/// </summary>
+	public interface UsersRepositoryContract
+	{
+		/// <summary>
+		/// Get all users with pagination.
+		/// </summary>
+		/// <returns></returns>
+		List<UserInfo> GetAll(int pageSize, int pageNumber);
 
-        /// <summary>
-        /// Get user by user id.
-        /// </summary>
-        /// <param name="id">Id of getting user.</param>
-        /// <returns></returns>
-        User GetUserById(int id);
+		/// <summary>
+		/// Check is user with give id exists.
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <returns></returns>
+		bool IsUserExists(Guid userId);
 
-        /// <summary>
-        /// Get user by user login.
-        /// </summary>
-        /// <param name="login">Getting user login.</param>
-        /// <returns></returns>
-        User GetUserByLogin(string login);
+		/// <summary>
+		/// Check if login exists in storage.
+		/// </summary>
+		/// <param name="login"></param>
+		/// <returns></returns>
+		bool IsLoginExists(string login);
 
-        /// <summary>
-        /// Update user information.
-        /// </summary>
-        /// <param name="updatedInfo"></param>
-        void UpdateUser(User updatedInfo);
+		/// <summary>
+		/// Checl is email exists in storage.
+		/// </summary>
+		/// <param name="email"></param>
+		/// <returns></returns>
+		bool IsEmailExists(string email);
 
-        /// <summary>
-        /// Create new user.
-        /// </summary>
-        /// <param name="creatingUser"></param>
-        void CreateUser(User creatingUser);
+		/// <summary>
+		/// Get user by user id.
+		/// </summary>
+		/// <param name="id">Id of getting user.</param>
+		/// <returns></returns>
+		User GetUserById(Guid id);
 
-        /// <summary>
-        /// Block user.
-        /// </summary>
-        /// <param name="login">Blocking user login.</param>
-        /// <param name="reason">Blocking reason.</param>
-        void BlockUser(string login, string reason);
+		/// <summary>
+		/// Get user by user login.
+		/// </summary>
+		/// <param name="login">Getting user login.</param>
+		/// <returns></returns>
+		User GetUserByLogin(string login);
 
-        /// <summary>
-        /// Get user teams by user id.
-        /// </summary>
-        /// <param name="id">User team.</param>
-        /// <returns></returns>
-        List<TeamMembership> GetUserTeams(int id);
+		/// <summary>
+		/// Update user information.
+		/// </summary>
+		/// <param name="updatedInfo"></param>
+		UserInfo UpdateUser(User updatedInfo);
 
-        /// <summary>
-        /// Create user membership (not approuved).
-        /// </summary>
-        /// <param name="userId"></param>
-        /// <param name="teamId"></param>
-        void RequestMembership(int userId, int teamId);
+		/// <summary>
+		/// Create new user.
+		/// </summary>
+		/// <param name="creatingUser"></param>
+		void CreateUser(User creatingUser);
 
-        /// <summary>
-        /// Remove user team membership.
-        /// </summary>
-        /// <param name="userId"></param>
-        /// <param name="teamId"></param>
-        void LeaveTeam(int userId, int teamId);
-    }
+		/// <summary>
+		/// Block user.
+		/// </summary>
+		/// <param name="login">Blocking user login.</param>
+		/// <param name="reason">Blocking reason.</param>
+		void BlockUser(string login, string reason);
+
+		/// <summary>
+		/// If login alreay exists.
+		/// </summary>
+		/// <param name="login"></param>
+		/// <returns></returns>
+		bool IsLoginExist(string login);
+
+		/// <summary>
+		/// Get user teams by user id.
+		/// </summary>
+		/// <param name="id">User team.</param>
+		/// <returns></returns>
+		List<TeamMembership> GetUserTeams(Guid id);
+
+		/// <summary>
+		/// Get user team membership info.
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <param name="teamId"></param>
+		/// <returns></returns>
+		TeamMembership GetUserTeamMembershipData(Guid userId, Guid teamId);
+
+		/// <summary>
+		/// Check is user is member team.
+		/// </summary>
+		/// <param name="userId">Id of checking user.</param>
+		/// <param name="teamId">Id of checking team.</param>
+		bool IsMembershipOfTeam(Guid userId, Guid teamId);
+		
+		/// <summary>
+		/// Create user membership (not approuved).
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <param name="teamId"></param>
+		void RequestMembership(Guid userId, Guid teamId);
+		
+		/// <summary>
+		/// Remove user team membership.
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <param name="teamId"></param>
+		void LeaveTeam(Guid userId, Guid teamId);
+	}
 }

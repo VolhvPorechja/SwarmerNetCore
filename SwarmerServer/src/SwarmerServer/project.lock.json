@@ -45,7 +45,7 @@
           "lib/netstandard1.3/Dapper.FluentMap.dll": {}
         }
       },
-      "Dommel/1.7.0": {
+      "Dommel/1.7.1": {
         "type": "package",
         "dependencies": {
           "Dapper": "1.50.2",
@@ -3813,7 +3813,7 @@
         "dependencies": {
           "Dapper": "1.50.2",
           "Dapper.FluentMap": "1.5.1",
-          "Dommel": "1.7.0",
+          "Dommel": "1.7.1",
           "NETStandard.Library": "1.6.0",
           "Npgsql": "3.1.7",
           "Swarmer.Contracts": "(, )"
@@ -3883,12 +3883,12 @@
         "lib/netstandard1.3/Dapper.FluentMap.xml"
       ]
     },
-    "Dommel/1.7.0": {
-      "sha512": "b5iVsKIejr6HtO0ErS9LWIWtpA617WEAY7OhlnXmqyH6AvIJ6N+VZ8SoW3GBrK6qlSruE8u+rEPrBj3VeY8OJA==",
+    "Dommel/1.7.1": {
+      "sha512": "D6+atyQOL6pV63Pl69wWSiXVfXNZr6Pl8I98ZONJsLgYSYRO0uEhX3ZWJyThVVn6PTa2YJDcMjq8P9yQU/4E7w==",
       "type": "package",
-      "path": "Dommel/1.7.0",
+      "path": "Dommel/1.7.1",
       "files": [
-        "Dommel.1.7.0.nupkg.sha512",
+        "Dommel.1.7.1.nupkg.sha512",
         "Dommel.nuspec",
         "lib/net45/Dommel.dll",
         "lib/net45/Dommel.xml",

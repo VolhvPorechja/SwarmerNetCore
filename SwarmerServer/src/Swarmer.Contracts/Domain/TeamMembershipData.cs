@@ -37,15 +37,21 @@ namespace Swarmer.AM.Contracts.Domain
         /// <param name="Approuved">Is user participation approuved by owner.</param>
         /// <param name="IsActive">Is user participation in team is active.</param>
         /// <param name="StartDate">When user membership started..</param>
-        public TeamMembershipData(bool? Approuved = null, bool? IsActive = null, DateTime? StartDate = null)
+        public TeamMembershipData(bool? Approuved = null, bool? IsActive = null, DateTime? StartDate = null, bool? IsOwner = null)
         {
             this.Approuved = Approuved;
             this.IsActive = IsActive;
             this.StartDate = StartDate;
-
+	        this.IsOwner = IsOwner;
         }
 
         /// <summary>
+        /// Is user participation approuved by owner
+        /// </summary>
+        /// <value>Is user participation approuved by owner</value>
+        public bool? IsOwner { get; set; }
+		
+		/// <summary>
         /// Is user participation approuved by owner
         /// </summary>
         /// <value>Is user participation approuved by owner</value>

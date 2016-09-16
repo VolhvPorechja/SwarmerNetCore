@@ -2,7 +2,8 @@
 
 namespace Swarmer.AM.DAL.TypesHandlers
 {
-    public class ProfileTypeHandler : JsonedObjectTypeHandler<UserProfile>
+	public class TeamProfileHandler : JsonedObjectTypeHandler<TeamProfile>
 	{
+		
 	}
 }

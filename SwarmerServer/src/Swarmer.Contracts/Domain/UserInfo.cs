@@ -40,7 +40,7 @@ namespace Swarmer.AM.Contracts.Domain
         /// <param name="FirstName">First name of user..</param>
         /// <param name="SecondName">Second name of user..</param>
         /// <param name="Login">Login and nickname of user..</param>
-        public UserInfo(int? Id = null, DateTime? Created = null, DateTime? Updated = null, string FirstName = null, string SecondName = null, string Login = null)
+        public UserInfo(Guid? Id = null, DateTime? Created = null, DateTime? Updated = null, string FirstName = null, string SecondName = null, string Login = null)
         {
             this.Id = Id;
             this.Created = Created;
@@ -48,26 +48,7 @@ namespace Swarmer.AM.Contracts.Domain
             this.FirstName = FirstName;
             this.SecondName = SecondName;
             this.Login = Login;
-
         }
-
-        /// <summary>
-        /// Id of object.
-        /// </summary>
-        /// <value>Id of object.</value>
-        public int? Id { get; set; }
-
-        /// <summary>
-        /// Creationg date time
-        /// </summary>
-        /// <value>Creationg date time</value>
-        public DateTime? Created { get; set; }
-
-        /// <summary>
-        /// Updating date time.
-        /// </summary>
-        /// <value>Updating date time.</value>
-        public DateTime? Updated { get; set; }
 
         /// <summary>
         /// First name of user.

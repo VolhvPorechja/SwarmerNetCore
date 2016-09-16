@@ -37,7 +37,7 @@ namespace Swarmer.AM.Contracts.Domain
         /// <param name="Id">Id of object..</param>
         /// <param name="Created">Creationg date time.</param>
         /// <param name="Updated">Updating date time..</param>
-        public SysObject(int? Id = null, DateTime? Created = null, DateTime? Updated = null)
+        public SysObject(Guid? Id = null, DateTime? Created = null, DateTime? Updated = null)
         {
             this.Id = Id;
             this.Created = Created;
@@ -49,7 +49,7 @@ namespace Swarmer.AM.Contracts.Domain
         /// Id of object.
         /// </summary>
         /// <value>Id of object.</value>
-        public int? Id { get; set; }
+        public Guid? Id { get; set; }
 
         /// <summary>
         /// Creationg date time

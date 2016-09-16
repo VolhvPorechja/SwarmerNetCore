@@ -38,7 +38,7 @@ namespace Swarmer.AM.Contracts.Domain
         /// <param name="Created">Creationg date time.</param>
         /// <param name="Updated">Updating date time..</param>
         /// <param name="Name">Name of team..</param>
-        public TeamInfo(int? Id = null, DateTime? Created = null, DateTime? Updated = null, string Name = null)
+        public TeamInfo(Guid? Id = null, DateTime? Created = null, DateTime? Updated = null, string Name = null)
         {
             this.Id = Id;
             this.Created = Created;
@@ -46,24 +46,6 @@ namespace Swarmer.AM.Contracts.Domain
             this.Name = Name;
 
         }
-
-        /// <summary>
-        /// Id of object.
-        /// </summary>
-        /// <value>Id of object.</value>
-        public int? Id { get; set; }
-
-        /// <summary>
-        /// Creationg date time
-        /// </summary>
-        /// <value>Creationg date time</value>
-        public DateTime? Created { get; set; }
-
-        /// <summary>
-        /// Updating date time.
-        /// </summary>
-        /// <value>Updating date time.</value>
-        public DateTime? Updated { get; set; }
 
         /// <summary>
         /// Name of team.

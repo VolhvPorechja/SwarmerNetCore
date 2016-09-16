@@ -23,77 +23,126 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
+using NLog;
 using Swarmer.AM.Contracts.Domain;
+using Swarmer.AM.Core;
+using Swarmer.Common.Assetions;
+using Swarmer.Common.Logging;
 using Swashbuckle.SwaggerGen.Annotations;
 
 namespace SwarmerServer.Controllers
-{ 
-    /// <summary>
-    /// 
-    /// </summary>
-    public class TeamsApiController : Controller
-    { 
+{
+	/// <summary>
+	/// 
+	/// </summary>
+	public class TeamsApiController : Controller
+	{
+		private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+		private readonly AccountsManagementCore mCore;
+		private readonly LogMessagesManager mLogMessManager;
+		private readonly string mReferenceId;
 
-        /// <summary>
-        /// Get team by id.
-        /// </summary>
-        
-        /// <param name="teamId">Id of team.</param>
-        /// <response code="200">An array of users</response>
-        /// <response code="0">Unexpected error</response>
-        [HttpGet]
-        [Route("/teams/{teamId}")]
-        [SwaggerOperation("GetTeamById")]
-        [SwaggerResponse(200, type: typeof(Team))]
-        public virtual IActionResult GetTeamById([FromRoute]int? teamId)
-        { 
-            string exampleJson = null;
-            
-            var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<Team>(exampleJson)
-            : default(Team);
-            return new ObjectResult(example);
-        }
+		/// <summary>
+		/// CTOR.
+		/// </summary>
+		/// <param name="core"></param>
+		public TeamsApiController(AccountsManagementCore core, LogMessagesManager logMessManager)
+		{
+			mLogMessManager = logMessManager;
+			mReferenceId = Guid.NewGuid().ToString();
+			mCore = core;
+		}
+
+		/// <summary>
+		/// Get team by id.
+		/// </summary>
+		/// <param name="teamId">Id of team.</param>
+		/// <response code="200">An array of users</response>
+		/// <response code="0">Unexpected error</response>
+		[HttpGet]
+		[Route("/teams/{teamId}")]
+		[SwaggerOperation("GetTeamById")]
+		[SwaggerResponse(200, type: typeof(Team))]
+		public virtual IActionResult GetTeamById([FromRoute]Guid? teamId)
+		{
+			if (teamId == null)
+				return BadRequest("teamid should be specified");
+
+			var result = mCore.TeamsApi.GetTeam(teamId.Value);
+			return new ObjectResult(result);
+		}
 
 
-        /// <summary>
-        /// Get all available teams
-        /// </summary>
-        
-        /// <param name="filter">Json representation of query</param>
-        /// <param name="page">Number of page in pagination</param>
-        /// <param name="pageSize">Size of single page</param>
-        /// <response code="200">An array of users</response>
-        /// <response code="0">Unexpected error.</response>
-        [HttpGet]
-        [Route("/teams")]
-        [SwaggerOperation("ListTeams")]
-        [SwaggerResponse(200, type: typeof(List<TeamInfo>))]
-        public virtual IActionResult ListTeams([FromQuery]string filter, [FromQuery]int? page, [FromQuery]int? pageSize)
-        { 
-            string exampleJson = null;
-            
-            var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<List<TeamInfo>>(exampleJson)
-            : default(List<TeamInfo>);
-            return new ObjectResult(example);
-        }
+		/// <summary>
+		/// Get all available teams
+		/// </summary>
 
-        /// <summary>
-        /// Update or give user participation in team
-        /// </summary>
-        
-        /// <param name="teamId">Id of team.</param>
-        /// <param name="userId">Id of user.</param>
-        /// <response code="200">Emtpy if data successfully updated.</response>
-        /// <response code="0">Unexpected error</response>
-        [HttpPut]
-        [Route("/teams/{teamId}/user/{userId}")]
-        [SwaggerOperation("UpdateOrGiveTeamMembership")]
-        public virtual void UpdateOrGiveTeamMembership([FromRoute]int? teamId, [FromRoute]int? userId)
-        { 
-            throw new NotImplementedException();
-        }
-    }
+		/// <param name="filter">Json representation of query</param>
+		/// <param name="page">Number of page in pagination</param>
+		/// <param name="pageSize">Size of single page</param>
+		/// <response code="200">An array of users</response>
+		/// <response code="0">Unexpected error.</response>
+		[HttpGet]
+		[Route("/teams")]
+		[SwaggerOperation("ListTeams")]
+		[SwaggerResponse(200, type: typeof(List<TeamInfo>))]
+		public virtual IActionResult ListTeams([FromQuery]string filter, [FromQuery]int? page, [FromQuery]int? pageSize)
+		{
+			var result = mCore.TeamsApi.ListTeams(filter, page ?? 0, pageSize ?? 5);
+			return new ObjectResult(result);
+		}
+
+		/// <summary>
+		/// Create new team
+		/// </summary>
+		/// <param name="creatingTeam">Team that will be created.</param>
+		/// <response code="200">An array of users</response>
+		/// <response code="0">Unexpected error.</response>
+		[HttpPost]
+		[Route("/teams")]
+		[SwaggerOperation("CreateTeam")]
+		[SwaggerResponse(200, type: typeof(TeamInfo))]
+		public virtual IActionResult CreatTeam([FromBody]Team creatingTeam)
+		{
+			Logger.Info(mLogMessManager.Log("SomeUser", "T001", "Team creation requested.", mReferenceId, new {creatingTeam}));
+
+			var result = mCore.TeamsApi.CreateTeam(creatingTeam);
+
+			Logger.Info(mLogMessManager.Log("SomeUser", "T001", "Team creation finished.", mReferenceId));
+
+			return new ObjectResult(result);
+		}
+
+		/// <summary>
+		/// Approuve or create user team membership
+		/// </summary>
+
+		/// <param name="teamId">Id of team.</param>
+		/// <param name="userId">Id of user.</param>
+		/// <response code="200">Emtpy if data successfully updated.</response>
+		/// <response code="0">Unexpected error</response>
+		[HttpPut]
+		[Route("/teams/{teamId}/user/{userId}")]
+		[SwaggerOperation("ApprouveOrCreateUserTeamMembership")]
+		public virtual IActionResult ApprouveOrCreateUserTeamMembership([FromRoute]Guid? teamId, [FromRoute]Guid? userId)
+		{
+			Logger.Info(mLogMessManager.Log("SomeUser", "T002", "Membership approuvance requested.", mReferenceId, new { teamId, userId }));
+
+			try
+			{
+				new Assertor(mess => new NotValidRequestException(mess))
+					.Add(() => userId.HasValue, "userId should be specified")
+					.Add(() => teamId.HasValue, "teamId should be specified")
+					.Assert();
+
+				mCore.TeamsApi.ApprouveUserTeamMembershipRequest(userId.Value, teamId.Value);
+				return Ok();
+			}
+			catch (NotValidRequestException exception)
+			{
+				Logger.Info(mLogMessManager.Log("SomeUser", "T002", "Membership approuvance requested.", mReferenceId, new { teamId, userId }));
+				return BadRequest(exception.Message);
+			}
+		}
+	}
 }
