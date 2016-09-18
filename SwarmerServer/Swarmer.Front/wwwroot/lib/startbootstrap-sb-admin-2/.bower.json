@@ -1,0 +1,14 @@
+{
+  "name": "startbootstrap-sb-admin-2",
+  "homepage": "https://github.com/IronSummitMedia/startbootstrap-sb-admin-2",
+  "_release": "cbeaabf65a",
+  "_resolution": {
+    "type": "branch",
+    "branch": "gh-pages",
+    "commit": "cbeaabf65a95cf82bfa5a3208df771fd5ddbc3a8"
+  },
+  "_source": "https://github.com/IronSummitMedia/startbootstrap-sb-admin-2.git",
+  "_target": "gh-pages",
+  "_originalSource": "startbootstrap-sb-admin-2",
+  "_direct": true
+}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Flat Login</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<script src="vendor/jquery/jquery.min.js"></script>
+	
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	
+
+	<link href="css/login.css" rel="stylesheet">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<!-- Latest compiled and minified JavaScript -->
+
+</head>
+
+<body>
+	<div class="container-fluid">
+		<h1 style="text-align: center;">
+			<img src="images/logo-big.png" style="width: 240px;" />
+		</h1>
+		<div class="row">
+			<div class="col-md-offset-4 col-md-4 flat-form">
+				<div class="row flat-form-back show"></div>
+				<div class="row flat-form-back show"></div>
+				<div class="row tabs-header">
+					<ul class="tabs">
+						<li>
+							<a href="#" id="login-form-link" class="active">Login</a>
+						</li>
+						<li>
+							<a href="#" id="register-form-link">Register</a>
+						</li>
+						<li>
+							<a href="#" id="reset-form-link">Reset Password</a>
+						</li>
+					</ul>
+				</div>
+				<div id="login-form" class="row form-action show-init">
+					<h1>Login to your account</h1>
+					<p class="info">
+						Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+						Maecenas sed diam eget risus varius bladit sit amet non
+					</p>
+					<form>
+						<ul>
+							<li>
+								<input type="text" placeholder="Username" data-bind="value: login"/>
+							</li>
+							<li>
+								<input type="password" placeholder="Password" data-bind="value: password"/>
+							</li>
+							<li>
+								<input id="login-btn" type="submit" value="Login" class="button" />
+							</li>
+						</ul>
+					</form>
+				</div>
+				<!--/#login.form-action-->
+				<div id="register-form" class="row form-action hide-init">
+					<h1>Register</h1>
+					<p class="info">
+						You should totally sign up for our super awesome service.
+						It's what all the cool kids are doing nowadays.
+					</p>
+					<form>
+						<ul>
+							<li>
+								<input type="text" placeholder="Choose login" data-bind="value: newlogin"/>
+							</li>
+							<li>
+								<input id="sing-up-btn" type="submit" value="Sign Up" class="button" />
+							</li>
+						</ul>
+					</form>
+				</div>
+				<!--/#register.form-action-->
+				<div id="reset-form" class="row form-action hide-init">
+					<div class="row">
+						<h1>Reset Password</h1>
+					</div>
+					<div class="row">
+						<p>
+							To reset your password enter your email and your birthday
+							and we'll send you a link to reset your password.
+						</p>
+					</div>
+					<div class="row">
+						<form>
+							<ul>
+								<li>
+									<input type="text" placeholder="Email" />
+								</li>
+								<li>
+									<input type="text" placeholder="Birthday" />
+								</li>
+								<li>
+									<input type="submit" value="Send" class="button" />
+								</li>
+							</ul>
+						</form>
+
+					</div>
+				</div>
+				<!--/#register.form-action-->
+			</div>
+		</div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js" crossorigin="anonymous"></script>
+	<script src="js/login.js"></script>
+</body>
+</html>
+
+
