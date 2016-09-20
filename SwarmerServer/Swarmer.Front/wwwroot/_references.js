@@ -1,7 +1,5 @@
 ﻿/// <autosync enabled="true" />
-/// <reference path="../dist/js/sb-admin-2.js" />
 /// <reference path="../gulpfile.js" />
-/// <reference path="../vendor/bootstrap/js/bootstrap.js" />
 /// <reference path="bower_components/bootstrap/dist/js/bootstrap.js" />
 /// <reference path="bower_components/bootstrap/dist/js/npm.js" />
 /// <reference path="bower_components/bootstrap/grunt/bs-commonjs-generator.js" />

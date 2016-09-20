@@ -8,6 +8,7 @@
     header = require('gulp-header'),
     cleanCSS = require('gulp-clean-css'),
     rename = require("gulp-rename"),
+    sass = require("gulp-sass"),
     project = require("./project.json"),
     pkg = require('./package.json');
 
@@ -152,24 +153,39 @@ gulp.task('copy',
 
     });
 
+gulp.task('sass', function () {
+    return gulp.src([paths.webroot + 'sass/**/*.+(sass|scss)'])
+        .pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
+        .pipe(gulp.dest(paths.webroot + 'dist/css'));
+});
+
 // Run everything
-gulp.task('default', ['minify-css', 'minify-js', 'copy']);
+gulp.task('default', ['minify-css', 'minify-js', 'copy', 'sass']);
 
 // Configure the browserSync task
-gulp.task('browserSync', function () {
-    browserSync.init({
-        server: {
-            baseDir: paths.webroot
-        },
-    })
-})
+gulp.task('browserSync',
+    function () {
+        browserSync.init({
+            server: {
+                baseDir: paths.webroot
+            },
+        });
+    });
+
+gulp.task('dev-login',
+    ['sass'],
+    function() {
+        gulp.watch(paths.webroot + 'sass/*.+(sass|scss)', ['sass']);
+    });
 
 // Dev task with browserSync
-gulp.task('dev', ['browserSync', 'less', 'minify-css', 'js', 'minify-js'], function () {
-    gulp.watch(paths.webroot + 'less/*.less', ['less']);
-    gulp.watch(paths.webroot + 'dist/css/*.css', ['minify-css']);
-    gulp.watch(paths.webroot + 'js/*.js', ['minify-js']);
-    // Reloads the browser whenever HTML or JS files change
-    gulp.watch(paths.webroot + 'pages/*.html', browserSync.reload);
-    gulp.watch(paths.webroot + 'dist/js/*.js', browserSync.reload);
-});
+gulp.task('dev',
+    ['browserSync', 'less', 'minify-css', 'js', 'minify-js'],
+    function() {
+        gulp.watch(paths.webroot + 'less/*.less', ['less']);
+        gulp.watch(paths.webroot + 'dist/css/*.css', ['minify-css']);
+        gulp.watch(paths.webroot + 'js/*.js', ['minify-js']);
+        // Reloads the browser whenever HTML or JS files change
+        gulp.watch(paths.webroot + 'pages/*.html', browserSync.reload);
+        gulp.watch(paths.webroot + 'dist/js/*.js', browserSync.reload);
+    });
