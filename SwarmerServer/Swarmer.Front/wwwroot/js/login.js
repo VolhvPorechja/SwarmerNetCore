@@ -1,7 +1,9 @@
 ﻿var AppViewModel = {
 	login: ko.observable(""),
 	password: ko.observable(""),
-	newlogin: ko.observable("")
+
+	newlogin: ko.observable(""),
+    newemail: ko.observable("")
 };
 
 // Activates knockout.js
