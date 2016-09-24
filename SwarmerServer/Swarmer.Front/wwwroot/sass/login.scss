@@ -1,26 +1,6 @@
-﻿$main-color-red: rgb(231, 76, 60);
-$main-color-gray: darken(rgb(76, 76, 76),10%);
-
-$main-color: $main-color-gray;
-$main-color-dark: darken($main-color, 10%);
-
-$transparency-level: 0.8;
-
-$main-color-transparent: rgba($main-color, $transparency-level);
-$main-color-transparent-dark: rgba($main-color-dark, $transparency-level);
-
-$font-family: 'Roboto';
-
-@import url(http://fonts.googleapis.com/css?family=Roboto:100);
+﻿@import url(http://fonts.googleapis.com/css?family=Roboto:100);
 @import url(http://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css);
-
-body {
-    background: url(../../images/thumb-1920-400733.jpg) no-repeat;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
-    font-family: $font-family;
-}
+@import 'base';
 
 .login-header{
     height: 40px;
@@ -29,6 +9,12 @@ body {
     justify-content: center;
     display: flex;
     align-items: center;
+
+    h1 {
+        text-align: center;
+        padding: 5px;
+        color: white;
+    }
 }
 
 .flat-form {

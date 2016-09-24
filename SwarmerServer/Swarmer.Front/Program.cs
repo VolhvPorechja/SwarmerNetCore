@@ -11,7 +11,7 @@ namespace Swarmer.Front
 				.UseKestrel()
 				.UseContentRoot(Directory.GetCurrentDirectory())
 				.UseIISIntegration()
-                .UseUrls("http://localhost:5002/")
+                .UseUrls("http://192.168.1.31:5002/")
 				.UseStartup<Startup>()
 				.Build();
 

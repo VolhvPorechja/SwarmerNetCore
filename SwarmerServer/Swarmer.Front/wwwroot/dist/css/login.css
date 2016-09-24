@@ -17,6 +17,12 @@ body {
   align-items: center;
 }
 
+.login-header h1 {
+  text-align: center;
+  padding: 5px;
+  color: white;
+}
+
 .flat-form {
   font-family: "Roboto";
   min-width: 365px;
