@@ -72,11 +72,19 @@ namespace SwarmerServer.Controllers
             Logger.Info(mLogMessManager.Log("", Codes.Login, "User login.", mReferenceId,
                 new { request.Id }));
 
-            var result = mCore.AuthenticationApi.Authenticate(request);
-            if (result.IsSuccess)
-                Response.Cookies.Append(mConfig["service:cookie-key"], Guid.NewGuid().ToString("n"));
+            try
+            {
+                var result = mCore.AuthenticationApi.Authenticate(request);
+                if (result.IsSuccess)
+                    Response.Cookies.Append(mConfig["service:cookie-key"], Guid.NewGuid().ToString("n"));
 
-            return new ObjectResult(result);
+                return new ObjectResult(result);
+            }
+            catch (NotValidRequestException exception)
+            {
+                Logger.Info(mLogMessManager.Log("SomeUser", Codes.Login, "Login error", mReferenceId, new {request.Id}));
+                return BadRequest(exception.Message);
+            }
         }
 
         /// <summary>
@@ -104,10 +112,10 @@ namespace SwarmerServer.Controllers
         /// <response code="200">Data for make decisions on successfull user login.</response>
         /// <response code="0">Unexpected error</response>
         [HttpPost]
-        [Route("/singup")]
-        [SwaggerOperation("SingUp")]
+        [Route("/signup")]
+        [SwaggerOperation("SignUp")]
         [SwaggerResponse(200, type: typeof(SingUpResponse))]
-        public virtual IActionResult SingUp([FromBody] SingUpRequest request)
+        public virtual IActionResult SignUp([FromBody] SingUpRequest request)
         {
             Logger.Info(mLogMessManager.Log("", Codes.Signup, "User signup.", mReferenceId,
                 new { request }));
@@ -138,8 +146,8 @@ namespace SwarmerServer.Controllers
         /// <response code="200">Data for make decisions on successfull user login.</response>
         /// <response code="0">Unexpected error</response>
         [HttpPost]
-        [Route("/presingup")]
-        [SwaggerOperation("PreSingUp")]
+        [Route("/presignup")]
+        [SwaggerOperation("PreSignUp")]
         [SwaggerResponse(200, type: typeof(PreSingUpResponse))]
         public virtual IActionResult PreSingUp([FromBody] PreSignUpRequest request)
         {
@@ -148,7 +156,7 @@ namespace SwarmerServer.Controllers
 
             var result = mCore.AuthenticationApi.PreSingUp(request);
 
-            if (result.IsSuccessful)
+            if (result.IsSuccess)
             {
                 var signupKey = mSignupDataProvider.StoreSignUpData(new SignUpData
                 {
@@ -156,7 +164,7 @@ namespace SwarmerServer.Controllers
                     Email = request.Email
                 });
 
-                result.Url += $"?sk={signupKey}";
+                result.Url += $"?sk={signupKey}&l={request.Login}";
             }
 
             return new ObjectResult(result);

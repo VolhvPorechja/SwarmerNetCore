@@ -14,10 +14,18 @@ namespace Swarmer.AM.Core
 
         public AuthResponse Authenticate(AuthRequest request)
         {
+            new Assertor(mess => new NotValidRequestException(mess))
+                .Add(() => !string.IsNullOrEmpty(request.Id), "Id of user can't be empty") // TODO change on codes for decision making on front-end part
+                .Add(() => !string.IsNullOrEmpty(request.Secret), "Secret can't be empty")
+                .Assert();
+
             var user = mRepositoriesManager.UsersRepository.GetUserByLogin(request.Id);
+            if(user == null)
+                return AuthResponse.Fail();
+
             var authdata = mRepositoriesManager.UsersRepository.GetAuthenticationData(user.Id.Value, UsersApi.LoginTypes.LoginPassword);
-            return authdata.Secret == request.Secret 
-                ? AuthResponse.Success() 
+            return authdata != null && authdata.Secret == request.Secret
+                ? AuthResponse.Success("/pages/index.html") 
                 : AuthResponse.Fail();
         }
 
@@ -38,14 +46,14 @@ namespace Swarmer.AM.Core
             if (loginExists || emailExists)
                 return new PreSingUpResponse
                 {
-                    IsSuccessful = false,
+                    IsSuccess = false,
                     EmailExists = emailExists,
                     LoginExists = loginExists
                 };
 
             return new PreSingUpResponse
             {
-                IsSuccessful = true,
+                IsSuccess = true,
                 Url = "/register.html"
             };
         }

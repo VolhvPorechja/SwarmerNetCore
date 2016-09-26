@@ -35,7 +35,7 @@ CREATE TABLE Entries (
  Secret varchar(1024) not null
 );
 
-CREATE TABLE Teams (
+CREATE TABLE Teams (e
  Id uuid PRIMARY KEY not null,
  Created timestamp with time zone not null,
  Updated timestamp with time zone not null,

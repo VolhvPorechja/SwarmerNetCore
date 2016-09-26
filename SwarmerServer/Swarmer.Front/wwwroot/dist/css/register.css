@@ -47,7 +47,7 @@ fieldset[disabled] .custom-btn.active {
 
 .navbar-inverse {
   background-image: initial !important;
-  background-color: black;
+  background-color: #090909;
   border-color: #e6e6e8;
 }
 

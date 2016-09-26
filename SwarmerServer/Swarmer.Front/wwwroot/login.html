@@ -45,16 +45,17 @@
                             Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
                             Maecenas sed diam eget risus varius bladit sit amet non
                         </p>
-                        <form>
+                        <form id="login-form">
+                            <div id="login-err" class="alert alert-danger alert-dismissable err-info"></div>
                             <ul>
                                 <li>
-                                    <input type="text" placeholder="Username" data-bind="value: login" />
+                                    <input type="text" placeholder="Username" data-bind="value: login"/>
                                 </li>
                                 <li>
-                                    <input type="password" placeholder="Password" data-bind="value: password" />
+                                    <input type="password" placeholder="Password" data-bind="value: password"/>
                                 </li>
                                 <li>
-                                    <input id="login-btn" type="submit" value="Login" class="button" />
+                                    <input type="submit" value="Submit" class="button"/>
                                 </li>
                             </ul>
                         </form>
@@ -66,7 +67,8 @@
                             You should totally sign up for our super awesome service.
                             It's what all the cool kids are doing nowadays.
                         </p>
-                        <form>
+                        <form id="signup-form">
+                            <div id="signup-err" class="alert alert-danger alert-dismissable err-info"></div>
                             <ul>
                                 <li>
                                     <input type="text" placeholder="Choose login" data-bind="value: newlogin" />
@@ -75,7 +77,7 @@
                                     <input type="text" placeholder="Your email" data-bind="value: newemail" />
                                 </li>
                                 <li>
-                                    <input id="sing-up-btn" type="submit" value="Sign Up" class="button" />
+                                    <input type="submit" value="Submit" class="button" />
                                 </li>
                             </ul>
                         </form>

@@ -17,7 +17,8 @@
     <!-- Latest compiled and minified JavaScript -->
     <link href="dist/css/register.css" rel="stylesheet">
 </head>
-<body>
+
+<body style="margin-top: 80px;">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -46,11 +47,39 @@
         </div>
     </div>
 
+    <div class="container">
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="login">Login:</label>
+                        <input type="text" id="login" class="form-control" placeholder="Choose login" data-bind="value: login"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="firstname">First name:</label>
+                        <input type="text" id="firstname" class="form-control" placeholder="You first name" data-bind="value: firstName"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="secondname">Second name:</label>
+                        <input type="text" id="secondname" class="form-control" placeholder="You second name" data-bind="value: secondName"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Gender:</label>
+                        <select id="gender" class="form-control" data-bind="options: availableGenders, selectedOption: gender">
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="navbar navbar-default navbar-fixed-bottom">
         <div class="container">
             <p class="navbar-text pull-left">Fuck you</p>
             <a href="#" class="navbar-btn btn-danger btn pull-right">Fuck this</a>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js" crossorigin="anonymous"></script>
+    <script src="js/register.js"></script>
 </body>
 </html>

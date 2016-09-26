@@ -47,7 +47,7 @@ fieldset[disabled] .custom-btn.active {
 
 .navbar-inverse {
   background-image: initial !important;
-  background-color: black;
+  background-color: #090909;
   border-color: #e6e6e8;
 }
 
@@ -118,6 +118,13 @@ body {
   font-family: "Roboto";
 }
 
+.err-info {
+  display: none;
+  background-image: initial;
+  background-color: #e74c3c;
+  color: #e6e6e8;
+}
+
 .login-header {
   height: 40px;
   background-color: black;
@@ -139,7 +146,7 @@ body {
 }
 
 .flat-form-back {
-  background: black;
+  background: #090909;
 }
 
 .nav-tabs > li {
@@ -154,7 +161,7 @@ body {
 }
 
 .nav-tabs > li.active > a {
-  background-color: rgba(0, 0, 0, 0.7) !important;
+  background-color: black !important;
   color: white !important;
 }
 
@@ -188,7 +195,7 @@ body {
 }
 
 .form-action {
-  background: rgba(0, 0, 0, 0.7);
+  background: black;
   padding: 20px;
   overflow-y: auto;
   border-style: solid;
@@ -224,7 +231,7 @@ form input[type=password] {
   padding-left: 15px;
   background: #fff;
   border: none;
-  color: black;
+  color: #090909;
   outline: none;
 }
 
@@ -280,19 +287,19 @@ form input[type=password] {
 }
 
 ::-webkit-input-placeholder {
-  color: black;
+  color: #090909;
 }
 
 :-moz-placeholder {
   /* Firefox 18- */
-  color: black;
+  color: #090909;
 }
 
 ::-moz-placeholder {
   /* Firefox 19+ */
-  color: black;
+  color: #090909;
 }
 
 :-ms-input-placeholder {
-  color: black;
+  color: #090909;
 }

@@ -11,7 +11,7 @@ namespace SwarmerServer
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
-                .UseUrls("http://localhost:5001/")
+                .UseUrls("http://*:5001/")
                 .UseStartup<Startup>()
                 .Build();
 

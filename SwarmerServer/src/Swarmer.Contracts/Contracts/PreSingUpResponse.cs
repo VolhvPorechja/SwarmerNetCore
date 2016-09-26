@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+
 namespace Swarmer.AM.Contracts.Contracts
 {
     /// <summary>
@@ -8,7 +10,7 @@ namespace Swarmer.AM.Contracts.Contracts
         /// <summary>
         /// Flag of successfull operation.
         /// </summary>
-        public bool IsSuccessful { get; set; }
+        public bool IsSuccess { get; set; }
 
         /// <summary>
         /// Is login already not vacant.

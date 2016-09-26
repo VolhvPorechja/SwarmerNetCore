@@ -18,6 +18,7 @@
 /// <reference path="dist/js/register-experiment.js" />
 /// <reference path="dist/js/sb-admin-2.js" />
 /// <reference path="js/login.min.js" />
+/// <reference path="js/register.js" />
 /// <reference path="js/sb-admin-2.js" />
 /// <reference path="js/site.js" />
 /// <reference path="vendor/bootstrap/js/bootstrap.js" />
