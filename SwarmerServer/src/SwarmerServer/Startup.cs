@@ -4,10 +4,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NLog.Extensions.Logging;
+using Swarmer.AM.Contracts.Providers;
 using Swarmer.AM.Contracts.Repositories;
 using Swarmer.AM.Core;
 using Swarmer.AM.DAL;
 using Swarmer.Common.Logging;
+using SwarmerServer.Stubs;
 using Swashbuckle.Swagger.Model;
 
 namespace SwarmerServer
@@ -34,15 +36,19 @@ namespace SwarmerServer
 			// Add framework services.
 			services.AddMvc();
 
-			AccountsDal.Init();
+            AccountsDal.Init();
 			services.AddSingleton<RepositoriesManagerContract>(provider => new RepositoriesManager(Configuration["db:connections:main"]));
+		    services.AddSingleton<SignUpActivationProviderContract>(provider => new StubSignUpProvider());
+
 			services.AddSingleton(provider => new AccountsManagementCore
 			{
                 AuthenticationApi = new AuthenticationApi(provider.GetService<RepositoriesManagerContract>()),
 				UsersApi = new UsersApi(provider.GetService<RepositoriesManagerContract>()),
 				TeamsApi = new TeamsApi(provider.GetService<RepositoriesManagerContract>())
 			});
+
 			services.AddSingleton(provider => new LogMessagesManager("AM"));
+		    services.AddSingleton(Configuration);
 
 			// Configure swagger
 			services.AddSwaggerGen();

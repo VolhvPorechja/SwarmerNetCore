@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Swarmer.AM.Contracts.Contracts;
 using Swarmer.AM.Contracts.Domain;
 
 namespace Swarmer.AM.Contracts.Repositories
@@ -56,6 +57,22 @@ namespace Swarmer.AM.Contracts.Repositories
 		/// <param name="updatedInfo"></param>
 		UserInfo UpdateUser(User updatedInfo);
 
+        /// <summary>
+        /// Adding user authentication data.
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="type"></param>
+        /// <param name="secret"></param>
+	    void AddAuthenticationData(Guid userId, string type, string secret);
+
+        /// <summary>
+        /// Get authentication data by type.
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
+	    AuthneticationData GetAuthenticationData(Guid userId, string type);
+        
 		/// <summary>
 		/// Create new user.
 		/// </summary>
@@ -75,7 +92,7 @@ namespace Swarmer.AM.Contracts.Repositories
 		/// <param name="login"></param>
 		/// <returns></returns>
 		bool IsLoginExist(string login);
-
+        
 		/// <summary>
 		/// Get user teams by user id.
 		/// </summary>

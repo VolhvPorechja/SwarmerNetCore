@@ -1,11 +1,117 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:100);
 @import url(http://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css);
+.btn-default {
+  background-color: #c43235;
+}
+
 body {
-  background: url(../../images/thumb-1920-400733.jpg) no-repeat;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8), black), url(../../images/thumb-1920-400733.jpg);
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
   font-family: "Roboto";
+}
+
+.custom-btn {
+  color: #e6e6e8;
+  background-color: #300032;
+  border-color: #e6e6e8;
+}
+
+.custom-btn:hover, .custom-btn:focus, .custom-btn:active, .custom-btn.active,
+.open > .custom-btn.dropdown-toggle {
+  color: #e6e6e8;
+  background-color: black;
+  border-color: #c6c6cb;
+}
+
+.custom-btn:active, .custom-btn.active,
+.open > .custom-btn.dropdown-toggle {
+  background-image: none;
+}
+
+.custom-btn.disabled, .custom-btn.disabled:hover, .custom-btn.disabled:focus, .custom-btn.disabled:active, .custom-btn.disabled.active, .custom-btn[disabled], .custom-btn[disabled]:hover, .custom-btn[disabled]:focus, .custom-btn[disabled]:active, .custom-btn[disabled].active,
+fieldset[disabled] .custom-btn,
+fieldset[disabled] .custom-btn:hover,
+fieldset[disabled] .custom-btn:focus,
+fieldset[disabled] .custom-btn:active,
+fieldset[disabled] .custom-btn.active {
+  background-color: #300032;
+  border-color: #e6e6e8;
+}
+
+.custom-btn .badge {
+  color: #300032;
+  background-color: #e6e6e8;
+}
+
+.navbar-inverse {
+  background-image: initial !important;
+  background-color: black;
+  border-color: #e6e6e8;
+}
+
+.navbar-inverse .navbar-brand {
+  color: #e6e6e8;
+}
+
+.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
+  color: #c43235;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: #e6e6e8;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+  color: #c43235;
+}
+
+.navbar-inverse .navbar-nav .active > a, .navbar-inverse .navbar-nav .active > a:hover, .navbar-inverse .navbar-nav .active > a:focus {
+  color: #c43235;
+  background-color: #e6e6e8;
+}
+
+.navbar-inverse .navbar-nav .open > a, .navbar-inverse .navbar-nav .open > a:hover, .navbar-inverse .navbar-nav .open > a:focus {
+  color: #c43235;
+  background-color: #e6e6e8;
+}
+
+.navbar-inverse .navbar-nav .open > a .caret, .navbar-inverse .navbar-nav .open > a:hover .caret, .navbar-inverse .navbar-nav .open > a:focus .caret {
+  border-top-color: #c43235;
+  border-bottom-color: #c43235;
+}
+
+.navbar-inverse .navbar-nav > .dropdown > a .caret {
+  border-top-color: #e6e6e8;
+  border-bottom-color: #e6e6e8;
+}
+
+.navbar-inverse .navbar-nav > .dropdown > a:hover .caret, .navbar-inverse .navbar-nav > .dropdown > a:focus .caret {
+  border-top-color: #c43235;
+  border-bottom-color: #c43235;
+}
+
+.navbar-inverse .navbar-toggle {
+  border-color: #e6e6e8;
+}
+
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+  background-color: #e6e6e8;
+}
+
+.navbar-inverse .navbar-toggle .icon-bar {
+  background-color: #e6e6e8;
+}
+
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #e6e6e8;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #c43235;
+    background-color: #e6e6e8;
+  }
 }
 
 body {
@@ -14,7 +120,7 @@ body {
 
 .login-header {
   height: 40px;
-  background-color: #191919;
+  background-color: black;
   margin-bottom: 50px;
   justify-content: center;
   display: flex;
@@ -33,7 +139,7 @@ body {
 }
 
 .flat-form-back {
-  background: #333333;
+  background: black;
 }
 
 .nav-tabs > li {
@@ -44,11 +150,11 @@ body {
   font-weight: bold !important;
   text-transform: uppercase;
   border: 0 !important;
-  background-color: rgba(25, 25, 25, 0.8) !important;
+  background-color: rgba(0, 0, 0, 0.7) !important;
 }
 
 .nav-tabs > li.active > a {
-  background-color: rgba(51, 51, 51, 0.8) !important;
+  background-color: rgba(0, 0, 0, 0.7) !important;
   color: white !important;
 }
 
@@ -82,7 +188,7 @@ body {
 }
 
 .form-action {
-  background: rgba(51, 51, 51, 0.8);
+  background: rgba(0, 0, 0, 0.7);
   padding: 20px;
   overflow-y: auto;
   border-style: solid;
@@ -118,7 +224,7 @@ form input[type=password] {
   padding-left: 15px;
   background: #fff;
   border: none;
-  color: #333333;
+  color: black;
   outline: none;
 }
 
@@ -174,19 +280,19 @@ form input[type=password] {
 }
 
 ::-webkit-input-placeholder {
-  color: #333333;
+  color: black;
 }
 
 :-moz-placeholder {
   /* Firefox 18- */
-  color: #333333;
+  color: black;
 }
 
 ::-moz-placeholder {
   /* Firefox 19+ */
-  color: #333333;
+  color: black;
 }
 
 :-ms-input-placeholder {
-  color: #333333;
+  color: black;
 }

@@ -8,6 +8,14 @@ namespace Swarmer.AM.Core
 {
     public class UsersApi : ApiBase
 	{
+        /// <summary>
+        /// Available types of login,
+        /// </summary>
+	    public static class LoginTypes
+	    {
+	        public static string LoginPassword { get; } = "lp";
+	    }
+
 		public UsersApi(RepositoriesManagerContract repositoriesManager) : base(repositoriesManager)
 		{
 		}
@@ -45,6 +53,15 @@ namespace Swarmer.AM.Core
 		{
 			return mRepositoriesManager.UsersRepository.GetAll(pageSize, pageNum);
 		}
+
+	    public void AddAuthenticationData(UserInfo user, string type, string secret)
+	    {
+	        new Assertor(mess => new NotValidRequestException(mess))
+	            .Add(() => user.Id != null, "User Id can't be null")
+	            .Assert();
+
+            mRepositoriesManager.UsersRepository.AddAuthenticationData(user.Id.Value, type, secret);
+	    }
 
 		public User GetUser(Guid userId)
 		{

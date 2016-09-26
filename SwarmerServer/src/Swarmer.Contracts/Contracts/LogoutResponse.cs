@@ -1,10 +1,5 @@
-namespace Swarmer.AM.Contracts.Domain
+namespace Swarmer.AM.Contracts.Contracts
 {
-    public class LogoutRequest
-    {
-        
-    }
-
     /// <summary>
     /// Data with info after login.
     /// </summary>

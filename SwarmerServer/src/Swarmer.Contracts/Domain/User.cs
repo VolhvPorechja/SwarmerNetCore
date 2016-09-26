@@ -28,7 +28,7 @@ using Newtonsoft.Json;
 
 namespace Swarmer.AM.Contracts.Domain
 {
-	/// <summary>
+    /// <summary>
 	/// Full user model.
 	/// </summary>
 	public partial class User : UserInfo, IEquatable<User>
@@ -98,29 +98,41 @@ namespace Swarmer.AM.Contracts.Domain
 
 		}
 
-		/// <summary>
-		/// User's gender.
-		/// </summary>
-		/// <value>User's gender.</value>
-		public string Gender { get; set; }
+        /// <summary>
+        /// User's gender.
+        /// </summary>
+        /// <value>User's gender.</value>
+        public string Gender { get; set; }
 
-		/// <summary>
-		/// Role of user.
-		/// </summary>
-		/// <value>Role of user.</value>
-		public string Role { get; set; }
+        /// <summary>
+        /// User birth date.
+        /// </summary>
+        /// <value>User birth date.</value>
+        public DateTime? BirthDate { get; set; }
+
+        /// <summary>
+        /// User's time zone for time correction.
+        /// </summary>
+        /// <value>User's time zone for time correction.</value>
+        public int? TimeZone { get; set; }
+
+        /// <summary>
+        /// User's living country.
+        /// </summary>
+        /// <value>User's living country.</value>
+        public string Country { get; set; }
+
+        /// <summary>
+        /// Role of user.
+        /// </summary>
+        /// <value>Role of user.</value>
+        public string Role { get; set; }
 
 		/// <summary>
 		/// Id of user in Steam.
 		/// </summary>
 		/// <value>Id of user in Steam.</value>
 		public string SteamId { get; set; }
-
-		/// <summary>
-		/// User birth date.
-		/// </summary>
-		/// <value>User birth date.</value>
-		public DateTime? BirthDate { get; set; }
 
 		/// <summary>
 		/// User's main address.
@@ -134,22 +146,11 @@ namespace Swarmer.AM.Contracts.Domain
 		/// <value>Available entry ways.</value>
 		public List<string> AvailableEntries { get; set; }
 
-		/// <summary>
-		/// User's time zone for time correction.
-		/// </summary>
-		/// <value>User's time zone for time correction.</value>
-		public int? TimeZone { get; set; }
-
-		/// <summary>
-		/// User's living country.
-		/// </summary>
-		/// <value>User's living country.</value>
-		public string Country { get; set; }
 
 		/// <summary>
 		/// Gets or Sets Profile
 		/// </summary>
-		public UserProfile Profile { get; set; }
+		public UserProfile Profile { get; set; } = new UserProfile();
 
 		/// <summary>
 		/// User's phone number.
