@@ -2,6 +2,10 @@
 @import url(http://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css);
 @import 'base';
 
+body{
+    font-family: $font-family;
+}
+
 .login-header{
     height: 40px;
     background-color: $main-color-dark;

@@ -38,6 +38,7 @@ namespace SwarmerServer
 			services.AddSingleton<RepositoriesManagerContract>(provider => new RepositoriesManager(Configuration["db:connections:main"]));
 			services.AddSingleton(provider => new AccountsManagementCore
 			{
+                AuthenticationApi = new AuthenticationApi(provider.GetService<RepositoriesManagerContract>()),
 				UsersApi = new UsersApi(provider.GetService<RepositoriesManagerContract>()),
 				TeamsApi = new TeamsApi(provider.GetService<RepositoriesManagerContract>())
 			});

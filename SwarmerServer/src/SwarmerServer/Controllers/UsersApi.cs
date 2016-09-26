@@ -32,10 +32,10 @@ using Swashbuckle.SwaggerGen.Annotations;
 
 namespace SwarmerServer.Controllers
 {
-	/// <summary>
-	/// 
-	/// </summary>
-	public class UsersApiController : Controller
+    /// <summary>
+    /// 
+    /// </summary>
+    public class UsersApiController : Controller
 	{
 		/// <summary>
 		/// Static class that contains events types codes.

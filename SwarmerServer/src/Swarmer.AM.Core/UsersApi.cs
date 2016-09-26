@@ -6,23 +6,21 @@ using Swarmer.Common.Assetions;
 
 namespace Swarmer.AM.Core
 {
-	public class UsersApi
+    public class UsersApi : ApiBase
 	{
-		private readonly RepositoriesManagerContract mRepositoriesManager;
-
-		public UsersApi(RepositoriesManagerContract repositoriesManager)
+		public UsersApi(RepositoriesManagerContract repositoriesManager) : base(repositoriesManager)
 		{
-			mRepositoriesManager = repositoriesManager;
 		}
 
 		public UserInfo CreateUser(User newUser)
 		{
-			new Assertor(mess => new NotValidRequestException(mess))
-				.Add(() => newUser != null, "Empty request not allowed", true)
-				.Add(() => !string.IsNullOrEmpty(newUser.Login), "Login should be setted")
-				.Add(() => !string.IsNullOrEmpty(newUser.FirstName), "Login should be setted")
-				.Add(() => !string.IsNullOrEmpty(newUser.SecondName), "Login should be setted")
-				.Assert();
+		    var req = newUser;
+		    new Assertor(mess => new NotValidRequestException(mess))
+		        .Add(() => req != null, "Empty request not allowed", true)
+		        .Add(() => !string.IsNullOrEmpty(req.Login), "Login should be setted")
+		        .Add(() => !string.IsNullOrEmpty(req.FirstName), "Login should be setted")
+		        .Add(() => !string.IsNullOrEmpty(req.SecondName), "Login should be setted")
+		        .Assert();
 
 			var result = new UserInfo();
 
