@@ -15,7 +15,12 @@
     "morrisjs": "~0.5.1",
     "datatables-responsive": "1.0.6",
     "bootstrap-social": "~4.8.0",
-    "flot.tooltip": "~0.8.4"
+    "flot.tooltip": "~0.8.4",
+    "eonasdan-bootstrap-datetimepicker": "^4.17.42",
+    "components-font-awesome": "^4.6.3",
+    "requirejs": "^2.3.2",
+    "knockout": "knockoutjs#^3.4.0",
+    "underscore": "^1.8.3"
   },
   "resolutions": {
     "font-awesome": "~4.6.3"

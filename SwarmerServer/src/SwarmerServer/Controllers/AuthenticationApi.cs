@@ -82,7 +82,7 @@ namespace SwarmerServer.Controllers
             }
             catch (NotValidRequestException exception)
             {
-                Logger.Info(mLogMessManager.Log("SomeUser", Codes.Login, "Login error", mReferenceId, new {request.Id}));
+                Logger.Info(mLogMessManager.Log("SomeUser", Codes.Login, "Login error", mReferenceId, new { request.Id }));
                 return BadRequest(exception.Message);
             }
         }
@@ -120,22 +120,37 @@ namespace SwarmerServer.Controllers
             Logger.Info(mLogMessManager.Log("", Codes.Signup, "User signup.", mReferenceId,
                 new { request }));
 
-            var signupData = mSignupDataProvider.GetSignUpData(request.ActivationKey);
-
-            var createdUser = mCore.UsersApi.CreateUser(new User
+            try
             {
-                Login = request.Data.Login,
-                Email = signupData.Email,
-                Country = request.Data.Country,
-                Gender = request.Data.Gender,
-                BirthDate = request.Data.BirthDate,
-                FirstName = request.Data.FirstName,
-                SecondName = request.Data.SecondName,
-                TimeZone = request.Data.TimeZone
-            });
-            mCore.UsersApi.AddAuthenticationData(createdUser, UsersApi.LoginTypes.LoginPassword, request.Password);
+                if (string.IsNullOrEmpty(request?.ActivationKey))
+                    throw new NotValidRequestException(request == null ? "Emtpy request." : "Activation key not setted.");
 
-            return new ObjectResult(new SingUpResponse());
+                var signupData = mSignupDataProvider.GetSignUpData(request.ActivationKey);
+
+                if(signupData == null)
+                    throw new NotValidRequestException("Not valid");
+
+                var createdUser = mCore.UsersApi.CreateUser(new User
+                {
+                    Login = request.Data?.Login,
+                    Email = signupData.Email,
+                    Country = request.Data?.Country,
+                    Gender = request.Data?.Gender,
+                    BirthDate = request.Data?.BirthDate,
+                    FirstName = request.Data?.FirstName,
+                    SecondName = request.Data?.SecondName,
+                    TimeZone = request.Data?.TimeZone
+                });
+                mCore.UsersApi.AddAuthenticationData(createdUser, UsersApi.LoginTypes.LoginPassword, request.Password);
+
+                return new ObjectResult(new SingUpResponse());
+
+            }
+            catch (NotValidRequestException exception)
+            {
+                Logger.Info(mLogMessManager.Log("SomeUser", Codes.Login, "Login error", mReferenceId));
+                return BadRequest(exception.Message);
+            }
         }
 
         /// <summary>

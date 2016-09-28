@@ -8,20 +8,6 @@
 // Activates knockout.js
 ko.applyBindings(AppViewModel);
 
-function callapi(url, request, onSuccess, onFail) {
-    $.ajax({
-            url: "http://localhost/api/" + url.trimLeft("/"),
-            type: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            data: JSON.stringify(request)
-        })
-        .success(onSuccess)
-        .fail(onFail);
-}
-
 $(function () {
     var speed = 300;
 
@@ -45,7 +31,7 @@ $(function () {
 		.submit(function (e) {
 		    var request = { id: AppViewModel.login(), secret: AppViewModel.password() }
 		    console.log("Sending login data: " + request.id + ":" + request.secret);
-		    callapi("login", request,
+		    api.login(request,
                 function(data) {
                     if (data.isSuccess === true)
                         window.location.href = data.url;
@@ -67,7 +53,7 @@ $(function () {
 		    var request = { login: AppViewModel.newlogin(), email: AppViewModel.newemail() }
 		    console.log("Sending sign up data: " + request.login + ":" + request.email);
 
-            callapi("presignup",
+            api.presignup(
                 request,
                 function(data) {
                     if (data.isSuccess === true)

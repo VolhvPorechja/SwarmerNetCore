@@ -18,6 +18,13 @@ $main-color-transparent-dark: rgba($main-color-dark, $transparency-level);
 
 $font-family: 'Roboto';
 
+.err-info {
+    display: none;
+    background-image: initial;
+    background-color: $main-color-red;
+    color: $a-light;
+}
+
 .btn-default {
     background-color: $main-additional;
 }

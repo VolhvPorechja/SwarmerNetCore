@@ -18,3 +18,40 @@
 .panel{
     margin-bottom: 60px;
 }
+
+.button {
+    border: none;
+    display: block;
+    background: #136899;
+    height: 40px;
+    width: 80px;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 5px;
+    -webkit-transition: all 0.15s linear;
+    -moz-transition: all 0.15s linear;
+    transition: all 0.15s linear;
+
+    &:hover {
+        background: #1e75aa;
+    }
+
+    &:active {
+        background: #136899;
+        /*box-shadow: 0 3px 1px #0f608c;*/
+    }
+}
+
+.form-group > label, .checkbox > label {position:relative}
+.form-group.required > label:before, .checkbox.required > label:before { 
+    content:"\f069"; 
+    position:absolute; 
+    top:-2px;
+    right:-10px;
+    color:#c00 ;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: 200;
+    text-decoration: inherit;
+    font-size: 8px;
+    }
