@@ -10162,10 +10162,10 @@
     ],
     ".NETCoreApp,Version=v1.0": [
       "Microsoft.NETCore.App >= 1.0.0",
+      "Swarmer.AM.Contracts",
       "Swarmer.AM.Core",
       "Swarmer.AM.DAL",
-      "Swarmer.Common",
-      "Swarmer.Contracts"
+      "Swarmer.Common"
     ]
   },
   "tools": {
