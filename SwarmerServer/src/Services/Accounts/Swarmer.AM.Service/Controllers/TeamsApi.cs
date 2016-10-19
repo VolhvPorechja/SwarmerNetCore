@@ -30,7 +30,7 @@ using Swarmer.Common.Assetions;
 using Swarmer.Common.Logging;
 using Swashbuckle.SwaggerGen.Annotations;
 
-namespace SwarmerServer.Controllers
+namespace Swarmer.AM.Service.Controllers
 {
 	/// <summary>
 	/// 

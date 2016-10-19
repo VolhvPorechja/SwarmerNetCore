@@ -1,20 +1,20 @@
 ﻿using System;
 using Newtonsoft.Json.Linq;
 
-namespace Swarmer.TM.Contracts
+namespace Swarmer.TM.Contracts.Domain
 {
     /// <summary>
-    /// Model for tournament player.
+    /// Model for game set.
     /// </summary>
-    public class TournamentPlayer
+    public class GameSet
     {
         /// <summary>
-        /// Id of player.
+        /// Winner of set.
         /// </summary>
-        public Guid Id { get; set; }
+        public Guid Winner { get; set; }
 
         /// <summary>
-        /// Stats of player during tournament.
+        /// Stats of game.
         /// </summary>
         public JObject Stats { get; set; }
     }

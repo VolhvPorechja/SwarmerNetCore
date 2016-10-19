@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 
-namespace Swarmer.TM.Contracts
+namespace Swarmer.TM.Contracts.Domain
 {
     /// <summary>
     /// Model for game in tournament.

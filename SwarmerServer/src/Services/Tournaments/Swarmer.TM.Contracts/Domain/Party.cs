@@ -1,18 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
+using Swarmer.Common.Models;
 
-namespace Swarmer.TM.Contracts
+namespace Swarmer.TM.Contracts.Domain
 {
     /// <summary>
     /// Party for tournament.
     /// </summary>
-    public class Party
+    public class Party: SysObject
     {
         /// <summary>
-        /// Id of party.
+        /// Id of tournament.
         /// </summary>
-        public Guid Id { get; set; }
+        public Guid TournamentId { get; set; }
+
+        /// <summary>
+        /// Id of party creator.
+        /// </summary>
+        public Guid Creator { get; set; }
         
         /// <summary>
         /// Id of team for party if player teammates.

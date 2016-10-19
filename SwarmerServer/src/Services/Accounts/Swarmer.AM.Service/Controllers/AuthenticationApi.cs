@@ -10,7 +10,7 @@ using Swarmer.AM.Core;
 using Swarmer.Common.Logging;
 using Swashbuckle.SwaggerGen.Annotations;
 
-namespace SwarmerServer.Controllers
+namespace Swarmer.AM.Service.Controllers
 {
     /// <summary>
     /// Api of authentication.

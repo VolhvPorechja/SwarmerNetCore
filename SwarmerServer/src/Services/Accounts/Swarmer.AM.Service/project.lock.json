@@ -3829,7 +3829,8 @@
         "framework": ".NETStandard,Version=v1.6",
         "dependencies": {
           "NETStandard.Library": "1.6.0",
-          "Newtonsoft.Json": "9.0.1"
+          "Newtonsoft.Json": "9.0.1",
+          "Swarmer.Common": "1.0.0"
         },
         "compile": {
           "netstandard1.6/Swarmer.AM.Contracts.dll": {}

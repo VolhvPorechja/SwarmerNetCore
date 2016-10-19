@@ -1,5 +1,4 @@
 ﻿using Swarmer.AM.Contracts.Contracts;
-using Swarmer.AM.Contracts.Domain;
 using Swarmer.AM.Contracts.Repositories;
 using Swarmer.Common.Assetions;
 
@@ -20,12 +19,12 @@ namespace Swarmer.AM.Core
                 .Assert();
 
             var user = mRepositoriesManager.UsersRepository.GetUserByLogin(request.Id);
-            if(user == null)
+            if (user == null)
                 return AuthResponse.Fail();
 
             var authdata = mRepositoriesManager.UsersRepository.GetAuthenticationData(user.Id.Value, UsersApi.LoginTypes.LoginPassword);
             return authdata != null && authdata.Secret == request.Secret
-                ? AuthResponse.Success("/pages/index.html") 
+                ? AuthResponse.Success("/pages/index.html")
                 : AuthResponse.Fail();
         }
 

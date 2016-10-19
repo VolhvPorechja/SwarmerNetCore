@@ -8,11 +8,11 @@ using Swarmer.AM.Contracts.Providers;
 using Swarmer.AM.Contracts.Repositories;
 using Swarmer.AM.Core;
 using Swarmer.AM.DAL;
+using Swarmer.AM.Service.Stubs;
 using Swarmer.Common.Logging;
-using SwarmerServer.Stubs;
 using Swashbuckle.Swagger.Model;
 
-namespace SwarmerServer
+namespace Swarmer.AM.Service
 {
 	public class Startup
 	{

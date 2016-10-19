@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Swarmer.AM.Contracts.Providers;
 using Swarmer.AM.Contracts.Providers.Contracts;
 
-namespace SwarmerServer.Stubs
+namespace Swarmer.AM.Service.Stubs
 {
     /// <summary>
     /// Stub realization of SignUpActivationProviderContract.

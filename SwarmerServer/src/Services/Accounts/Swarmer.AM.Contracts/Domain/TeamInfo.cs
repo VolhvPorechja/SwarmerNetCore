@@ -23,6 +23,7 @@
 using System;
 using System.Text;
 using Newtonsoft.Json;
+using Swarmer.Common.Models;
 
 namespace Swarmer.AM.Contracts.Domain
 {

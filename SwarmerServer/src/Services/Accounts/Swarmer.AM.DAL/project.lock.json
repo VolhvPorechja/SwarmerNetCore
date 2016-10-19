@@ -1816,13 +1816,29 @@
         "framework": ".NETStandard,Version=v1.6",
         "dependencies": {
           "NETStandard.Library": "1.6.0",
-          "Newtonsoft.Json": "9.0.1"
+          "Newtonsoft.Json": "9.0.1",
+          "Swarmer.Common": "(, )"
         },
         "compile": {
           "netstandard1.6/Swarmer.AM.Contracts.dll": {}
         },
         "runtime": {
           "netstandard1.6/Swarmer.AM.Contracts.dll": {}
+        }
+      },
+      "Swarmer.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v1.6",
+        "dependencies": {
+          "Dommel": "1.7.0",
+          "NETStandard.Library": "1.6.0",
+          "Newtonsoft.Json": "9.0.1"
+        },
+        "compile": {
+          "netstandard1.6/Swarmer.Common.dll": {}
+        },
+        "runtime": {
+          "netstandard1.6/Swarmer.Common.dll": {}
         }
       }
     }
@@ -6041,6 +6057,11 @@
       "type": "project",
       "path": "../Swarmer.AM.Contracts/project.json",
       "msbuildProject": "../Swarmer.AM.Contracts/Swarmer.AM.Contracts.xproj"
+    },
+    "Swarmer.Common/1.0.0": {
+      "type": "project",
+      "path": "../../../Swarmer.Common/project.json",
+      "msbuildProject": "../../../Swarmer.Common/Swarmer.Common.xproj"
     }
   },
   "projectFileDependencyGroups": {

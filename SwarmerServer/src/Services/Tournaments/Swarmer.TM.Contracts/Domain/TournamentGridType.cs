@@ -1,4 +1,4 @@
-﻿namespace Swarmer.TM.Contracts
+﻿namespace Swarmer.TM.Contracts.Domain
 {
     /// <summary>
     /// Type tournament

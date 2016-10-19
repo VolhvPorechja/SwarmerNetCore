@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using Microsoft.AspNetCore.Hosting;
 
-namespace SwarmerServer
+namespace Swarmer.AM.Service
 {
     public class Program
     {

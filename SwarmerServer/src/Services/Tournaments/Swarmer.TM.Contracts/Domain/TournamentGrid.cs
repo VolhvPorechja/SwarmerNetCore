@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Swarmer.TM.Contracts
+namespace Swarmer.TM.Contracts.Domain
 {
     /// <summary>
     /// Tournament grid.
