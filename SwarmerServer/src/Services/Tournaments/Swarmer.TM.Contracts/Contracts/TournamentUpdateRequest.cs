@@ -4,24 +4,19 @@ using Swarmer.TM.Contracts.Domain;
 namespace Swarmer.TM.Contracts.Contracts
 {
     /// <summary>
-    /// Request on tournament creation.
+    /// Request of tournament update.
     /// </summary>
-    public class TournamentCreationRequest
+    public class TournamentUpdateRequest
     {
         /// <summary>
-        /// Title of tournament.
+        /// Title of tounament.
         /// </summary>
         public string Title { get; set; }
 
         /// <summary>
-        /// Begin of tournament.
+        /// Date time of tournament begin.
         /// </summary>
         public DateTime Begin { get; set; }
-
-        /// <summary>
-        /// Short name for tournament.
-        /// </summary>
-        public string Name { get; set; }
 
         /// <summary>
         /// Description of tournament.
@@ -29,7 +24,12 @@ namespace Swarmer.TM.Contracts.Contracts
         public string Description { get; set; }
 
         /// <summary>
-        /// Type of creating tournament.
+        /// Name of tournament.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Updated Tournament Grid.
         /// </summary>
         public TournamentGrid Grid { get; set; }
     }

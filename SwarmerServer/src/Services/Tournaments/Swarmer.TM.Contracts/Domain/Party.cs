@@ -11,6 +11,11 @@ namespace Swarmer.TM.Contracts.Domain
     public class Party: SysObject
     {
         /// <summary>
+        /// Name of party.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
         /// Id of tournament.
         /// </summary>
         public Guid TournamentId { get; set; }

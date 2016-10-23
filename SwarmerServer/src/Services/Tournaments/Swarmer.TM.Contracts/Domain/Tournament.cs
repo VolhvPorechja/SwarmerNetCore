@@ -11,6 +11,21 @@ namespace Swarmer.TM.Contracts.Domain
     public class Tournament : SysObject
     {
         /// <summary>
+        /// Date time of tournament begin.
+        /// </summary>
+        public DateTime Begin { get; set; }
+
+        /// <summary>
+        /// State of tournament.
+        /// </summary>
+        public int State { get; set; }
+
+        /// <summary>
+        /// Game of tournament.
+        /// </summary>
+        public string TournamentGame { get; set; }
+
+        /// <summary>
         /// Title of tournament.
         /// </summary>
         public string Title { get; set; }
@@ -29,6 +44,16 @@ namespace Swarmer.TM.Contracts.Domain
         /// Organizers of tournament.
         /// </summary>
         public List<TournamentOrganizer> Organizers { get; set; }
+
+        /// <summary>
+        /// Additional tounament data.
+        /// </summary>
+        public JObject AdditionalData { get; set; }
+
+        /// <summary>
+        /// Flag that indicates that tournament is open.
+        /// </summary>
+        public bool IsOpen { get; set; }
 
         /// <summary>
         /// Stats of tournament.

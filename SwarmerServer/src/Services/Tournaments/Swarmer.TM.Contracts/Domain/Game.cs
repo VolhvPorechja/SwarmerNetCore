@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
+using Swarmer.Common.Models;
 
 namespace Swarmer.TM.Contracts.Domain
 {
@@ -9,6 +10,11 @@ namespace Swarmer.TM.Contracts.Domain
     /// </summary>
     public class Game
     {
+        /// <summary>
+        /// Date time when game starts.
+        /// </summary>
+        public DateTime Start { get; set; }
+
         /// <summary>
         /// Number of sets.
         /// </summary>
