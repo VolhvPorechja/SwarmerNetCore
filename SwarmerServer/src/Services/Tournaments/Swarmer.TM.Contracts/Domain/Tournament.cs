@@ -16,15 +16,15 @@ namespace Swarmer.TM.Contracts.Domain
         public DateTime Begin { get; set; }
 
         /// <summary>
+        /// Owner of tournament.
+        /// </summary>
+        public Guid Owner { get; set; }
+
+        /// <summary>
         /// State of tournament.
         /// </summary>
         public int State { get; set; }
-
-        /// <summary>
-        /// Game of tournament.
-        /// </summary>
-        public string TournamentGame { get; set; }
-
+        
         /// <summary>
         /// Title of tournament.
         /// </summary>
@@ -39,17 +39,7 @@ namespace Swarmer.TM.Contracts.Domain
         /// Description of tournament.
         /// </summary>
         public string Description { get; set; }
-
-        /// <summary>
-        /// Organizers of tournament.
-        /// </summary>
-        public List<TournamentOrganizer> Organizers { get; set; }
-
-        /// <summary>
-        /// Additional tounament data.
-        /// </summary>
-        public JObject AdditionalData { get; set; }
-
+        
         /// <summary>
         /// Flag that indicates that tournament is open.
         /// </summary>
@@ -61,13 +51,13 @@ namespace Swarmer.TM.Contracts.Domain
         public JObject TournamentStats { get; set; }
 
         /// <summary>
+        /// Tournament data.
+        /// </summary>
+        public TournamentData Data { get; set; }
+
+        /// <summary>
         /// Parties that take part in tournament.
         /// </summary>
         public List<Party> Parties { get; set; }
-
-        /// <summary>
-        /// Grid of tournament.
-        /// </summary>
-        public TournamentGrid Grid { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json.Linq;
 using NLog;
 using Swarmer.TM.Contracts.Contracts;
 using Swarmer.TM.Contracts.Domain;
@@ -89,6 +90,23 @@ namespace Swarmer.TM.Service.Controllers
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Update tournament data.
+        /// </summary>
+        /// <remarks>Updated tournament aggregated stats. </remarks>
+        /// <param name="tournamentId">Id of tournament.</param>
+        /// <param name="stats">Updated aggregated tournament stats.</param>
+        /// <response code="200">Updated tournament data.</response>
+        /// <response code="0">Unexpected error</response>
+        [HttpPost]
+        [Route("/tournament/{tournamentId}/stats")]
+        [SwaggerOperation("UpdateTournamentData")]
+		[SwaggerResponse(200, type: typeof(Tournament))]
+        public virtual IActionResult UpdateTournamentStats([FromRoute] Guid tournamentId, [FromBody] JObject stats)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         #region Invites
@@ -105,6 +123,53 @@ namespace Swarmer.TM.Service.Controllers
         [SwaggerOperation("GetTournamentInvites")]
 		[SwaggerResponse(200, type: typeof(List<TournamentInvite>))]
         public virtual IActionResult GetTournamentInvites([FromRoute] Guid tournamentId)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Get all tournament invites.
+        /// </summary>
+        /// <remarks>Get all created tournament invites. </remarks>
+        /// <param name="userid"></param>
+        /// <response code="200">Tournament invites.</response>
+        /// <response code="0">Unexpected error</response>
+        [HttpGet]
+        [Route("/tournament/invites/users/{userid}")]
+        [SwaggerOperation("GetTournamentInvites")]
+		[SwaggerResponse(200, type: typeof(List<TournamentInvite>))]
+        public virtual IActionResult GetUserInvites([FromRoute] Guid userid)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Get all tournament invites.
+        /// </summary>
+        /// <remarks>Get all created tournament invites. </remarks>
+        /// <param name="teamid"></param>
+        /// <response code="200">Tournament invites.</response>
+        /// <response code="0">Unexpected error</response>
+        [HttpGet]
+        [Route("/tournament/invites/teams/{teamid}")]
+        [SwaggerOperation("GetTournamentInvites")]
+        [SwaggerResponse(200, type: typeof(List<TournamentInvite>))]
+        public virtual IActionResult GetTeamInvites([FromRoute] Guid teamid)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Get all tournament invites.
+        /// </summary>
+        /// <remarks>Get all created tournament invites. </remarks>
+        /// <param name="joinRequest"></param>
+        /// <response code="200">Tournament invites.</response>
+        /// <response code="0">Unexpected error</response>
+        [HttpPost]
+        [Route("/tournament/join")]
+        [SwaggerOperation("GetTournamentInvites")]
+        public virtual IActionResult JoinTournament([FromBody] JoinTournamentRequest joinRequest)
         {
             throw new NotImplementedException();
         }

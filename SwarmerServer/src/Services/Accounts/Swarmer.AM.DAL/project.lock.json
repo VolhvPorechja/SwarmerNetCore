@@ -1817,7 +1817,7 @@
         "dependencies": {
           "NETStandard.Library": "1.6.0",
           "Newtonsoft.Json": "9.0.1",
-          "Swarmer.Common": "(, )"
+          "Swarmer.Common": "1.0.0"
         },
         "compile": {
           "netstandard1.6/Swarmer.AM.Contracts.dll": {}
@@ -1839,6 +1839,21 @@
         },
         "runtime": {
           "netstandard1.6/Swarmer.Common.dll": {}
+        }
+      },
+      "Swarmer.Dapper.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v1.6",
+        "dependencies": {
+          "Dapper": "1.50.2",
+          "NETStandard.Library": "1.6.0",
+          "Newtonsoft.Json": "9.0.1"
+        },
+        "compile": {
+          "netstandard1.6/Swarmer.Dapper.Common.dll": {}
+        },
+        "runtime": {
+          "netstandard1.6/Swarmer.Dapper.Common.dll": {}
         }
       }
     }
@@ -6062,6 +6077,11 @@
       "type": "project",
       "path": "../../../Swarmer.Common/project.json",
       "msbuildProject": "../../../Swarmer.Common/Swarmer.Common.xproj"
+    },
+    "Swarmer.Dapper.Common/1.0.0": {
+      "type": "project",
+      "path": "../../../Swarmer.Dapper.Common/project.json",
+      "msbuildProject": "../../../Swarmer.Dapper.Common/Swarmer.Dapper.Common.xproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -6071,7 +6091,8 @@
       "Dommel >= 1.7.1",
       "NETStandard.Library >= 1.6.0",
       "Npgsql >= 3.1.7",
-      "Swarmer.AM.Contracts"
+      "Swarmer.AM.Contracts",
+      "Swarmer.Dapper.Common"
     ],
     ".NETStandard,Version=v1.6": []
   },
