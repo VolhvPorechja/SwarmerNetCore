@@ -1,16 +1,19 @@
 {
 	"version": "1.0.0-*",
 
-	"dependencies": {
-		"Dapper": "1.50.2",
-		"Dapper.FluentMap": "1.5.1",
-		"Dommel": "1.7.1",
-		"Npgsql": "3.1.7",
-		"NETStandard.Library": "1.6.0",
-		"Swarmer.AM.Contracts": {
-			"target": "project"
-		}
-	},
+    "dependencies": {
+        "Dapper": "1.50.2",
+        "Dapper.FluentMap": "1.5.1",
+        "Dommel": "1.7.1",
+        "Npgsql": "3.1.7",
+        "NETStandard.Library": "1.6.0",
+        "Swarmer.AM.Contracts": {
+            "target": "project"
+        },
+        "Swarmer.Dapper.Common": {
+            "target": "project"
+        }
+    },
 
 	"frameworks": {
 		"netstandard1.6": {

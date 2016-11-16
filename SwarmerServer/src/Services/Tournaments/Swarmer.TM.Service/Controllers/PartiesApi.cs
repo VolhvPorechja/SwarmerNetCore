@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 using Swarmer.TM.Contracts.Contracts;
 using Swarmer.TM.Contracts.Domain;
 using Swashbuckle.SwaggerGen.Annotations;
@@ -11,56 +13,103 @@ namespace Swarmer.TM.Service.Controllers
         #region Party
 
         /// <summary>
-        /// Get tournament.
+        /// Create new part on tournament.
         /// </summary>
-        /// <remarks>During call will be created. </remarks>
-        /// <param name="request"></param>
-        /// <response code="200">Data for make decisions on successfull user login.</response>
+        /// <remarks>New party for given tournament.</remarks>
+        /// <param name="request">Request for party creation.</param>
+        /// <response code="200">Created party.</response>
         /// <response code="0">Unexpected error</response>
         [HttpPost]
         [Route("/party")]
         [SwaggerOperation("CreateTournamentParty")]
+        [SwaggerResponse(200, type: typeof(Party))]
         public virtual IActionResult CreateParty([FromBody] PartyCreationRequest request)
         {
             throw new NotImplementedException();
         }
 
         /// <summary>
-        /// Get tournament.
+        /// Get party.
         /// </summary>
-        /// <remarks>During call will be created. </remarks>
-        /// <param name="tournamentId">Id of tournament.</param>
-        /// <param name="partyId">Id of getting party.</param>
-        /// <response code="200">Data for make decisions on successfull user login.</response>
+        /// <remarks>Get party by id.</remarks>
+        /// <param name="partyId">Id of party.</param>
+        /// <response code="200">Requested party.</response>
         /// <response code="0">Unexpected error</response>
         [HttpGet]
         [Route("/party/{partyId}")]
-        [SwaggerOperation("GetTournamentParty")]
-        public virtual IActionResult GetParty([FromRoute] Guid tournamentId, [FromRoute] Guid partyId)
+        [SwaggerOperation("GetParty")]
+        [SwaggerResponse(200, type: typeof(Party))]
+        public virtual IActionResult GetParty([FromRoute] Guid partyId)
         {
             throw new NotImplementedException();
         }
 
         /// <summary>
-        /// Update tournament party data.
+        /// Update party data.
         /// </summary>
-        /// <remarks>During call will be created. </remarks>
-        /// <param name="tournamentId">Id of tournament.</param>
+        /// <remarks>Update allowed party data.</remarks>
         /// <param name="partyId">Id of getting party.</param>
         /// <param name="updatedPartyData">Updated party data.</param>
         /// <response code="200">Data for make decisions on successfull user login.</response>
         /// <response code="0">Unexpected error</response>
         [HttpPost]
         [Route("/party/{partyId}")]
-        [SwaggerOperation("GetTournamentParty")]
-        public virtual IActionResult UpdatePartyData([FromRoute] Guid tournamentId, [FromRoute] Guid partyId, [FromBody] PartyUpdateDataRequest updatedPartyData)
+        [SwaggerOperation("UpdatePartyData")]
+        public virtual IActionResult UpdatePartyData([FromRoute] Guid partyId, [FromBody] PartyUpdateDataRequest updatedPartyData)
+        {
+            throw new NotImplementedException();
+        }
+        
+        /// <summary>
+        /// Update tournament party data.
+        /// </summary>
+        /// <remarks>During call will be created. </remarks>
+        /// <param name="partyId">Id of getting party.</param>
+        /// <response code="200">Data for make decisions on successfull user login.</response>
+        /// <response code="0">Unexpected error</response>
+        [HttpDelete]
+        [Route("/party/{partyId}")]
+        [SwaggerOperation("DeleteParty")]
+        public virtual IActionResult DeleteParty([FromRoute] Guid partyId)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Update party stats.
+        /// </summary>
+        /// <remarks>Update aggregated stats of tournament.</remarks>
+        /// <param name="partyId">Id of party.</param>
+        /// <param name="stats">Tournament party aggregated stats.</param>
+        /// <response code="200">Data for make decisions on successfull user login.</response>
+        /// <response code="0">Unexpected error</response>
+        [HttpPost]
+        [Route("/party/{partyId}/stats")]
+        [SwaggerOperation("UpdatePartyStats")]
+        public virtual IActionResult UpdatePartyStats([FromRoute] Guid partyId, [FromBody] JObject stats)
         {
             throw new NotImplementedException();
         }
 
         #endregion
 
-        #region Invite
+        #region Invites
+
+        /// <summary>
+        /// Update tournament party data.
+        /// </summary>
+        /// <remarks>During call will be created. </remarks>
+        /// <param name="tournamentId">Id of getting party.</param>
+        /// <response code="200">Data for make decisions on successfull user login.</response>
+        /// <response code="0">Unexpected error</response>
+        [HttpGet]
+        [Route("/party/tournament/{tournamentId}")]
+        [SwaggerOperation("GetTournamentParties")]
+        [SwaggerResponse(200, type: typeof(List<Party>))]
+        public virtual IActionResult GetTournamentParties([FromRoute] Guid tournamentId)
+        {
+            throw new NotImplementedException();
+        }
 
         /// <summary>
         /// Update tournament party data.
@@ -70,9 +119,27 @@ namespace Swarmer.TM.Service.Controllers
         /// <response code="200">Data for make decisions on successfull user login.</response>
         /// <response code="0">Unexpected error</response>
         [HttpGet]
-        [Route("/party/{partyId}/invite")]
-        [SwaggerOperation("GetPartyInvites")]
+        [Route("/party/{partyId}/invites")]
+        [SwaggerOperation("GetTournamentParties")]
+        [SwaggerResponse(200, type: typeof(List<PartyInvite>))]
         public virtual IActionResult GetPartyInvites([FromRoute] Guid partyId)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Update tournament party data.
+        /// </summary>
+        /// <remarks>During call will be created. </remarks>
+        /// <param name="tournamentId"></param>
+        /// <param name="userId">Id of getting party.</param>
+        /// <response code="200">Data for make decisions on successfull user login.</response>
+        /// <response code="0">Unexpected error</response>
+        [HttpGet]
+        [Route("/party/tournament/{tournamentId}/invites/user/{userId}")]
+        [SwaggerOperation("GetUserTournamentPartyInvites")]
+        [SwaggerResponse(200, type: typeof(List<PartyInvite>))]
+        public virtual IActionResult GetUserTournamentPartyInvites([FromRoute] Guid tournamentId, [FromRoute] Guid userId)
         {
             throw new NotImplementedException();
         }
@@ -86,7 +153,7 @@ namespace Swarmer.TM.Service.Controllers
         /// <response code="0">Unexpected error</response>
         [HttpPost]
         [Route("/party/{partyId}/invite")]
-        [SwaggerOperation("GetPartyInvites")]
+        [SwaggerOperation("InvitePlayer")]
         public virtual IActionResult InvitePlayer([FromBody] PartyInviteRequest partyId)
         {
             throw new NotImplementedException();
@@ -122,8 +189,8 @@ namespace Swarmer.TM.Service.Controllers
         /// <response code="0">Unexpected error</response>
         [HttpPost]
         [Route("/party/{partyId}/player/{playerId}")]
-        [SwaggerOperation("GetTournamentParty")]
-        public virtual IActionResult ParticipateInParty([FromRoute] Guid partyId, [FromRoute] Guid playerId)
+        [SwaggerOperation("JoinParty")]
+        public virtual IActionResult JoinParty([FromRoute] Guid partyId, [FromRoute] Guid playerId)
         {
             throw new NotImplementedException();
         }
@@ -138,7 +205,7 @@ namespace Swarmer.TM.Service.Controllers
         /// <response code="0">Unexpected error</response>
         [HttpDelete]
         [Route("/party/{partyId}/player/{playerId}")]
-        [SwaggerOperation("GetTournamentParty")]
+        [SwaggerOperation("LeaveParty")]
         public virtual IActionResult LeaveParty([FromRoute] Guid partyId, [FromRoute] Guid playerId)
         {
             throw new NotImplementedException();

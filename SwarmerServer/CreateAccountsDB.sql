@@ -4,7 +4,7 @@
   LC_COLLATE = 'ru_RU.UTF-8'
   LC_CTYPE = 'ru_RU.UTF-8'
   TEMPLATE = template0;
-
+  
 CREATE TABLE Users (
  Id uuid PRIMARY KEY not null,
  Created timestamp with time zone not null,

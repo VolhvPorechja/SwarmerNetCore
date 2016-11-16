@@ -40,7 +40,7 @@ namespace Swarmer.AM.DAL.Repositories
 
 		public bool IsTeamWithNameExists(string name)
 		{
-			return mConnection.ExecuteScalar<int>("SELECT count(*) FROM Teams WHERE name = @name", new { name }) != 0;
+			return mConnection.ExecuteScalar<bool>("SELECT exists(SELECT id FROM Teams WHERE name = @name)", new { name });
 		}
 
 		public Team GetTeamByName(string name)

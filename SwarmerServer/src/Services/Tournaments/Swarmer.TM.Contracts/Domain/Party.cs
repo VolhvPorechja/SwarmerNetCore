@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using Swarmer.Common.Models;
 
@@ -36,8 +35,8 @@ namespace Swarmer.TM.Contracts.Domain
         public JObject Stats { get; set; }
 
         /// <summary>
-        /// Players that takes part in tournamet.
+        /// Party data.
         /// </summary>
-        public List<TournamentPlayer> Players { get; set; }
+        public PartyData Data { get; set; }
     }
 }

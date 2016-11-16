@@ -3,7 +3,7 @@ using Dapper;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Swarmer.AM.DAL.TypesHandlers
+namespace Swarmer.Dapper.Common
 {
     public class JsonedObjectTypeHandler<TType> : SqlMapper.TypeHandler<TType>
     {

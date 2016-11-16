@@ -17,5 +17,10 @@ namespace Swarmer.TM.Contracts.Domain
         /// Id of player that invited.
         /// </summary>
         public Guid PayerId { get; set; }
+
+        /// <summary>
+        /// Is invite used.
+        /// </summary>
+        public bool Used { get; set; }
     }
 }
