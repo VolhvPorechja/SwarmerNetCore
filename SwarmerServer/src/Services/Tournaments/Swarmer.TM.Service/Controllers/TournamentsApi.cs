@@ -97,7 +97,7 @@ namespace Swarmer.TM.Service.Controllers
         /// Get all tournament invites.
         /// </summary>
         /// <remarks>Get all created tournament invites. </remarks>
-        /// <param name="tournamentId"></param>
+        /// <param name="tournamentId">Id of tournament for which invite will be created.</param>
         /// <response code="200">Tournament invites.</response>
         /// <response code="0">Unexpected error</response>
         [HttpGet]
@@ -110,12 +110,12 @@ namespace Swarmer.TM.Service.Controllers
         }
 
         /// <summary>
-        /// Create new tournament.
+        /// Recall tournament invite.
         /// </summary>
-        /// <remarks>During call will be created. </remarks>
-        /// <param name="tournamentId"></param>
-        /// <param name="inviteId"></param>
-        /// <response code="200">Tournament invite was successfully recalled.</response>
+        /// <remarks>Recall created tournament invite. </remarks>
+        /// <param name="tournamentId">Id of tournament for which invite was created.</param>
+        /// <param name="inviteId">Id of invite that should be recalled.</param>
+        /// <response code="200">Empty response if everything is Ok.</response>
         /// <response code="0">Unexpected error</response>
         [HttpDelete]
         [Route("/tournament/{tournamentId}/invite/{inviteId}")]
@@ -131,7 +131,7 @@ namespace Swarmer.TM.Service.Controllers
         /// <remarks>Create tournament player invite. </remarks>
         /// <param name="tournamentId">Id of tournament on which player will be invited.</param>
         /// <param name="inviteData">Invitation data.</param>
-        /// <response code="200">Data for make decisions on successfull user login.</response>
+        /// <response code="200">Empty response if everything is Ok.</response>
         /// <response code="0">Unexpected error</response>
         [HttpPost]
         [Route("/tournament/{tournamentId}/invite")]
@@ -148,13 +148,14 @@ namespace Swarmer.TM.Service.Controllers
         /// <summary>
         /// Get tournament parties.
         /// </summary>
-        /// <remarks>During call will be created. </remarks>
-        /// <param name="tournamentId">Get tournament by id.</param>
-        /// <response code="200">Data for make decisions on successfull user login.</response>
+        /// <remarks>Get all parties created on tournament.</remarks>
+        /// <param name="tournamentId">Id of tournament.</param>
+        /// <response code="200">List of tournament parties.</response>
         /// <response code="0">Unexpected error</response>
         [HttpGet]
         [Route("/tournament/{tournamentId}/party")]
         [SwaggerOperation("GetTournamentParties")]
+		[SwaggerResponse(200, type: typeof(List<Party>))]
         public virtual IActionResult GetTournamentParties([FromRoute] Guid tournamentId)
         {
             throw new NotImplementedException();
@@ -165,44 +166,29 @@ namespace Swarmer.TM.Service.Controllers
         #region Games
 
         /// <summary>
-        /// Get tournament games.
+        /// Get tournament grid.
         /// </summary>
-        /// <remarks>During call will be created. </remarks>
+        /// <remarks>Get all tournament games. </remarks>
         /// <param name="tournamentId">Id of tournament.</param>
         /// <response code="200">Data for make decisions on successfull user login.</response>
         /// <response code="0">Unexpected error</response>
         [HttpGet]
-        [Route("/tournament/{tournamentId}/game")]
-        [SwaggerOperation("GetTournamentGames")]
-        public virtual IActionResult GetTournamentGames([FromRoute] Guid tournamentId)
+        [Route("/tournament/{tournamentId}/grid")]
+        [SwaggerOperation("GetTournamentGrid")]
+		[SwaggerResponse(200, type: typeof(TournamentGrid))]
+        public virtual IActionResult GetTournamentGrid([FromRoute] Guid tournamentId)
         {
-            throw new NotImplementedException();
+            return Ok();
         }
 
         /// <summary>
-        /// Get tournament games.
+        /// Update tournament grid data.
         /// </summary>
-        /// <remarks>During call will be created. </remarks>
-        /// <param name="tournamentId">Id of tournament.</param>
-        /// <param name="gameId">Id of game that will be updated.</param>
-        /// <response code="200">Data for make decisions on successfull user login.</response>
-        /// <response code="0">Unexpected error</response>
-        [HttpGet]
-        [Route("/tournament/{tournamentId}/game/{gameId}")]
-        [SwaggerOperation("GetTournamentGame")]
-        public virtual IActionResult GetTournamentGame([FromRoute] Guid tournamentId, [FromRoute] Guid gameId)
-        {
-            throw new NotImplementedException();
-        }
-        
-        /// <summary>
-        /// Get tournament games.
-        /// </summary>
-        /// <remarks>During call will be created. </remarks>
+        /// <remarks>Method for updating data about played game.</remarks>
         /// <param name="tournamentId">Id of tournament.</param>
         /// <param name="gameId">Id of game that will be updated.</param>
         /// <param name="updatedData">Updated game data.</param>
-        /// <response code="200">Data for make decisions on successfull user login.</response>
+        /// <response code="200">Empty</response>
         /// <response code="0">Unexpected error</response>
         [HttpPost]
         [Route("/tournament/{tournamentId}/game/{gameId}")]

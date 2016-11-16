@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
-using Swarmer.Common.Models;
 
 namespace Swarmer.TM.Contracts.Domain
 {

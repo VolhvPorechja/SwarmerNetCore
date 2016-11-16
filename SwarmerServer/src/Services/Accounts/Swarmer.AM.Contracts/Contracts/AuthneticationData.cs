@@ -1,5 +1,5 @@
 using System;
-using Swarmer.AM.Contracts.Domain;
+using Swarmer.Common.Models;
 
 namespace Swarmer.AM.Contracts.Contracts
 {
