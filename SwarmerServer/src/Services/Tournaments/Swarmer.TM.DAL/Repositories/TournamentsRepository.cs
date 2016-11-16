@@ -14,7 +14,7 @@ namespace Swarmer.TM.DAL.Repositories
         {
         }
 
-        public IEnumerable<Tournament> GetTournaments(int pageSize, int pageNum)
+        public IEnumerable<Tournament> GetAll(int pageSize, int pageNum)
         {
             return mConnection.Query<Tournament>($"SELECT * FROM Tournaments LIMIT {pageSize} OFFSET {pageSize * pageNum}");
         }
@@ -64,6 +64,43 @@ namespace Swarmer.TM.DAL.Repositories
             mConnection.Execute("UPDATE Tournament SET state=@state WHERE id=@tournamentid", new { tournamentId });
         }
 
+	    public IEnumerable<TournamentPlayer> GetTournamentPlayers(Guid tournamentId)
+	    {
+		    return mConnection.Query<TournamentPlayer>("SELECT * FROM TournamentsPlayers WHERE tournamentid=@tournamentid",
+			    new {tournamentId});
+	    }
+
+	    public void AddTournamentPlayer(TournamentPlayer player)
+	    {
+			DateTime now = DateTime.Now;
+			player.Id = Guid.NewGuid();
+		    player.Created = now;
+		    player.Updated = now;
+		    mConnection.Execute("INSERT INTO TournamentsPlayers(id,created,updated,tournamentid,playerid,teamid)" +
+		                        "values(@id,@created,@updated,@tournamentid,@playerid,@teamid)", player);
+	    }
+
+	    public void RemoveTournamentPlayer(Guid playerId)
+	    {
+	        mConnection.Execute("DELETE FROM TournamentPlayers WHERE id=@playerid", new {playerId});
+	    }
+
+	    public TournamentInvite GetTournamentInvite(Guid inviteId)
+	    {
+		    return mConnection.Query<TournamentInvite>("SELECT exists(SELECT * FROM TournamentsInvites WHERE id=@inviteid)", new {inviteId}).Single();
+	    }
+
+        public IEnumerable<TournamentInvite> FindTournamentInvite(Guid tournamenId, Guid userId, Guid teamId)
+        {
+            return
+                mConnection.Query<TournamentInvite>(
+                    "SELECT * FROM TournamentsInvites WHERE tournamentid=@tournamentid AND (playerid=@userid OR teamid=@teamid)", new
+                    {
+                        userId,
+                        teamId
+                    });
+        }
+
         public void CreateTournamentInvite(TournamentInvite invite)
         {
             DateTime now = DateTime.Now;
@@ -91,7 +128,13 @@ namespace Swarmer.TM.DAL.Repositories
             return mConnection.Query<TournamentInvite>("SELECT * FROM TournamentsInvites WHERE playerid=@userid");
         }
 
-        public IEnumerable<TournamentInvite> GetTeamInvites(Guid teamId)
+	    public IEnumerable<TournamentInvite> GetTorunamentInvites(Guid tournamentId)
+	    {
+		    return mConnection.Query<TournamentInvite>("SELECT * FROM TournamentsInvites WHERE tournamentid=@tournamentid",
+			    new {tournamentId});
+	    }
+
+	    public IEnumerable<TournamentInvite> GetTeamInvites(Guid teamId)
         {
             return mConnection.Query<TournamentInvite>("SELECT * FROM Tournaments WHERE teamid=@teamid", new {teamId});
         }

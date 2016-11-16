@@ -16,5 +16,10 @@ namespace Swarmer.TM.Contracts.Contracts
         /// Id of joining user.
         /// </summary>
         public Guid UserId { get; set; }
+        
+        /// <summary>
+        /// Id of team of which player will play.
+        /// </summary>
+        public Guid? TeamId { get; set; }
     }
 }

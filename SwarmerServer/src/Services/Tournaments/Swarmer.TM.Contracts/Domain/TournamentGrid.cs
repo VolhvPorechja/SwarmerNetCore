@@ -3,7 +3,7 @@
 namespace Swarmer.TM.Contracts.Domain
 {
     /// <summary>
-    /// Tournament grid.
+    /// TournamentId grid.
     /// </summary>
     public class TournamentGrid
     {

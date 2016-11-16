@@ -32,5 +32,10 @@ namespace Swarmer.TM.Contracts.Contracts
         /// Type of creating tournament.
         /// </summary>
         public TournamentGrid Grid { get; set; }
+
+        /// <summary>
+        /// Is tournament open for joining.
+        /// </summary>
+        public bool IsOpen { get; set; }
     }
 }

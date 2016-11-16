@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 
 namespace Swarmer.TM.Contracts.Domain
 {
@@ -8,12 +7,7 @@ namespace Swarmer.TM.Contracts.Domain
     /// </summary>
     public class PartyData
     {
-        /// <summary>
-        /// Players that takes part in tournamet.
-        /// </summary>
-        public List<TournamentPlayer> Players { get; set; }
-
-        /// <summary>
+		/// <summary>
         /// Additional party data.
         /// </summary>
         public JObject AdditionalData { get; set; }

@@ -31,7 +31,7 @@ namespace Swarmer.AM.Service
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			var pathToDoc = Configuration["Swagger:path"];
+			var pathToDoc = Configuration["Swagger:xmldocpath"];
 
 			// Add framework services.
 			services.AddMvc();
@@ -40,12 +40,7 @@ namespace Swarmer.AM.Service
 			services.AddSingleton<RepositoriesManagerContract>(provider => new RepositoriesManager(Configuration["db:connections:main"]));
 		    services.AddSingleton<SignUpActivationProviderContract>(provider => new StubSignUpProvider());
 
-			services.AddSingleton(provider => new AccountsManagementCore
-			{
-                AuthenticationApi = new AuthenticationApi(provider.GetService<RepositoriesManagerContract>()),
-				UsersApi = new UsersApi(provider.GetService<RepositoriesManagerContract>()),
-				TeamsApi = new TeamsApi(provider.GetService<RepositoriesManagerContract>())
-			});
+		    services.AddSingleton(provider => new AccountsManagementCore(provider.GetService<RepositoriesManagerContract>()));
 
 			services.AddSingleton(provider => new LogMessagesManager("AM"));
 		    services.AddSingleton(Configuration);

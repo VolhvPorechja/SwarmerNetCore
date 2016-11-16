@@ -32,6 +32,12 @@
         },
         "Swarmer.TM.Contracts": {
           "target": "project"
+        },
+        "Swarmer.TM.DAL": {
+          "target": "project"
+        },
+        "Swarmer.TM.Core": {
+          "target": "project"
         }
       },
       "imports": "dnxcore50"

@@ -5,12 +5,12 @@ using System.Text;
 
 namespace Swarmer.Common.Assetions
 {
-	/// <summary>
+    /// <summary>
 	/// Class for collecting assertions statements and accumulation assertion messages.
 	/// </summary>
 	public class Assertor
 	{
-		private readonly List<Tuple<Func<bool>,string, bool>> mAssertStatements = new List<Tuple<Func<bool>, string, bool>>();
+		protected readonly List<Tuple<Func<bool>,string, bool>> mAssertStatements = new List<Tuple<Func<bool>, string, bool>>();
 		private readonly Func<string, Exception> mExceptionCreator;
 
 		private static readonly Func<string, Exception> DefaultExceptionCreator = mess => new Exception(mess);

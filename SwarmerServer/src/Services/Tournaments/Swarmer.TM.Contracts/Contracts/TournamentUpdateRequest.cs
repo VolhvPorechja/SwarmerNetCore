@@ -16,7 +16,7 @@ namespace Swarmer.TM.Contracts.Contracts
         /// <summary>
         /// Date time of tournament begin.
         /// </summary>
-        public DateTime Begin { get; set; }
+        public DateTime? Begin { get; set; }
 
         /// <summary>
         /// Description of tournament.
@@ -29,7 +29,7 @@ namespace Swarmer.TM.Contracts.Contracts
         public string Name { get; set; }
 
         /// <summary>
-        /// Updated Tournament Grid.
+        /// Updated TournamentId Grid.
         /// </summary>
         public TournamentGrid Grid { get; set; }
     }

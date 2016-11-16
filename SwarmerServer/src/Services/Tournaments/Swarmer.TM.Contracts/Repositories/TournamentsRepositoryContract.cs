@@ -18,7 +18,7 @@ namespace Swarmer.TM.Contracts.Repositories
         /// <param name="pageSize"></param>
         /// <param name="pageNum"></param>
         /// <returns></returns>
-        IEnumerable<Tournament> GetTournaments(int pageSize, int pageNum);
+        IEnumerable<Tournament> GetAll(int pageSize, int pageNum);
 
         /// <summary>
         /// Get tournament by id.
@@ -26,7 +26,7 @@ namespace Swarmer.TM.Contracts.Repositories
         /// <param name="id"></param>
         /// <returns></returns>
         Tournament GetById(Guid id);
-
+		 
         /// <summary>
         /// Get tournament by name.
         /// </summary>
@@ -66,9 +66,47 @@ namespace Swarmer.TM.Contracts.Repositories
         /// <param name="stats"></param>
         void UpdateTournamentStats(Guid tournamentId, JObject stats);
 
-        #endregion
+		#endregion
 
-        #region Invites
+		#region Players
+
+		/// <summary>
+		/// Get players of tournament.
+		/// </summary>
+		/// <param name="tournamentId"></param>
+		/// <returns></returns>
+		IEnumerable<TournamentPlayer> GetTournamentPlayers(Guid tournamentId);
+
+		/// <summary>
+		/// Add new tournament player.
+		/// </summary>
+		/// <param name="player"></param>
+	    void AddTournamentPlayer(TournamentPlayer player);
+
+	    /// <summary>
+	    /// Remove player from tournament.
+	    /// </summary>
+	    /// <param name="playerId"></param>
+	    void RemoveTournamentPlayer(Guid playerId);
+
+		#endregion
+
+		#region Invites
+
+		/// <summary>
+		/// Check if tournament invite exists.
+		/// </summary>
+		/// <param name="inviteId"></param>
+		/// <returns></returns>
+		TournamentInvite GetTournamentInvite(Guid inviteId);
+
+        /// <summary>
+        /// Find tournament for given player or team.
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="teamId"></param>
+        /// <returns></returns>
+        IEnumerable<TournamentInvite> FindTournamentInvite(Guid userId, Guid teamId);
 
         /// <summary>
         /// Create new tournament invite.
@@ -94,6 +132,13 @@ namespace Swarmer.TM.Contracts.Repositories
         /// <param name="userId"></param>
         /// <returns></returns>
         IEnumerable<TournamentInvite> GetUserInvites(Guid userId);
+
+		/// <summary>
+        /// Get tournament invites.
+        /// </summary>
+        /// <param name="tournamentId"></param>
+        /// <returns></returns>
+        IEnumerable<TournamentInvite> GetTorunamentInvites(Guid tournamentId);
 
         /// <summary>
         /// Get tournaments invites for teams.

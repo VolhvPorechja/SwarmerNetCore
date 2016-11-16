@@ -51,7 +51,7 @@ namespace Swarmer.TM.Contracts.Domain
         public JObject TournamentStats { get; set; }
 
         /// <summary>
-        /// Tournament data.
+        /// TournamentId data.
         /// </summary>
         public TournamentData Data { get; set; }
 

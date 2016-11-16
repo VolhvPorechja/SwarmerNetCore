@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 namespace Swarmer.TM.Contracts.Domain
 {
     /// <summary>
-    /// Tournament data.
+    /// TournamentId data.
     /// </summary>
     public class TournamentData
     {
