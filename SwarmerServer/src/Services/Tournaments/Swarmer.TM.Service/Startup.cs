@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using NLog.Extensions.Logging;
 using Swarmer.Common.Logging;
 using Swarmer.TM.DAL;
 using Swashbuckle.Swagger.Model;
@@ -28,12 +29,14 @@ namespace Swarmer.TM.Service
         {
             TournamentsDAL.Init();
 
-            services.AddSingleton(Configuration);
-			services.AddSingleton(provider => new LogMessagesManager("TM"));
-
-
             // Add framework services.
             services.AddMvc();
+
+            services.AddSingleton(provider => new RepositoriesManager(Configuration["db:connections:main"]));
+            services.AddSingleton(Configuration);
+			services.AddSingleton(provider => new LogMessagesManager("TM"));
+            
+			services.AddSwaggerGen();
             services.ConfigureSwaggerGen(opts =>
             {
                 opts.SingleApiVersion(new Info
@@ -51,6 +54,7 @@ namespace Swarmer.TM.Service
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+            loggerFactory.AddNLog();
 
             app.UseMvc();
             app.UseStaticFiles();

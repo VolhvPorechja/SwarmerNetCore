@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.IO;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Builder;
 
 namespace Swarmer.TM.Service
 {
@@ -15,6 +10,7 @@ namespace Swarmer.TM.Service
             var host = new WebHostBuilder()
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseUrls("http://*:5002/")
                 .UseIISIntegration()
                 .UseStartup<Startup>()
                 .Build();

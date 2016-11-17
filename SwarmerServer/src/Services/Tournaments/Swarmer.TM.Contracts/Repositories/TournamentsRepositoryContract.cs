@@ -101,12 +101,13 @@ namespace Swarmer.TM.Contracts.Repositories
 		TournamentInvite GetTournamentInvite(Guid inviteId);
 
         /// <summary>
-        /// Find tournament for given player or team.
+        /// Find tournament invite for given player or team.
         /// </summary>
+        /// <param name="tournamentId">Id of tournament.</param>
         /// <param name="userId"></param>
         /// <param name="teamId"></param>
         /// <returns></returns>
-        IEnumerable<TournamentInvite> FindTournamentInvite(Guid userId, Guid teamId);
+        IEnumerable<TournamentInvite> FindTournamentInvite(Guid tournamentId, Guid userId, Guid teamId);
 
         /// <summary>
         /// Create new tournament invite.
@@ -139,6 +140,13 @@ namespace Swarmer.TM.Contracts.Repositories
         /// <param name="tournamentId"></param>
         /// <returns></returns>
         IEnumerable<TournamentInvite> GetTorunamentInvites(Guid tournamentId);
+		
+        /// <summary>
+        /// Get tournament invites.
+        /// </summary>
+        /// <param name="tournamentId"></param>
+        /// <returns></returns>
+        IEnumerable<Party> GetTorunamentParties(Guid tournamentId);
 
         /// <summary>
         /// Get tournaments invites for teams.

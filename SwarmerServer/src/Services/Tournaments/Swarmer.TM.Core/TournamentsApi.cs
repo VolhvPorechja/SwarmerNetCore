@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json.Linq;
 using Swarmer.Common;
 using Swarmer.Common.Assetions;
 using Swarmer.TM.Contracts.Contracts;
@@ -80,6 +81,11 @@ namespace Swarmer.TM.Core
 			mReposManager.TournamentsRepository.DeleteTournament(tournamentId);
 		}
 
+	    public void UpdateTournamentStats(Guid tournamentId, JObject stats)
+	    {
+            mReposManager.TournamentsRepository.UpdateTournamentStats(tournamentId, stats);
+	    }
+
 		#endregion
 
 		#region Invites
@@ -111,9 +117,16 @@ namespace Swarmer.TM.Core
 		            request.TeamId ?? Guid.Empty).ToList();
 
 		    if (!tournament.IsOpen && !invites.Any())
-		        throw new BusinsessLogicException("NOTINVITED", "Not invited on tournament");
+		        throw new BusinsessLogicException("NOTINVITED", "Not invited on closed tournament");
 
-		    var newPlayer = new TournamentPlayer
+            foreach (var playerInvite in invites.Where(el => el.Player.HasValue))
+            {
+                if (playerInvite.Used)
+                    throw new BusinsessLogicException("ALREADYPARTICIPATED", "Already in tournament");
+                mReposManager.TournamentsRepository.UseTournamentInvite(playerInvite.Id.Value);
+            }
+
+            var newPlayer = new TournamentPlayer
 		    {
 		        PlayerId = request.UserId,
 		        TeamId = request.TeamId,
@@ -121,16 +134,40 @@ namespace Swarmer.TM.Core
 		    };
             mReposManager.TournamentsRepository.AddTournamentPlayer(newPlayer);
 
-		    foreach (var playerInvite in invites.Where(el => el.Player.HasValue))
-		    {
-                if(playerInvite.Used)
-                    throw new BusinsessLogicException("ALREADYJOINED", "Already in tournament");
-		        mReposManager.TournamentsRepository.UseTournamentInvite(playerInvite.Id.Value);
-		    }
-
             return newPlayer;
         }
 
+	    public void InvitePlayerOrTeam(TournamentInvite invite)
+	    {
+	        mReposManager.TournamentsRepository.CreateTournamentInvite(invite);
+	    }
+
         #endregion
+
+	    #region Parties
+
+	    public IEnumerable<Party> GetTournamentParties(Guid tournamentId)
+	    {
+	        return mReposManager.TournamentsRepository.GetTorunamentParties(tournamentId);
+	    }
+
+        #endregion
+
+	    #region Games
+
+	    public TournamentGrid GetTournamentGrid(Guid tournamentId)
+	    {
+	        var tournament = mReposManager.TournamentsRepository.GetById(tournamentId);
+	        return tournament.Data.Grid;
+	    }
+
+	    public void UpdateTournamentGrid(Guid tournamentId, TournamentGrid updatedGrid)
+	    {
+	        var tournament = mReposManager.TournamentsRepository.GetById(tournamentId);
+	        tournament.Data.Grid = updatedGrid;
+	        mReposManager.TournamentsRepository.UpdateTournament(tournament);
+	    }
+
+	    #endregion
     }
 }

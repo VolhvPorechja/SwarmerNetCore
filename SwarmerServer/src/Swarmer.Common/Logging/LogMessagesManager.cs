@@ -2,17 +2,17 @@
 
 namespace Swarmer.Common.Logging
 {
-	/// <summary>
+    /// <summary>
 	/// Special class responsible for creating log messages.
 	/// </summary>
 	public class LogMessagesManager
 	{
 		private readonly string mSysCodePrefix;
 
-		public LogMessagesManager(string sysCodePrefix)
-		{
-			mSysCodePrefix = sysCodePrefix;
-		}
+	    public LogMessagesManager(string sysCodePrefix)
+	    {
+	        mSysCodePrefix = sysCodePrefix;
+	    }
 
 		/// <summary>
 		/// Create log message.

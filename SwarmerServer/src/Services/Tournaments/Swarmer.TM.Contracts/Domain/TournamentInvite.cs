@@ -31,6 +31,6 @@ namespace Swarmer.TM.Contracts.Domain
         /// <summary>
         /// Is invite used.
         /// </summary>
-        public bool Used { get; set; }
+        public bool Used { get; set; } = false;
     }
 }

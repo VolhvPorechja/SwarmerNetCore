@@ -22,19 +22,21 @@ namespace Swarmer.AM.Service.Controllers
         /// </summary>
         public static class Codes
         {
-            public static string Login { get; } = "AU001";
-            public static string Logout { get; } = "AU002";
-            public static string Signup { get; } = "AU003";
-            public static string PreSignup { get; } = "AU004";
+            private const string SystemCode = "AU-";
+
+            public static string Login { get; } = SystemCode + "LOGIN";
+            public static string Logout { get; } = SystemCode + "LOGOUT";
+            public static string Signup { get; } = SystemCode + "SIGNUP";
+            public static string PreSignup { get; } = SystemCode + "PRESIGNUP";
         }
 
-        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+        private static readonly Logger ClassLogger = LogManager.GetCurrentClassLogger();
 
         private readonly AccountsManagementCore mCore;
-        private readonly LogMessagesManager mLogMessManager;
         private readonly string mReferenceId;
         private readonly IConfigurationRoot mConfig;
         private readonly SignUpActivationProviderContract mSignupDataProvider;
+        private readonly SystemLogger mLogger;
 
         /// <summary>
         /// CTOR
@@ -50,7 +52,7 @@ namespace Swarmer.AM.Service.Controllers
         {
             mSignupDataProvider = signupDataProvider;
             mConfig = config;
-            mLogMessManager = logMessManager;
+            mLogger = new SystemLogger(ClassLogger, logMessManager);
             mCore = core;
             mReferenceId = Guid.NewGuid().ToString();
         }
@@ -69,8 +71,7 @@ namespace Swarmer.AM.Service.Controllers
         [SwaggerResponse(200, type: typeof(AuthResponse))]
         public virtual IActionResult Login([FromBody] AuthRequest request)
         {
-            Logger.Info(mLogMessManager.Log("", Codes.Login, "User login.", mReferenceId,
-                new { request.Id }));
+            mLogger.Info("", Codes.Login, "User login attempt.", mReferenceId, new {request.Id});
 
             try
             {
@@ -78,11 +79,12 @@ namespace Swarmer.AM.Service.Controllers
                 if (result.IsSuccess)
                     Response.Cookies.Append(mConfig["service:cookie-key"], Guid.NewGuid().ToString("n"));
 
+                mLogger.Info("", Codes.Login, "User login success.", mReferenceId, new {request.Id});
                 return new ObjectResult(result);
             }
             catch (NotValidRequestException exception)
             {
-                Logger.Info(mLogMessManager.Log("SomeUser", Codes.Login, "Login error", mReferenceId, new { request.Id }));
+                mLogger.Info("SomeUser", Codes.Login, "Login error", mReferenceId, new { request.Id });
                 return BadRequest(exception.Message);
             }
         }
@@ -100,7 +102,8 @@ namespace Swarmer.AM.Service.Controllers
         [SwaggerResponse(200, type: typeof(LogoutResponse))]
         public virtual IActionResult Logout()
         {
-            Logger.Info(mLogMessManager.Log("", Codes.Logout, "User logout.", mReferenceId));
+            // TODO Logout from system
+            mLogger.Info("", Codes.Logout, "User logout.", mReferenceId);
             return new ObjectResult(mCore.AuthenticationApi.Logout(new LogoutRequest()));
         }
 
@@ -117,8 +120,8 @@ namespace Swarmer.AM.Service.Controllers
         [SwaggerResponse(200, type: typeof(SingUpResponse))]
         public virtual IActionResult SignUp([FromBody] SingUpRequest request)
         {
-            Logger.Info(mLogMessManager.Log("", Codes.Signup, "User signup.", mReferenceId,
-                new { request }));
+            mLogger.Info("", Codes.Signup, "User signup attempt.", mReferenceId,
+                new {request});
 
             try
             {
@@ -143,12 +146,14 @@ namespace Swarmer.AM.Service.Controllers
                 });
                 mCore.UsersApi.AddAuthenticationData(createdUser, UsersApi.LoginTypes.LoginPassword, request.Password);
 
+                mLogger.Info("", Codes.Signup, "User signup success.", mReferenceId,
+                    new {request});
                 return new ObjectResult(new SingUpResponse());
 
             }
             catch (NotValidRequestException exception)
             {
-                Logger.Info(mLogMessManager.Log("SomeUser", Codes.Login, "Login error", mReferenceId));
+                mLogger.Info("SomeUser", Codes.Login, "Login error", mReferenceId);
                 return BadRequest(exception.Message);
             }
         }
@@ -166,8 +171,8 @@ namespace Swarmer.AM.Service.Controllers
         [SwaggerResponse(200, type: typeof(PreSingUpResponse))]
         public virtual IActionResult PreSingUp([FromBody] PreSignUpRequest request)
         {
-            Logger.Info(mLogMessManager.Log("", Codes.PreSignup, "User presign up.", mReferenceId,
-                new { request }));
+            mLogger.Info("", Codes.PreSignup, "User presign up.", mReferenceId,
+                new { request });
 
             var result = mCore.AuthenticationApi.PreSingUp(request);
 
