@@ -15,20 +15,9 @@ CREATE TABLE Tournaments (
 	 Title varchar(1024) not null,
 	 Name varchar(256) not null,
 	 Description text not null,
-	 Data jsonb default value '{}'::jsonb,
+	 Data jsonb default '{}'::jsonb,
 	 IsOpen boolean not null default false,
 	 Stats jsonb not null default '{}'::jsonb
-);
-
-CREATE TABLE TournamentsPlayers (
-	Id uuid PRIMARY KEY not null,
-	Created timestamp with time zone not null,
-	Updated timestamp with time zone not null,
-	TournamentId uuid references Tournaments(Id) not null,
-	PlayerId uudi not null,
-	PartyId uuid references Parties(Id),
-	TeamId uuid,
-	Stats jsonb not null default '{}'::jsonb
 );
 
 CREATE TABLE Parties (
@@ -41,6 +30,17 @@ CREATE TABLE Parties (
 	 Team uuid,
 	 Stats jsonb not null default '{}'::jsonb,
 	 Data jsonb not null default '{}'::jsonb
+);
+
+CREATE TABLE TournamentsPlayers (
+	Id uuid PRIMARY KEY not null,
+	Created timestamp with time zone not null,
+	Updated timestamp with time zone not null,
+	TournamentId uuid references Tournaments(Id) not null,
+	PlayerId uuid not null,
+	PartyId uuid references Parties(Id),
+	TeamId uuid,
+	Stats jsonb not null default '{}'::jsonb
 );
 
 CREATE TABLE TournamentsInvites(
